@@ -1,3 +1,34 @@
+
+SET NOCOUNT ON
+GO
+
+set nocount    on
+set dateformat mdy
+
+USE master
+
+declare @dttm varchar(55)
+select  @dttm=convert(varchar,getdate(),113)
+raiserror('Beginning InstPubs.SQL at %s ....',1,1,@dttm) with nowait
+
+GO
+
+if exists (select * from sysdatabases where name='pubsDW')
+begin
+  raiserror('Dropping existing pubs database ....',0,1)
+  DROP database pubsDW
+end
+GO
+
+CHECKPOINT
+go
+
+raiserror('Creating pubs database....',0,1)
+go
+/*
+   Use default size with autogrow
+*/
+
 CREATE DATABASE pubsDW
 GO
 
@@ -8,6 +39,17 @@ GO
 USE pubsDW
 
 GO
+
+if db_name() <> 'pubsDW'
+   raiserror('Error in InstPubs.SQL, ''USE pubsDW'' failed!  Killing the SPID now.'
+            ,22,127) with log
+
+GO
+
+
+
+
+
 
 CREATE TABLE "DimProducts" (
 	"ProductID" "int" IDENTITY (1, 1) NOT NULL ,
