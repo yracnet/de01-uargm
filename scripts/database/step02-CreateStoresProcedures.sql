@@ -235,3 +235,53 @@ WHERE
 	@endRow)
 END
 GO
+
+
+
+
+
+-- Procedure to load data from FacOrders
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetOrdersByRowVersion') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.GetOrdersByRowVersion
+GO
+
+CREATE PROCEDURE dbo.GetOrdersByRowVersion
+(
+    @startRow BIGINT,
+    @endRow BIGINT
+)
+AS
+BEGIN
+SELECT
+	o.OrderID,
+	od.ProductID,
+	p.CategoryID,
+	p.SupplierID,
+	o.EmployeeID,
+	o.CustomerID,
+	o.ShipVia ShipperID,
+	CONVERT(VARCHAR(8), o.OrderDate, 112) OrderDateKey,
+	CONVERT(VARCHAR(8), o.RequiredDate, 112) RequiredDateKey,
+	ISNULL(CONVERT(VARCHAR(8), o.ShippedDate, 112), '00000000') AS ShippedDateKey,
+	o.Freight,
+	o.ShipName,
+	o.ShipAddress,
+	o.ShipCity,
+	o.ShipRegion,
+	o.ShipPostalCode,
+	o.ShipCountry,
+	od.UnitPrice,
+	od.Quantity,
+	od.Discount
+FROM
+	Orders o
+LEFT JOIN OrderDetails od ON o.OrderID = od.OrderID
+LEFT JOIN Products p ON p.ProductID = od.ProductID
+WHERE
+    (o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow))
+    OR
+    (od.rowversion > CONVERT(BIGINT, @startRow) AND od.rowversion <= CONVERT(BIGINT, @endRow))
+END
+GO
+
+
