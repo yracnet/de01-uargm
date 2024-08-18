@@ -1,97 +1,110 @@
 -- Author: Willyams Yujra
 -- Adicionar rowversion a las tables existentes
 
+-- SETTING ENVIROMENT 
+USE pubs
+GO
+if db_name() <> 'pubs'
+   raiserror('Error in InstPubs.SQL, ''USE pubs'' failed!  Killing the SPID now.',22,127) with log
+GO
+SET
+ANSI_NULLS ON
+GO
+SET
+QUOTED_IDENTIFIER ON
+GO
+
 -- REMOVE
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.Categories') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.Categories') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.Categories DROP COLUMN [rowversion];
+    ALTER TABLE dbo.Categories DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.CustomerCustomerDemo') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.CustomerCustomerDemo') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.CustomerCustomerDemo DROP COLUMN [rowversion];
+    ALTER TABLE dbo.CustomerCustomerDemo DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.CustomerDemographics') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.CustomerDemographics') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.CustomerDemographics DROP COLUMN [rowversion];
+    ALTER TABLE dbo.CustomerDemographics DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.Customers') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.Customers') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.Customers DROP COLUMN [rowversion];
+    ALTER TABLE dbo.Customers DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.EmployeeTerritories') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.EmployeeTerritories') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.EmployeeTerritories DROP COLUMN [rowversion];
+    ALTER TABLE dbo.EmployeeTerritories DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.Employees') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.Employees') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.Employees DROP COLUMN [rowversion];
+    ALTER TABLE dbo.Employees DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.OrderDetails') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.OrderDetails') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.OrderDetails DROP COLUMN [rowversion];
+    ALTER TABLE dbo.OrderDetails DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.Orders') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.Orders') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.Orders DROP COLUMN [rowversion];
+    ALTER TABLE dbo.Orders DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.Products') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.Products') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.Products DROP COLUMN [rowversion];
+    ALTER TABLE dbo.Products DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.Region') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.Region') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.Region DROP COLUMN [rowversion];
+    ALTER TABLE dbo.Region DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.Shippers') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.Shippers') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.Shippers DROP COLUMN [rowversion];
+    ALTER TABLE dbo.Shippers DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.Suppliers') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.Suppliers') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.Suppliers DROP COLUMN [rowversion];
+    ALTER TABLE dbo.Suppliers DROP COLUMN [rowversion];
 END
 
-IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'pubs.dbo.Territories') AND name = 'rowversion')
+IF EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'dbo.Territories') AND name = 'rowversion')
 BEGIN
-    ALTER TABLE pubs.dbo.Territories DROP COLUMN [rowversion];
+    ALTER TABLE dbo.Territories DROP COLUMN [rowversion];
 END
 
 
 -- ADD
 
-ALTER TABLE pubs.dbo.Categories ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.Categories ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.CustomerCustomerDemo ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.CustomerCustomerDemo ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.CustomerDemographics ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.CustomerDemographics ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.Customers ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.Customers ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.EmployeeTerritories ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.EmployeeTerritories ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.Employees ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.Employees ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.OrderDetails ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.OrderDetails ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.Orders ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.Orders ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.Products ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.Products ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.Region ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.Region ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.Shippers ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.Shippers ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.Suppliers ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.Suppliers ADD [rowversion] [timestamp] NOT NULL;
 
-ALTER TABLE pubs.dbo.Territories ADD [rowversion] [timestamp] NOT NULL;
+ALTER TABLE dbo.Territories ADD [rowversion] [timestamp] NOT NULL;
