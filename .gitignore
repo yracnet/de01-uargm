@@ -1,5 +1,2 @@
-scripts/.dbeaver/.project-metadata.json.bak
-scripts/.dbeaver/credentials-config.json
-scripts/.dbeaver/data-sources.json
-scripts/.dbeaver/project-metadata.json
-scripts/.dbeaver/project-settings.json
+scripts/.dbeaver/
+process-pubs/.vs/
