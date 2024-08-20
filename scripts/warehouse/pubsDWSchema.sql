@@ -47,15 +47,10 @@ if db_name() <> 'pubsDW'
 GO
 
 
-
-
-
-
 CREATE TABLE "DimProducts" (
-	"ProductID" "int" IDENTITY (1, 1) NOT NULL ,
+	"ProductSK" "int" IDENTITY(1,1) NOT NULL,
+	"ProductID" "int" NOT NULL ,
 	"ProductName" nvarchar (40) NOT NULL ,
-	"SupplierID" "int" NULL ,
-	"CategoryID" "int" NULL ,
 	"QuantityPerUnit" nvarchar (20) NULL ,
 	"UnitPrice" "money" NULL CONSTRAINT "DF_Products_UnitPrice" DEFAULT (0),
 	"UnitsInStock" "smallint" NULL CONSTRAINT "DF_Products_UnitsInStock" DEFAULT (0),
@@ -63,6 +58,7 @@ CREATE TABLE "DimProducts" (
 	"ReorderLevel" "smallint" NULL CONSTRAINT "DF_Products_ReorderLevel" DEFAULT (0),
 	"Discontinued" "bit" NOT NULL CONSTRAINT "DF_Products_Discontinued" DEFAULT (0),
 	
+	"SupplierID" "int" NULL ,
 	"SupplierCompanyName" nvarchar (40) NOT NULL ,
 	"SupplierContactName" nvarchar (30) NULL ,
 	"SupplierContactTitle" nvarchar (30) NULL ,
@@ -75,11 +71,12 @@ CREATE TABLE "DimProducts" (
 	"SupplierFax" nvarchar (24) NULL ,
 	"SupplierHomePage" "ntext" NULL ,
 	
+	"CategoryID" "int" NULL ,
 	"CategoryName" nvarchar (15) NOT NULL ,
 	
 	CONSTRAINT "PK_DimProducts" PRIMARY KEY  CLUSTERED 
 	(
-		"ProductID"
+		"ProductSK" ASC 
 	),
 
 	CONSTRAINT "CK_Products_UnitPrice" CHECK (UnitPrice >= 0),
@@ -90,6 +87,7 @@ CREATE TABLE "DimProducts" (
 GO 
 
 CREATE TABLE "DimCustomers" (
+	"CustomerSK" "int" IDENTITY(1,1) NOT NULL,
 	"CustomerID" nchar (5) NOT NULL ,
 	"CompanyName" nvarchar (40) NOT NULL ,
 	"ContactName" nvarchar (30) NULL ,
@@ -101,16 +99,19 @@ CREATE TABLE "DimCustomers" (
 	"Country" nvarchar (15) NULL ,
 	"Phone" nvarchar (24) NULL ,
 	"Fax" nvarchar (24) NULL ,
+	
+	"CustomerTypeID" nchar (10) NOT NULL ,
 	"CustomerDemographicsDesc" ntext NULL,
 	CONSTRAINT "PK_DimCustomers" PRIMARY KEY  CLUSTERED 
 	(
-		"CustomerID"
+		"CustomerSK" ASC
 	)
 )
 GO
 
 CREATE TABLE "DimEmployees" (
-	"EmployeeID" "int" IDENTITY (1, 1) NOT NULL ,
+	"EmployeeSK" "int" IDENTITY(1,1) NOT NULL,
+	"EmployeeID" "int" NOT NULL ,
 	"LastName" nvarchar (20) NOT NULL ,
 	"FirstName" nvarchar (10) NOT NULL ,
 	"Title" nvarchar (30) NULL ,
@@ -129,20 +130,17 @@ CREATE TABLE "DimEmployees" (
 	"ReportsTo" "int" NULL ,
 	"PhotoPath" nvarchar (255) NULL ,
 	
+	"TerritoryID" nvarchar (20) NOT NULL ,
 	"TerritoryDescription" nchar (50) NOT NULL ,
 	
+	"RegionID" "int" NOT NULL ,
 	"RegionDescription" nchar (50) NOT NULL, 
 	
 	CONSTRAINT "PK_DimEmployees" PRIMARY KEY  CLUSTERED 
 	(
-		"EmployeeID"
+		"EmployeeSK" ASC
 	),
-	CONSTRAINT "FK_Employees_Employees" FOREIGN KEY 
-	(
-		"ReportsTo"
-	) REFERENCES "dbo"."DimEmployees" (
-		"EmployeeID"
-	),
+	
 	CONSTRAINT "CK_Birthdate" CHECK (BirthDate < getdate())
 )
 GO
@@ -168,14 +166,15 @@ CREATE TABLE "DimDate"(
 GO 
 
 CREATE TABLE "FactOrders" (
-	"OrderID" "int" IDENTITY (1, 1) NOT NULL ,
-	"ProductSK" "int" NOT NULL ,
-	"CustomerSK" nchar (5) NULL ,
+	"OrderID" "int" NOT NULL ,
+	"ProductID" "int" NOT NULL ,
+	"ProductSK" "int" NULL ,
+	"CustomerSK" "int" NULL ,
 	"EmployeeSK" "int" NULL ,
 	
-	"OrderDateKey" "int" NULL ,
-	"RequiredDateKey" "int" NULL ,
-	"ShippedDateKey" "int" NULL ,
+	"OrderDateKey" "int" NOT NULL ,
+	"RequiredDateKey" "int" NOT NULL ,
+	"ShippedDateKey" "int" NOT NULL ,
 	"ShipVia" "int" NULL ,
 	"Freight" "money" NULL CONSTRAINT "DF_Orders_Freight" DEFAULT (0),
 	"ShipName" nvarchar (40) NULL ,
@@ -190,42 +189,50 @@ CREATE TABLE "FactOrders" (
 	"Quantity" "smallint" NOT NULL CONSTRAINT "DF_Order_Details_Quantity" DEFAULT (1),
 	"Discount" "real" NOT NULL CONSTRAINT "DF_Order_Details_Discount" DEFAULT (0),
 	
+	"ShipperID" "int" NOT NULL ,
 	"ShippersCompanyName" nvarchar (40) NOT NULL ,
 	
 	CONSTRAINT "PK_Orders" PRIMARY KEY  CLUSTERED 
 	(
-		"OrderID"
+		"OrderID" ASC,
+		"ProductID" ASC
 	),
+	
 	CONSTRAINT "FK_Orders_Products" FOREIGN KEY 
 	(
 		"ProductSK"
 	) REFERENCES "dbo"."DimProducts" (
-		"ProductID"
+		"ProductSK"
 	),
+	
 	CONSTRAINT "FK_Orders_DimCustomers" FOREIGN KEY 
 	(
 		"CustomerSK"
 	) REFERENCES "dbo"."DimCustomers" (
-		"CustomerID"
+		"CustomerSK"
 	),
+	
 	CONSTRAINT "FK_Orders_DimEmployees" FOREIGN KEY 
 	(
 		"EmployeeSK"
 	) REFERENCES "dbo"."DimEmployees" (
-		"EmployeeID"
+		"EmployeeSK"
 	),
+	
 	CONSTRAINT "FK_DimDate_OrderDate" FOREIGN KEY 
 	(
 		"OrderDateKey"
 	) REFERENCES "dbo"."DimDate" (
 		"DateKey"
 	),
+	
 	CONSTRAINT "FK_DimDate_RequiredDate" FOREIGN KEY 
 	(
 		"RequiredDateKey"
 	) REFERENCES "dbo"."DimDate" (
 		"DateKey"
 	),
+	
 	CONSTRAINT "FK_DimDate_ShippedDate" FOREIGN KEY 
 	(
 		"ShippedDateKey"
@@ -237,4 +244,15 @@ CREATE TABLE "FactOrders" (
 	CONSTRAINT "CK_Quantity" CHECK (Quantity > 0),
 	CONSTRAINT "CK_UnitPrice" CHECK (UnitPrice >= 0)
 )
+GO
+
+CREATE TABLE "PackageConfig"(
+	"PackageID" "int" IDENTITY(1,1) NOT NULL,
+	"TableName" varchar (50) NOT NULL,
+	"LastRowVersion" "bigint" NULL,
+	CONSTRAINT "PK_PackageConfig" PRIMARY KEY CLUSTERED 
+	(
+		"PackageID" ASC
+	)
+) 
 GO
