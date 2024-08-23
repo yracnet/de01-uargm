@@ -132,29 +132,25 @@ GO
 GO
 	CREATE TABLE "DimShipName"(
 		"ShipNameSK" "int" IDENTITY(1, 1) NOT NULL,
-		"ShipNameKey" int NOT NULL,
-		"Name" datetime NOT NULL,
+		"Name" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipNameKey" PRIMARY KEY CLUSTERED ("ShipNameSK")
 	)
 GO
 	CREATE TABLE "DimShipCountry"(
 		"ShipCountrySK" "int" IDENTITY(1, 1) NOT NULL,
-		"ShipCountryKey" int NOT NULL,
-		"Name" datetime NOT NULL,
+		"Name" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipCountryKey" PRIMARY KEY CLUSTERED ("ShipCountrySK")
 	)
 GO
 	CREATE TABLE "DimShipCity"(
 		"ShipCitySK" "int" IDENTITY(1, 1) NOT NULL,
-		"ShipCityKey" int NOT NULL,
-		"Name" datetime NOT NULL,
+		"Name" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipCityKey" PRIMARY KEY CLUSTERED ("ShipCitySK")
 	)
 GO
 	CREATE TABLE "DimShipRegion"(
 		"ShipRegionSK" "int" IDENTITY(1, 1) NOT NULL,
-		"ShipRegionKey" int NOT NULL,
-		"Name" datetime NOT NULL,
+		"Name" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipRegionKey" PRIMARY KEY CLUSTERED ("ShipRegionSK")
 	)
 GO
@@ -169,10 +165,10 @@ GO
 		"ShippedDateKey" "int" NOT NULL,
 		"ShipVia" "int" NULL,
 		"Freight" "money" NULL CONSTRAINT "DF_Orders_Freight" DEFAULT (0),
-		"ShipNameSK" "int" NULL,
-		"ShipCountrySK" "int" NULL,
-		"ShipCitySK" "int" NULL,
-		"ShipRegionSK" "int" NULL,
+		"ShipNameSK" "int" NOT NULL,
+		"ShipCountrySK" "int" NOT NULL,
+		"ShipCitySK" "int" NOT NULL,
+		"ShipRegionSK" "int" NOT NULL,
 		"UnitPrice" "money" NOT NULL CONSTRAINT "DF_Order_Details_UnitPrice" DEFAULT (0),
 		"Quantity" "smallint" NOT NULL CONSTRAINT "DF_Order_Details_Quantity" DEFAULT (1),
 		"Discount" "real" NOT NULL CONSTRAINT "DF_Order_Details_Discount" DEFAULT (0),
