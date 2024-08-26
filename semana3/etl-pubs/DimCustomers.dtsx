@@ -5,46 +5,56 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-SK5FLHC"
   DTS:CreatorName="DESKTOP-SK5FLHC\HP"
-  DTS:DTSID="{980792BA-61C2-4830-80E1-49F919C8342F}"
+  DTS:DTSID="{1D8824E0-4296-4178-AB25-6B047F9162AE}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{04625229-974B-490F-A572-E1DA3D300517}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{6A9E1438-98C6-4111-B64A-52C3F9A83232}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubs]"
+      DTS:refId="Package.ConnectionManagers[SOURCE]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{7B5CAA6A-1372-4C10-8B54-431FCF2C8A03}"
-      DTS:ObjectName="DESKTOP-SK5FLHC\SQLEXPRESS02.pubs">
+      DTS:DTSID="{DF1D2639-3CC4-4C33-85D8-3B3D991D4273}"
+      DTS:ObjectName="SOURCE">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubs;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{7B5CAA6A-1372-4C10-8B54-431FCF2C8A03}DESKTOP-SK5FLHC\SQLEXPRESS02.pubs;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{DF1D2639-3CC4-4C33-85D8-3B3D991D4273}SOURCE;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACd3fciJw/0R2pJ4wpnX+BtOvApiyGyvqe7Xv5O4UhtmAAAAAAOgAAAAAIAACAAAABom9lBDNVPpqEp5/BuvIOOZRVEYukOL4dVm81KfcZpySAAAADb8+ZntZRvgUpnnAJHkruUreMVbGtwrMhs5ukhS4jCWEAAAABxM9lm/LlHJeQGvpNegM9L78D3zpCONFKYKXJE4bNWHv0NMqp9qr65zT0TPtu2pObMJYQpU3o3L8l94O3+ey8d</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
+      DTS:refId="Package.ConnectionManagers[TARGET]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{8CC46388-2410-46B1-BF8E-8EA683F1E2EA}"
-      DTS:ObjectName="DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW">
+      DTS:DTSID="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
+      DTS:ObjectName="TARGET">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubsDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{8CC46388-2410-46B1-BF8E-8EA683F1E2EA}DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}TARGET;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADkVGimmCsT6tOhs5FODX85sXkN6IEb1X6aaBlrKLWX/AAAAAAOgAAAAAIAACAAAACkOHp52gNFkrSSj/rud7nr8AMFnknxsPb04yK+hHLWNyAAAACfn/V8R1P2aF3V6UqE8+N53uiPw2vBFT+hJFSsfh8kG0AAAAA6Gd9qfHayGJVjHnpx/0gsIzCHc78fogreq38cSJDXF57qx/AuU0zZOE13DEmLbOtFUyOpAzAaAmEOLTCe4cp2</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{57330248-97CB-4769-8CCD-4CCF56694CB3}"
+      DTS:DTSID="{AAE0B609-769A-410B-B06F-DF95A9F01D75}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="dbts">
@@ -53,7 +63,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{A9D100AF-87A5-4245-9C53-8D3A8426643F}"
+      DTS:DTSID="{FE30C0F3-80BA-41A5-A645-F1895CA66C32}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LastRowValue">
@@ -66,7 +76,7 @@
       DTS:refId="Package\Add New Customer"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Tarea Flujo de datos"
-      DTS:DTSID="{58CF7555-C90E-4FB8-8379-62132C1BAA00}"
+      DTS:DTSID="{9CDCFC2B-E81A-4EE4-A417-3862D76606D5}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Add New Customer"
@@ -135,8 +145,8 @@
               <connections>
                 <connection
                   refId="Package\Add New Customer\Add New Customer.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -394,8 +404,8 @@ where [refTable].[CustomerID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Customer\Búsqueda.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -528,13 +538,13 @@ where [refTable].[CustomerID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Asignaciones entre los parámetros del comando SQL y las variables."
-                  name="ParameterMapping">"@startRow:Input",{A9D100AF-87A5-4245-9C53-8D3A8426643F};"@endRow:Input",{57330248-97CB-4769-8CCD-4CCF56694CB3};</property>
+                  name="ParameterMapping">"@startRow:Input",{FE30C0F3-80BA-41A5-A645-F1895CA66C32};"@endRow:Input",{AAE0B609-769A-410B-B06F-DF95A9F01D75};</property>
               </properties>
               <connections>
                 <connection
                   refId="Package\Add New Customer\Get Row Changes.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubs]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubs]"
+                  connectionManagerID="Package.ConnectionManagers[SOURCE]"
+                  connectionManagerRefId="Package.ConnectionManagers[SOURCE]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -881,8 +891,8 @@ where [refTable].[CustomerID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Customer\Load Staging.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1101,7 +1111,7 @@ where [refTable].[CustomerID] = ?</property>
       DTS:refId="Package\Get Customers RowVersion"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{2E84DC6C-8290-4C6F-8BB5-301FC8B09F36}"
+      DTS:DTSID="{E828C706-CFD5-4324-948B-738816F9F9AC}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get Customers RowVersion"
@@ -1110,7 +1120,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{8CC46388-2410-46B1-BF8E-8EA683F1E2EA}"
+          SQLTask:Connection="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'customers'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -1123,7 +1133,7 @@ where [refTable].[CustomerID] = ?</property>
       DTS:refId="Package\Get Database RowVersion"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{2E6DBC7F-F31D-416C-8948-F63B065D85D0}"
+      DTS:DTSID="{3550B6EC-A2DA-454A-B7D3-F36714FCE8F2}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get Database RowVersion"
@@ -1132,7 +1142,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{7B5CAA6A-1372-4C10-8B54-431FCF2C8A03}"
+          SQLTask:Connection="{DF1D2639-3CC4-4C33-85D8-3B3D991D4273}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetDatabaseRowVersion]"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -1145,7 +1155,7 @@ where [refTable].[CustomerID] = ?</property>
       DTS:refId="Package\Initializable Staging Table"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{52903B94-D7A9-4817-9B89-9CACF2C3A754}"
+      DTS:DTSID="{2615A733-635B-4B62-95AB-0FFF61D29FC6}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Initializable Staging Table"
@@ -1154,7 +1164,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{8CC46388-2410-46B1-BF8E-8EA683F1E2EA}"
+          SQLTask:Connection="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [staging].[Customers];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1162,7 +1172,7 @@ where [refTable].[CustomerID] = ?</property>
       DTS:refId="Package\Sync Customer Data"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{EFBFA9D8-8C8A-4CAB-A411-8926ACD7C9D4}"
+      DTS:DTSID="{ABF3E64C-E591-4F5F-8B27-9263FFD6AAA2}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Sync Customer Data"
@@ -1171,7 +1181,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{8CC46388-2410-46B1-BF8E-8EA683F1E2EA}"
+          SQLTask:Connection="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[DW_MergeDimCustomers];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1179,7 +1189,7 @@ where [refTable].[CustomerID] = ?</property>
       DTS:refId="Package\Update Last RowVersion"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
-      DTS:DTSID="{BF44856A-85AF-4348-BE2D-B7A25C2755FD}"
+      DTS:DTSID="{E1E868EF-C21E-4BD0-909A-877B785921E4}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Update Last RowVersion"
@@ -1188,7 +1198,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{8CC46388-2410-46B1-BF8E-8EA683F1E2EA}"
+          SQLTask:Connection="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'customers', @lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -1204,7 +1214,7 @@ where [refTable].[CustomerID] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción]"
       DTS:CreationName=""
-      DTS:DTSID="{BD76637E-5C8F-4B14-8690-4AE0FD6A4926}"
+      DTS:DTSID="{E63B7CDE-7CC8-45D6-B2A2-DA69987E0A1B}"
       DTS:From="Package\Get Database RowVersion"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción"
@@ -1212,7 +1222,7 @@ where [refTable].[CustomerID] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
       DTS:CreationName=""
-      DTS:DTSID="{A32B26F1-7450-423E-A8B9-CD038571E836}"
+      DTS:DTSID="{317BCA29-16F5-41D4-811D-512BD36F1A01}"
       DTS:From="Package\Get Customers RowVersion"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 1"
@@ -1220,7 +1230,7 @@ where [refTable].[CustomerID] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
       DTS:CreationName=""
-      DTS:DTSID="{E107C071-CE8F-4AD7-AAFA-95A16F4F88F3}"
+      DTS:DTSID="{606FFA9D-C89F-4EBB-8BB5-1594FD35078B}"
       DTS:From="Package\Initializable Staging Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 2"
@@ -1228,7 +1238,7 @@ where [refTable].[CustomerID] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
       DTS:CreationName=""
-      DTS:DTSID="{734C7FAF-57AF-4B56-AAFE-7906FDF435BB}"
+      DTS:DTSID="{1F1B9CB8-BD16-4E38-A4A5-D0F29F284F22}"
       DTS:From="Package\Add New Customer"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 3"
@@ -1236,32 +1246,48 @@ where [refTable].[CustomerID] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
       DTS:CreationName=""
-      DTS:DTSID="{AA21A81D-04A0-4494-BE83-515E4D769B39}"
+      DTS:DTSID="{8E34B1FD-8BD8-444B-A5A1-E2705F9FBFCB}"
       DTS:From="Package\Sync Customer Data"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 4"
       DTS:To="Package\Update Last RowVersion" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="201,42"
-          Id="Package\Get Database RowVersion"
-          TopLeft="166,14" />
+          Size="169,42"
+          Id="Package\Add New Customer"
+          TopLeft="190,216" />
         <NodeLayout
           Size="207,42"
           Id="Package\Get Customers RowVersion"
           TopLeft="163,80" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Get Database RowVersion"
+          TopLeft="166,14" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Initializable Staging Table"
+          TopLeft="169,145" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Sync Customer Data"
+          TopLeft="185,281" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Update Last RowVersion"
+          TopLeft="177,348" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="266.5,56">
@@ -1284,10 +1310,6 @@ where [refTable].[CustomerID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="200,42"
-          Id="Package\Initializable Staging Table"
-          TopLeft="169,145" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
           TopLeft="267.75,122">
@@ -1310,10 +1332,6 @@ where [refTable].[CustomerID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Add New Customer"
-          TopLeft="190,216" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="271.75,187">
@@ -1336,10 +1354,6 @@ where [refTable].[CustomerID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Sync Customer Data"
-          TopLeft="185,281" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="273.5,258">
@@ -1362,10 +1376,6 @@ where [refTable].[CustomerID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194,42"
-          Id="Package\Update Last RowVersion"
-          TopLeft="177,348" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
           TopLeft="273.25,323">
@@ -1523,7 +1533,7 @@ where [refTable].[CustomerID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1533,7 +1543,7 @@ where [refTable].[CustomerID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
