@@ -1,5 +1,5 @@
-scripts/.dbeaver/
-process-pubs/.vs/
-analisis-pubs/.vs/
-analisis-pubs/bin/
-analisis-pubs/obj/
+**/.dbeaver/
+**/.vs/
+**/.vs/
+**/bin/
+**/obj/
