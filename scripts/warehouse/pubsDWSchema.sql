@@ -81,7 +81,7 @@ GO
 		"Country" nvarchar (15) NULL,
 		"Phone" nvarchar (24) NULL,
 		"Fax" nvarchar (24) NULL,
-		"CustomerTypeID" nchar (10) NOT NULL,
+		"CustomerTypeID" nchar (10) NULL,
 		"CustomerDemographicsDesc" ntext NULL,
 		CONSTRAINT "PK_DimCustomers" PRIMARY KEY CLUSTERED ("CustomerSK" ASC)
 	)
