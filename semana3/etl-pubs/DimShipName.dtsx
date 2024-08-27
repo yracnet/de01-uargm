@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/27/2024 2:01:47 PM"
@@ -7,37 +7,47 @@
   DTS:CreatorName="DESKTOP-MVHOUL6\DELL"
   DTS:DTSID="{488C43DD-F6CB-4542-A95A-0F1A55F9DCCC}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
   DTS:LocaleID="16394"
   DTS:ObjectName="DimShipName"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{A52585EE-B59D-4F71-8968-00D845A74086}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{A0F546E8-0AD5-4F76-B422-24BCD46FE60F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubs1]"
+      DTS:refId="Package.ConnectionManagers[SOURCE]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{C9FED660-CE21-417D-A9A6-F8ADBF740AEA}"
-      DTS:ObjectName="DESKTOP-MVHOUL6\MSSQLSERVER2.pubs1">
+      DTS:ObjectName="SOURCE">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-MVHOUL6\MSSQLSERVER2;Initial Catalog=pubs;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{C9FED660-CE21-417D-A9A6-F8ADBF740AEA}DESKTOP-MVHOUL6\MSSQLSERVER2.pubs1;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-DimShipName-{C9FED660-CE21-417D-A9A6-F8ADBF740AEA}SOURCE;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADiJ7yx62p59LO0MksLBf30HMi3QsNkF+v7a7fDWvbHPgAAAAAOgAAAAAIAACAAAAALaQ+RrH6STdsCCx87A5YHvMAj+9n5AFqRqmyeMQhvyiAAAABOYSeQMg41xVX9wAwsrY+H4+p9fmdV5m8doAq3DUhJ9EAAAAAK/1Rs32IIzncJhxuQs/GYlAJS83hIbhTAs/aYQou74RbcWtuZZSgrah6DlZC0/jK93oRKtLTewUSm95t/ZgY3</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
+      DTS:refId="Package.ConnectionManagers[TARGET]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{97F18605-F159-4AB7-A1AA-F874E3A80427}"
-      DTS:ObjectName="DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1">
+      DTS:ObjectName="TARGET">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-MVHOUL6\MSSQLSERVER2;Initial Catalog=pubsDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{97F18605-F159-4AB7-A1AA-F874E3A80427}DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-DimShipName-{97F18605-F159-4AB7-A1AA-F874E3A80427}TARGET;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAMmypTQrE1LZKafqVTVDvOEc47Wlgy2i3eKkxBYr53hgAAAAAOgAAAAAIAACAAAACNKZIrRqgEFduZdfkp0jx535TDYSgoDKTiHR+Tjk/vOCAAAAAQyhqL8wCJWWm1Mr2Ex7o5uogTgi7ypMZPVu+RWA5q2kAAAAD/2fupdeTNT6gBC4SABiueB9OkZsjDKQ3U49fsLkguGPTKax9KF2e/tDfGcrSj85OJofU8MnNGEJysgJRrwXBL</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -188,8 +198,8 @@
               <connections>
                 <connection
                   refId="Package\New ShipName\Get ShipName.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubs1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubs1]"
+                  connectionManagerID="Package.ConnectionManagers[SOURCE]"
+                  connectionManagerRefId="Package.ConnectionManagers[SOURCE]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -662,8 +672,8 @@
               <connections>
                 <connection
                   refId="Package\New ShipName\Load Staging.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -859,8 +869,8 @@
               <connections>
                 <connection
                   refId="Package\New ShipName\Lookpup ShipName.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -982,8 +992,8 @@ where [refTable].[CustomerID] = ?</property>
               <connections>
                 <connection
                   refId="Package\New ShipName\Lookup Customer.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -1140,8 +1150,8 @@ where [refTable].[EmployeeID] = ?</property>
               <connections>
                 <connection
                   refId="Package\New ShipName\Lookup Employee.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -1298,8 +1308,8 @@ where [refTable].[ProductID] = ?</property>
               <connections>
                 <connection
                   refId="Package\New ShipName\Lookup Product.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -1445,8 +1455,8 @@ where [refTable].[ProductID] = ?</property>
               <connections>
                 <connection
                   refId="Package\New ShipName\New ShipName.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-MVHOUL6\MSSQLSERVER2.pubsDW1]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1694,39 +1704,39 @@ where [refTable].[ProductID] = ?</property>
       DTS:To="Package\Update Config" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\cleanup staging"
           TopLeft="97.8571445236402,219.200002187841" />
         <NodeLayout
-          Size="200,41.6"
+          Size="200,42"
           Id="Package\Get Database RowVersion"
           TopLeft="74.2857155507925,55.8235301946686" />
         <NodeLayout
-          Size="172,41.6"
+          Size="172,42"
           Id="Package\Get LastRowVersion"
           TopLeft="88.5714300797911,142.235296112443" />
         <NodeLayout
-          Size="149.6,41.6"
+          Size="150,42"
           Id="Package\New ShipName"
           TopLeft="188.571431782781,293.705884508608" />
         <NodeLayout
-          Size="135.2,41.6"
+          Size="135,42"
           Id="Package\Sync Orders"
           TopLeft="307.142862373469,372.694119867074" />
         <NodeLayout
-          Size="144.8,41.6"
+          Size="145,42"
           Id="Package\Update Config"
           TopLeft="314.285719637968,438.117649332462" />
         <EdgeLayout
@@ -2099,6 +2109,19 @@ where [refTable].[ProductID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\New ShipName\New ShipName">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\New ShipName\Lookup Customer">
     <Properties>
       <Property>
@@ -2110,29 +2133,6 @@ where [refTable].[ProductID] = ?</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[DimCustomers]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\New ShipName\Lookup Employee">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimEmployees]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -2168,20 +2168,12 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\New ShipName\Get ShipName">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\New ShipName\Lookpup ShipName">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2191,7 +2183,7 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2212,15 +2204,33 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\New ShipName\New ShipName">
+    design-time-name="Package\New ShipName\Lookup Employee">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimEmployees]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\New ShipName\Get ShipName">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

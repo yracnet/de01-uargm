@@ -31,6 +31,6 @@ EXEC InsertIfNotExists 'Customers'
 EXEC InsertIfNotExists 'Employees'
 EXEC InsertIfNotExists 'Orders'
 EXEC InsertIfNotExists 'Categories'
---EXEC InsertIfNotExists ''
+EXEC InsertIfNotExists 'suppliers'
 --EXEC InsertIfNotExists ''
 

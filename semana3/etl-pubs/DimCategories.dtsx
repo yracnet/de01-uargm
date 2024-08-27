@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{DCA3E372-DBF3-49CE-B8CB-4C867B375FCA}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{0FDA55D1-1469-49C0-B549-ED6DFB8FED24}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAvDS8pYBcMMKDdy7HLpYHV1GvF1XiMSF8PqwsEptprLwAAAAAOgAAAAAIAACAAAAALX2LyQGtW3DPIHGAO/BvD166H2dVty0F6A+vt9RrZ3iAAAABrlQeTzSxBlIafJ4hgU4iCwURhen3XOlSwEyBgV01PvUAAAAAumhkqwaGJN6Uln4PMUj4InusOnAWSWAQyWLtNr7iNdy+hyI7TZWFX0D/IewZfJ0A/lIcP+Deuj73HkS4kvSNM</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADMP1iFmJ8j4DkcQhMksJnjsZwTl0KESGRzsbDO64XCEQAAAAAOgAAAAAIAACAAAADmN+cT+EvcGOx770hqTw1mg6tkYmDqaxj05mjTxSsd3SAAAAAPh9xNYSg+dgM1WwM6FUqjR048u0CXK0ipU8lKjOuqOUAAAAAQeDc+1HKfOcqAdKy6YrYydbHxS4RDfhdvsqOtWZCxD90IrPPzkHTRRWvCOc7uiN8I9UE8bXfcQgcsw0YGanU6</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADci/lEAv4F8ThZIbqEcp1KHdPS5EnpWjkFwEgnNfDaSwAAAAAOgAAAAAIAACAAAAAlFXxqq1mku15bJD6xKnlIw6ihOpvnzR93TKCmfw5BQSAAAACzizwMqoa04uMiAAGplslC1Pwjr2j2VVqsIjRl14+LwUAAAABEGIrY2c9pP+NXiLI0SeCOu6/ATx+fKkptfhs5BEsOqL3MdrH6KHWoRg5RzbbzswyziG/l6EUCnX2SInwf7tyG</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADg+aUj0hGOsz+RsktPewLJkG+Lh/G6yBQFp2d6SOsIgwAAAAAOgAAAAAIAACAAAAArIB9Bu62MziPqjMn/dwEXlShF9uL8V7XLsFKlY1uFRyAAAAC00EP1H2XADWCrarn61g3PIJNL4xs1BA1zJhRj1q0TUEAAAAAMkeE/9zD9VjFLMgS5zgsKDGnqx2SGUGpXt8FwENl6cYpMelrirFaK3N8EMAnmPSTaYWyBI9hxTwmc/sYypjVE</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -950,7 +950,7 @@ where [refTable].[CategoryID] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{89A5EB22-E4BA-4B42-961F-A00FF8BE73C6}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE [staging].[Products]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [staging].[STGCategories]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1226,9 +1226,7 @@ where [refTable].[CategoryID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout

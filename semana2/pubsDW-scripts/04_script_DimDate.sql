@@ -1,8 +1,14 @@
-BEGIN TRAN 
-	DECLARE @startdate DATE = '1990-01-01',
-			@enddate   DATE = '2026-12-31';
-	DECLARE @datelist TABLE(FullDate DATE);
+-- SETTING ENVIROMENT 
+USE pubsDW
 
+BEGIN TRAN
+	
+	DECLARE @startdate DATE
+	SET @startdate = '1990-01-01'  -- Corregido para establecer correctamente la fecha de inicio
+	DECLARE @enddate   DATE
+	SET @enddate = '2026-12-31'    -- Corregido para establecer la fecha de fin
+	DECLARE @datelist TABLE(FullDate DATE)
+	
 	IF @startdate IS NULL
 		BEGIN
 			SELECT TOP 1 
@@ -10,16 +16,16 @@ BEGIN TRAN
 			FROM dbo.DimDate 
 			ORDER By DateKey ASC;
 		END
-
+	
 	WHILE (@startdate <= @enddate)
 	BEGIN 
 		INSERT INTO @datelist(FullDate)
 		SELECT @startdate
-
+	
 		SET @startdate = DATEADD(dd,1,@startdate);
 	END
-
-	 INSERT INTO dbo.DimDate(DateKey
+	
+	INSERT INTO dbo.DimDate(DateKey
 							,FullDate 
 							,DayNumberOfWeek 
 							,DayNameOfWeek 
@@ -31,7 +37,7 @@ BEGIN TRAN
 							,CalendarQuarter 
 							,CalendarYear 
 							,CalendarSemester)
-
+	
 	SELECT DateKey           = CONVERT(INT,CONVERT(VARCHAR,dl.FullDate,112))
 		  ,FullDate          = dl.FullDate
 		  ,DayNumberOfWeek   = DATEPART(dw,dl.FullDate)
@@ -52,4 +58,5 @@ BEGIN TRAN
 	FROM @datelist              dl 
 	LEFT OUTER JOIN dbo.DimDate dd ON (dl.FullDate = dd.FullDate)
 	WHERE dd.FullDate IS NULL;
+
 COMMIT TRAN
