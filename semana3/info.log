@@ -1,0 +1,17 @@
+Cristhian:
+- DimProducts.dtsx   ERROR
+- DimCategories      PENDING
+- DimSuppliers       PENDING
+- DimShippers        PENDING
+- DimShipName        PENDING
+- DimShipCountry     PENDING
+
+Nicolas:
+- DimCustomers.dtsx  SUCCESS
+- DimEmployees.dtsx  ERROR
+- DimShipCity        PENDING
+- DimShipRegion      PENDING
+- FacOrders          PENDING
+
+Rimbert:
+- DimDate  SCRIPT    PENDING
