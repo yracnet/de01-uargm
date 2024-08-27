@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="DimShipCity"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{05FAECB3-7C76-4142-B15F-4EE92C98C5A7}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{44A5F643-EB1C-41DB-88BE-CE9091215813}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubs;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{7D45E043-821E-4A5C-A35D-879EBFB658A6}SOURCE;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-Package1-{7D45E043-821E-4A5C-A35D-879EBFB658A6}SOURCE;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAh/yPHblS/w/emiKpqDtKN/HMf1vbNgtGmaZFV46grDQAAAAAOgAAAAAIAACAAAABuhkamNVX0ofiwDSW2gBXFDLEz3oPp0rYdYbG8V+IdZiAAAABlu2sZECy42PKo2/OlBV3zZlRj5+dnDn9A0g4PSqoliUAAAADcpMiEFBfjXyyfKD1x9tVSWNjeBRA5uo0+CZeBOD0WT1GhPUVUSgt0NtM73qRYRU3VGn/HmAxm/E2tpuP4x4YM</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -37,7 +42,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{3493A54D-FA2C-4E23-95D2-62AF6C7C367D}TARGET;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-Package1-{3493A54D-FA2C-4E23-95D2-62AF6C7C367D}TARGET;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACqu9B3EsnBxFUcXu6jhaFSttPSh+PPC5vV0f2Pkc56gAAAAAAOgAAAAAIAACAAAACLJBlivinq/mlaEhEAPYRfN30r0EJn0OZVetvGOAhU3SAAAADdifUegxhIC6WNi+SGqiHnnCYMpDAp5CYsUUno1QhKv0AAAAAar0q369lsgMTldBQydXfMQh1qEecgDyctNq85by7RtFaefq9xBrx4uC7rXoeAT2u/IfBEKDmUW1F/vwtT4pT0</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -1238,12 +1248,12 @@ where [refTable].[Name] = ?</property>
       DTS:To="Package\Update Last RowVersion" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -1254,13 +1264,13 @@ where [refTable].[Name] = ?</property>
           Id="Package\Add New ShipCity"
           TopLeft="190,216" />
         <NodeLayout
-          Size="195,42"
-          Id="Package\Get ShipCity RowVersion"
-          TopLeft="171,80" />
-        <NodeLayout
           Size="201,42"
           Id="Package\Get Database RowVersion"
           TopLeft="166,14" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Get ShipCity RowVersion"
+          TopLeft="171,80" />
         <NodeLayout
           Size="200,42"
           Id="Package\Initializable Staging Table"
@@ -1513,30 +1523,7 @@ where [refTable].[Name] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Add New ShipCity\Búsqueda">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimShipCity]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Add New ShipCity\Load Staging">
+    design-time-name="Package\Add New ShipCity\Add New ShipCity">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1549,7 +1536,30 @@ where [refTable].[Name] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Add New ShipCity\Add New ShipCity">
+    design-time-name="Package\Add New ShipCity\Búsqueda">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimShipCity]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add New ShipCity\Load Staging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

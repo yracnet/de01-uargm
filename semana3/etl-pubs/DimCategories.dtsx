@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{1D26D5A4-F762-4426-B55C-2EA724956DFE}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{DCA3E372-DBF3-49CE-B8CB-4C867B375FCA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubs;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{F8311D75-44CB-4E8F-88AF-E85F0E5D7B43}DESKTOP-SK5FLHC\SQLEXPRESS02.pubs;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{F8311D75-44CB-4E8F-88AF-E85F0E5D7B43}Source.pubs;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAvDS8pYBcMMKDdy7HLpYHV1GvF1XiMSF8PqwsEptprLwAAAAAOgAAAAAIAACAAAAALX2LyQGtW3DPIHGAO/BvD166H2dVty0F6A+vt9RrZ3iAAAABrlQeTzSxBlIafJ4hgU4iCwURhen3XOlSwEyBgV01PvUAAAAAumhkqwaGJN6Uln4PMUj4InusOnAWSWAQyWLtNr7iNdy+hyI7TZWFX0D/IewZfJ0A/lIcP+Deuj73HkS4kvSNM</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -37,7 +42,12 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubsDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{89A5EB22-E4BA-4B42-961F-A00FF8BE73C6}DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{89A5EB22-E4BA-4B42-961F-A00FF8BE73C6}Target.pubsDW;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADci/lEAv4F8ThZIbqEcp1KHdPS5EnpWjkFwEgnNfDaSwAAAAAOgAAAAAIAACAAAAAlFXxqq1mku15bJD6xKnlIw6ihOpvnzR93TKCmfw5BQSAAAACzizwMqoa04uMiAAGplslC1Pwjr2j2VVqsIjRl14+LwUAAAABEGIrY2c9pP+NXiLI0SeCOu6/ATx+fKkptfhs5BEsOqL3MdrH6KHWoRg5RzbbzswyziG/l6EUCnX2SInwf7tyG</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -896,7 +906,7 @@ where [refTable].[CategoryID] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{89A5EB22-E4BA-4B42-961F-A00FF8BE73C6}"
-          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'products'"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'Categories'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="LastRowVersion"
@@ -1028,12 +1038,12 @@ where [refTable].[CategoryID] = ?</property>
       DTS:To="Package\Update Last RowVersion" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -1055,6 +1065,14 @@ where [refTable].[CategoryID] = ?</property>
           Size="186,42"
           Id="Package\Initialize Staging Table"
           TopLeft="199,143" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Sync Category Data"
+          TopLeft="203,275" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Update Last RowVersion"
+          TopLeft="190,343" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="292,52">
@@ -1121,10 +1139,6 @@ where [refTable].[CategoryID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Sync Category Data"
-          TopLeft="203,275" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="290.25,250">
@@ -1147,10 +1161,6 @@ where [refTable].[CategoryID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194,42"
-          Id="Package\Update Last RowVersion"
-          TopLeft="190,343" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
           TopLeft="288,317">
@@ -1216,7 +1226,9 @@ where [refTable].[CategoryID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout

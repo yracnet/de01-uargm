@@ -1,29 +1,36 @@
-IF NOT EXISTS(SELECT TOP(1) 1
-              FROM [dbo].[PackageConfig]
-			  WHERE [TableName] = 'Products')
- BEGIN
-	INSERT [dbo].[PackageConfig] ([TableName], [LastRowVersion]) VALUES ('Products', 0)
- END
+-- Author: Rimberth Villca
+-- Crea SP para la base de datos pubsDW
+
+-- SETTING ENVIROMENT 
+USE pubsDW
 GO
-IF NOT EXISTS(SELECT TOP(1) 1
-              FROM [dbo].[PackageConfig]
-			  WHERE [TableName] = 'Customers')
- BEGIN
-	INSERT [dbo].[PackageConfig] ([TableName], [LastRowVersion]) VALUES ('Customers', 0)
- END
+
+
+-- Procedure to load data from GetLastPackageRowVersion
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.InsertIfNotExists') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.InsertIfNotExists
 GO
-IF NOT EXISTS(SELECT TOP(1) 1
-              FROM [dbo].[PackageConfig]
-			  WHERE [TableName] = 'Employees')
- BEGIN
-  INSERT [dbo].[PackageConfig] ([TableName], [LastRowVersion]) VALUES ('Employees', 0)
- END
+
+CREATE PROCEDURE InsertIfNotExists
+    @TableName NVARCHAR(255)
+AS
+BEGIN
+    IF NOT EXISTS(SELECT TOP(1) 1
+                  FROM [dbo].[PackageConfig]
+                  WHERE [TableName] = @TableName)
+    BEGIN
+        INSERT INTO [dbo].[PackageConfig] ([TableName], [LastRowVersion])
+        VALUES (@TableName, 0)
+    END
+END
 GO
-IF NOT EXISTS(SELECT TOP(1) 1
-              FROM [dbo].[PackageConfig]
-			  WHERE [TableName] = 'Orders')
- BEGIN
-	INSERT [dbo].[PackageConfig] ([TableName], [LastRowVersion]) VALUES ('Orders', 0)
- END
-GO
+
+
+EXEC InsertIfNotExists 'Products'
+EXEC InsertIfNotExists 'Customers'
+EXEC InsertIfNotExists 'Employees'
+EXEC InsertIfNotExists 'Orders'
+EXEC InsertIfNotExists 'Categories'
+--EXEC InsertIfNotExists ''
+--EXEC InsertIfNotExists ''
 
