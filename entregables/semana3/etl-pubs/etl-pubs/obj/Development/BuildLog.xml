@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>etl-pubs</Name>
-    <LastWriteTime>2024-08-26T20:08:04.8443666Z</LastWriteTime>
+    <LastWriteTime>2024-08-27T09:06:17.1465933Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -14,6 +14,11 @@
     <ProjectBuildItemInfo>
       <Name>DimCustomers.dtsx</Name>
       <LastWriteTime>2024-08-26T21:45:51.9742004Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DimEmployees.dtsx</Name>
+      <LastWriteTime>2024-08-27T09:51:57.3800052Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
