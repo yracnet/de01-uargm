@@ -116,7 +116,7 @@ GO
 GO
 	CREATE TABLE "DimDate"(
 		"DateKey" int NOT NULL,
-		"FullDate" datetime NOT NULL,
+		"FullDate" date NOT NULL,
 		"DayNumberOfWeek" tinyint NOT NULL,
 		"DayNameOfWeek" nvarchar (10) NOT NULL,
 		"DayNumberOfMonth" tinyint NOT NULL,

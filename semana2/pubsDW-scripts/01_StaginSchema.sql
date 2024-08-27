@@ -47,7 +47,7 @@ CREATE TABLE "staging"."Customers" (
 	"Phone" nvarchar (24) NULL ,
 	"Fax" nvarchar (24) NULL ,
 	
-	"CustomerTypeID" nchar (10) NOT NULL ,
+	"CustomerTypeID" nchar (10) NULL ,
 	"CustomerDemographicsDesc" ntext NULL
 )
 GO
@@ -103,9 +103,3 @@ CREATE TABLE "staging"."Orders" (
 		"ShippersCompanyName" nvarchar (40) NOT NULL
 )
 GO
-
-	INSERT "PackageConfig" VALUES('Products', 0)
-	INSERT "PackageConfig" VALUES('Customers', 0)
-	INSERT "PackageConfig" VALUES('Employees', 0)
-	INSERT "PackageConfig" VALUES('Orders', 0)
-GO 
