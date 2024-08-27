@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/26/2024 6:21:54 PM"
@@ -11,33 +11,43 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{CA0EFFCA-95AB-4DB9-8446-79C0A47FAEE0}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{2D591B75-64D3-419F-B853-B9A82D893ABD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubs]"
+      DTS:refId="Package.ConnectionManagers[SOURCE]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{5F0EC4E0-D4AF-4CEF-B3CE-BD3BE79CE31E}"
-      DTS:ObjectName="DESKTOP-SK5FLHC\SQLEXPRESS02.pubs">
+      DTS:ObjectName="SOURCE">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubs;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{5F0EC4E0-D4AF-4CEF-B3CE-BD3BE79CE31E}DESKTOP-SK5FLHC\SQLEXPRESS02.pubs;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{5F0EC4E0-D4AF-4CEF-B3CE-BD3BE79CE31E}SOURCE;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAAyz7j7ehsceNB/zmEOltNdq/9fnEV7/v8svOLIej/CQAAAAAOgAAAAAIAACAAAABGFebdclZs604JWs8OqVRAGT5NkBS3kw0sWV1cFhYkcSAAAAAvYm3ozFlF/hRS3UB/dk8VFMBLcAgZ7KzU0Sg0mqN6gUAAAAD983le5S+NxCDpipE8mVhKTrwkQtbMdxE19ZlTbE5U/PlHxMYrKD57zneQTZlx72zwgrCPx0BydJmOMbuMHOhZ</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
+      DTS:refId="Package.ConnectionManagers[TARGET]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{14D34B9B-2343-46A6-BD14-1299C18893B5}"
-      DTS:ObjectName="DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW">
+      DTS:ObjectName="TARGET">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubsDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{14D34B9B-2343-46A6-BD14-1299C18893B5}DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{14D34B9B-2343-46A6-BD14-1299C18893B5}TARGET;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC3x2On+g8OiPkE9jMiBasSVnAT39UDq2rXvRI4D6BIQgAAAAAOgAAAAAIAACAAAAB8dDNV1qT6nobzT5Zd+/p713zzLzcMoh6pFrTLe7TsUSAAAAAdKYEkV/onX7yVlRsW9qm4pv3266rra+0udmxWeZNb4kAAAACyo9mrNwEyDbMxNX5qEVkBG2mdntGQHoceDNhaecA66hFrLCZE6G6Jnj4BH7iAcivU50PFf8YgHUpK/aj/lbi7</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -135,8 +145,8 @@
               <connections>
                 <connection
                   refId="Package\Add New Employee\Add New Employee.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -476,8 +486,8 @@ where [refTable].[EmployeeID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Employee\Búsqueda.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -614,8 +624,8 @@ where [refTable].[EmployeeID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Employee\Get Row Changes.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubs]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubs]"
+                  connectionManagerID="Package.ConnectionManagers[SOURCE]"
+                  connectionManagerRefId="Package.ConnectionManagers[SOURCE]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1091,8 +1101,8 @@ where [refTable].[EmployeeID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Employee\Load Staging.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SK5FLHC\SQLEXPRESS02.pubsDW]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -1535,17 +1545,21 @@ where [refTable].[EmployeeID] = ?</property>
       DTS:To="Package\Update Last RowVersion" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
-<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
-<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
 <Objects
   Version="8">
-  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Add New Employee"
+          TopLeft="237,208" />
         <NodeLayout
           Size="201,42"
           Id="Package\Get Database RowVersion"
@@ -1554,6 +1568,18 @@ where [refTable].[EmployeeID] = ?</property>
           Size="207,42"
           Id="Package\Get Employees RowVersion"
           TopLeft="221,78" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Initialize Staging Table"
+          TopLeft="228,143" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Sync Employee Data"
+          TopLeft="233,273" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Update Last RowVersion"
+          TopLeft="226,340" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="323.5,55">
@@ -1576,10 +1602,6 @@ where [refTable].[EmployeeID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186,42"
-          Id="Package\Initialize Staging Table"
-          TopLeft="228,143" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
           TopLeft="322.75,120">
@@ -1602,10 +1624,6 @@ where [refTable].[EmployeeID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Add New Employee"
-          TopLeft="237,208" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
           TopLeft="321.5,185">
@@ -1628,10 +1646,6 @@ where [refTable].[EmployeeID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Sync Employee Data"
-          TopLeft="233,273" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
           TopLeft="321.25,250">
@@ -1654,10 +1668,6 @@ where [refTable].[EmployeeID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194,42"
-          Id="Package\Update Last RowVersion"
-          TopLeft="226,340" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
           TopLeft="321.75,315">
@@ -1802,20 +1812,12 @@ where [refTable].[EmployeeID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Add New Employee\Get Row Changes">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Add New Employee\Búsqueda">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1825,7 +1827,7 @@ where [refTable].[EmployeeID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1855,6 +1857,14 @@ where [refTable].[EmployeeID] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Add New Employee\Get Row Changes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
