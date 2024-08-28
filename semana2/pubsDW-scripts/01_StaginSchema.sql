@@ -5,6 +5,32 @@ CREATE SCHEMA "staging"
 
 GO
 
+CREATE TABLE "staging"."Categories" (
+	"CategorySK" "int" NOT NULL ,
+	"CategoryID" "int" NOT NULL ,
+	"CategoryName" nvarchar (15) NULL ,
+	"Description" "ntext" NULL ,
+	"Picture" "image" NULL 
+)
+GO
+
+CREATE TABLE "staging"."Suppliers" (
+	"SupplierSK" "int" NOT NULL ,
+	"SupplierID" "int" NOT NULL ,
+	"CompanyName" nvarchar (40) NOT NULL ,
+	"ContactName" nvarchar (30) NULL ,
+	"ContactTitle" nvarchar (30) NULL ,
+	"Address" nvarchar (60) NULL ,
+	"City" nvarchar (15) NULL ,
+	"Region" nvarchar (15) NULL ,
+	"PostalCode" nvarchar (10) NULL ,
+	"Country" nvarchar (15) NULL ,
+	"Phone" nvarchar (24) NULL ,
+	"Fax" nvarchar (24) NULL ,
+	"HomePage" "ntext" NULL 
+)
+GO
+
 CREATE TABLE "staging"."Products" (
 	"ProductSK" "int" NOT NULL,
 	"ProductName" nvarchar (40) NOT NULL ,
@@ -15,21 +41,8 @@ CREATE TABLE "staging"."Products" (
 	"ReorderLevel" "smallint" NULL CONSTRAINT "DF_Products_ReorderLevel" DEFAULT (0),
 	"Discontinued" "bit" NOT NULL CONSTRAINT "DF_Products_Discontinued" DEFAULT (0),
 	
-	"SupplierID" "int" NULL ,
-	"SupplierCompanyName" nvarchar (40) NOT NULL ,
-	"SupplierContactName" nvarchar (30) NULL ,
-	"SupplierContactTitle" nvarchar (30) NULL ,
-	"SupplierAddress" nvarchar (60) NULL ,
-	"SupplierCity" nvarchar (15) NULL ,
-	"SupplierRegion" nvarchar (15) NULL ,
-	"SupplierPostalCode" nvarchar (10) NULL ,
-	"SupplierCountry" nvarchar (15) NULL ,
-	"SupplierPhone" nvarchar (24) NULL ,
-	"SupplierFax" nvarchar (24) NULL ,
-	"SupplierHomePage" "ntext" NULL ,
-	
-	"CategoryID" "int" NULL ,
-	"CategoryName" nvarchar (15) NOT NULL 
+	"CategorySK" "int" NULL ,
+	"SupplierSK" "int" NULL 
 )
 GO 
 
@@ -73,12 +86,36 @@ CREATE TABLE "staging"."Employees" (
 	"ReportsTo" "int" NULL ,
 	"PhotoPath" nvarchar (255) NULL ,
 	
-	"TerritoryID" nvarchar (20) NOT NULL ,
-	"TerritoryDescription" nchar (50) NOT NULL ,
+	"TerritoryID" nvarchar (20) NULL ,
+	"TerritoryDescription" nchar (50) NULL ,
 	
 	"RegionID" "int" NOT NULL ,
-	"RegionDescription" nchar (50) NOT NULL
+	"RegionDescription" nchar (50) NULL
 )
+GO
+
+CREATE TABLE "staging"."ShipName"(
+		"ShipNameSK" "int" NOT NULL,
+		"Name" nvarchar (100) NULL
+	)
+GO
+
+	CREATE TABLE "staging"."ShipCountry"(
+		"ShipCountrySK" "int" NOT NULL,
+		"Name" nvarchar (100) NULL
+	)
+GO
+
+	CREATE TABLE "staging"."ShipCity"(
+		"ShipCitySK" "int" NOT NULL,
+		"Name" nvarchar (100) NULL
+	)
+GO
+
+	CREATE TABLE "staging"."ShipRegion"(
+		"ShipRegionSK" "int" NOT NULL,
+		"Name" nvarchar (100) NULL
+	)
 GO
 
 CREATE TABLE "staging"."Orders" (
@@ -99,7 +136,7 @@ CREATE TABLE "staging"."Orders" (
 		"UnitPrice" "money" NOT NULL CONSTRAINT "DF_Order_Details_UnitPrice" DEFAULT (0),
 		"Quantity" "smallint" NOT NULL CONSTRAINT "DF_Order_Details_Quantity" DEFAULT (1),
 		"Discount" "real" NOT NULL CONSTRAINT "DF_Order_Details_Discount" DEFAULT (0),
-		"ShipperID" "int" NOT NULL,
-		"ShippersCompanyName" nvarchar (40) NOT NULL
+		"ShipperID" "int" NULL,
+		"ShippersCompanyName" nvarchar (40) NULL
 )
 GO

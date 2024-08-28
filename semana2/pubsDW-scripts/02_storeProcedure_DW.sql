@@ -52,6 +52,52 @@ BEGIN
 END
 GO
 
+/****** Object:  StoredProcedure [dbo].[DW_MergeDimCategories]    Script Date: 25/08/2024 9:23:54 PM ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.DW_MergeDimCategories') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.DW_MergeDimCategories
+GO
+
+CREATE PROCEDURE dbo.DW_MergeDimCategories
+AS
+BEGIN
+
+	UPDATE "dp"
+	SET "CategoryID"            = "sp"."CategoryID"          
+		,"CategoryName"         = "sp"."CategoryName"
+		,"Description"          = "sp"."Description"
+		,"Picture"          	= "sp"."Picture"
+	FROM "dbo"."DimCategories"        "dp"
+	INNER JOIN "staging"."Categories" "sp" ON ("dp"."CategorySK"="sp"."CategorySK")
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[DW_MergeDimSuppliers]    Script Date: 25/08/2024 9:23:54 PM ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.DW_MergeDimSuppliers') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.DW_MergeDimSuppliers
+GO
+
+CREATE PROCEDURE dbo.DW_MergeDimSuppliers
+AS
+BEGIN
+
+	UPDATE "dp"
+	SET "SupplierID"            = "sp"."SupplierID"          
+		,"CompanyName"   = "sp"."CompanyName" 
+		,"ContactName" 	 = "sp"."ContactName" 
+		,"ContactTitle"  = "sp"."ContactTitle"
+		,"Address"       = "sp"."Address"     
+		,"City"          = "sp"."City"        
+		,"Region"        = "sp"."Region"      
+		,"PostalCode"    = "sp"."PostalCode"  
+		,"Country"       = "sp"."Country"     
+		,"Phone"         = "sp"."Phone"       
+		,"Fax"           = "sp"."Fax"         
+		,"HomePage"      = "sp"."HomePage"        
+	FROM "dbo"."DimSuppliers"        "dp"
+	INNER JOIN "staging"."Suppliers" "sp" ON ("dp"."SupplierSK"="sp"."SupplierSK")
+END
+GO
+
 /****** Object:  StoredProcedure [dbo].[DW_MergeDimProducts]    Script Date: 25/08/2024 9:23:54 PM ******/
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.DW_MergeDimProducts') AND type in (N'P', N'PC'))
     DROP PROCEDURE dbo.DW_MergeDimProducts
@@ -69,20 +115,8 @@ BEGIN
 		,"UnitsOnOrder"          = "sp"."UnitsOnOrder"        
 		,"ReorderLevel"          = "sp"."ReorderLevel"        
 		,"Discontinued"          = "sp"."Discontinued"        
-		,"SupplierID"            = "sp"."SupplierID"          
-		,"SupplierCompanyName"   = "sp"."SupplierCompanyName" 
-		,"SupplierContactName" 	 = "sp"."SupplierContactName" 
-		,"SupplierContactTitle"  = "sp"."SupplierContactTitle"
-		,"SupplierAddress"       = "sp"."SupplierAddress"     
-		,"SupplierCity"          = "sp"."SupplierCity"        
-		,"SupplierRegion"        = "sp"."SupplierRegion"      
-		,"SupplierPostalCode"    = "sp"."SupplierPostalCode"  
-		,"SupplierCountry"       = "sp"."SupplierCountry"     
-		,"SupplierPhone"         = "sp"."SupplierPhone"       
-		,"SupplierFax"           = "sp"."SupplierFax"         
-		,"SupplierHomePage"      = "sp"."SupplierHomePage"    
-		,"CategoryID"            = "sp"."CategoryID"          
-		,"CategoryName"          = "sp"."CategoryName"        
+		,"SupplierSK"            = "sp"."SupplierSK"           
+		,"CategorySK"            = "sp"."CategorySK"                
 	FROM "dbo"."DimProducts"        "dp"
 	INNER JOIN "staging"."Products" "sp" ON ("dp"."ProductSK"="sp"."ProductSK")
 END
@@ -152,6 +186,71 @@ BEGIN
 	INNER JOIN "staging"."Employees" "se" ON ("de"."EmployeeSK"="se"."EmployeeSK")
 END
 GO
+
+/****** Object:  StoredProcedure [dbo].[DW_MergeDimShipName]    Script Date: 25/08/2024 9:23:54 PM ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.DW_MergeDimShipName') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.DW_MergeDimShipName
+GO
+
+CREATE PROCEDURE dbo.DW_MergeDimShipName
+AS
+BEGIN
+
+	UPDATE "dp"
+	SET "Name"            = "sp"."Name"
+	FROM "dbo"."DimShipName"        "dp"
+	INNER JOIN "staging"."ShipName" "sp" ON ("dp"."ShipNameSK"="sp"."ShipNameSK")
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[DW_MergeDimShipCountry]    Script Date: 25/08/2024 9:23:54 PM ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.DW_MergeDimShipCountry') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.DW_MergeDimShipCountry
+GO
+
+CREATE PROCEDURE dbo.DW_MergeDimShipCountry
+AS
+BEGIN
+
+	UPDATE "dp"
+	SET "Name"            = "sp"."Name"
+	FROM "dbo"."DimShipCountry"        "dp"
+	INNER JOIN "staging"."ShipCountry" "sp" ON ("dp"."ShipCountrySK"="sp"."ShipCountrySK")
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[DW_MergeDimShipCity]    Script Date: 25/08/2024 9:23:54 PM ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.DW_MergeDimShipCity') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.DW_MergeDimShipCity
+GO
+
+CREATE PROCEDURE dbo.DW_MergeDimShipCity
+AS
+BEGIN
+
+	UPDATE "dp"
+	SET "Name"            = "sp"."Name"
+	FROM "dbo"."DimShipCity"        "dp"
+	INNER JOIN "staging"."ShipCity" "sp" ON ("dp"."ShipCitySK"="sp"."ShipCitySK")
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[DW_MergeDimShipRegion]    Script Date: 25/08/2024 9:23:54 PM ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.DW_MergeDimShipRegion') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.DW_MergeDimShipRegion
+GO
+
+CREATE PROCEDURE dbo.DW_MergeDimShipRegion
+AS
+BEGIN
+
+	UPDATE "dp"
+	SET "Name"            = "sp"."Name"
+	FROM "dbo"."DimShipRegion"        "dp"
+	INNER JOIN "staging"."ShipRegion" "sp" ON ("dp"."ShipRegionSK"="sp"."ShipRegionSK")
+END
+GO
+
 
 /****** Object:  StoredProcedure [dbo].[DW_MergeFactOrders]    Script Date: 25/08/2024 9:58:33 PM ******/
 IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.DW_MergeFactOrders') AND type in (N'P', N'PC'))
