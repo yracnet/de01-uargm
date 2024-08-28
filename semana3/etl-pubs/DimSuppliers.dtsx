@@ -11,8 +11,8 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="DimSupplier"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{BFBB7E6E-658C-4054-B679-31542D6FC60D}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{F864573C-825A-4295-87AC-5830002B83B6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -50,7 +50,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE staging.orders" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE staging.Suppliers" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -89,7 +89,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
-          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'suppliers'"
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'Suppliers'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="LastRowVersion"
@@ -127,7 +127,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[FactOrders]</property>
+                  name="OpenRowset">[dbo].[DimSuppliers]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -184,169 +184,152 @@
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OrderID]"
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_SupplierID]"
                       cachedDataType="i4"
-                      cachedName="OrderID"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OrderID]" />
+                      cachedName="OUT_SupplierID"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierID]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_SupplierID]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ProductID]"
-                      cachedDataType="i4"
-                      cachedName="ProductID"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ProductID]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_CompanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="OUT_CompanyName"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CompanyName]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_CompanyName]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ShipperID]"
-                      cachedDataType="i4"
-                      cachedName="ShipperID"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipperID]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_ContactName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="OUT_ContactName"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ContactName]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_ContactName]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OrderDateKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8"
-                      cachedName="OrderDateKey"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderDateKey]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OrderDateKey]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_ContactTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="OUT_ContactTitle"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ContactTitle]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_ContactTitle]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[RequiredDateKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8"
-                      cachedName="RequiredDateKey"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[RequiredDateKey]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[RequiredDateKey]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_Address]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="OUT_Address"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Address]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Address]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ShippedDateKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8"
-                      cachedName="ShippedDateKey"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippedDateKey]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShippedDateKey]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="OUT_City"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[City]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_City]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Freight]"
-                      cachedDataType="cy"
-                      cachedName="Freight"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Freight]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Freight]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="OUT_Region"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Region]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[UnitPrice]"
-                      cachedDataType="cy"
-                      cachedName="UnitPrice"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[UnitPrice]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[UnitPrice]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="OUT_PostalCode"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[PostalCode]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_PostalCode]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Quantity]"
-                      cachedDataType="i2"
-                      cachedName="Quantity"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Quantity]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="OUT_Country"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Country]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[Discount]"
-                      cachedDataType="r4"
-                      cachedName="Discount"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Discount]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Discount]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="OUT_Phone"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Phone]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Phone]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[CustomerSK]"
-                      cachedDataType="i4"
-                      cachedName="CustomerSK"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerSK]"
-                      lineageId="Package\New Suppliers\Lookup Customer.Outputs[Salida de entradas coincidentes de búsqueda].Columns[CustomerSK]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="OUT_Fax"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Fax]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Fax]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[EmployeeSK]"
-                      cachedDataType="i4"
-                      cachedName="EmployeeSK"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeSK]"
-                      lineageId="Package\New Suppliers\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeSK]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[ProductSK]"
-                      cachedDataType="i4"
-                      cachedName="ProductSK"
-                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductSK]"
-                      lineageId="Package\New Suppliers\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ProductSK]" />
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].Columns[OUT_HomePage]"
+                      cachedDataType="nText"
+                      cachedName="OUT_HomePage"
+                      externalMetadataColumnId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[HomePage]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_HomePage]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderID]"
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierSK]"
                       dataType="i4"
-                      name="OrderID" />
+                      name="SupplierSK" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductID]"
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierID]"
                       dataType="i4"
-                      name="ProductID" />
+                      name="SupplierID" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductSK]"
-                      dataType="i4"
-                      name="ProductSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerSK]"
-                      dataType="i4"
-                      name="CustomerSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeSK]"
-                      dataType="i4"
-                      name="EmployeeSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderDateKey]"
-                      dataType="i4"
-                      name="OrderDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[RequiredDateKey]"
-                      dataType="i4"
-                      name="RequiredDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippedDateKey]"
-                      dataType="i4"
-                      name="ShippedDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipVia]"
-                      dataType="i4"
-                      name="ShipVia" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Freight]"
-                      dataType="cy"
-                      name="Freight" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipNameSK]"
-                      dataType="i4"
-                      name="ShipNameSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCountrySK]"
-                      dataType="i4"
-                      name="ShipCountrySK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCitySK]"
-                      dataType="i4"
-                      name="ShipCitySK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipRegionSK]"
-                      dataType="i4"
-                      name="ShipRegionSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[UnitPrice]"
-                      dataType="cy"
-                      name="UnitPrice" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity]"
-                      dataType="i2"
-                      name="Quantity" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Discount]"
-                      dataType="r4"
-                      name="Discount" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperID]"
-                      dataType="i4"
-                      name="ShipperID" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippersCompanyName]"
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[CompanyName]"
                       dataType="wstr"
                       length="40"
-                      name="ShippersCompanyName" />
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Destino de OLE DB.Inputs[Entrada de destino de OLE DB].ExternalColumns[HomePage]"
+                      dataType="nText"
+                      name="HomePage" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -400,7 +383,7 @@
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE [dbo].[GetOrdersByRowVersion] @startRow = ?, @endRow = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE [dbo].[GetSuppliersByRowVersion] @startRow = ?, @endRow = ?</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -437,279 +420,199 @@
                   name="Salida de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OrderID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[OrderID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OrderID]"
-                      name="OrderID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ProductID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ProductID]"
-                      name="ProductID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[CategoryID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoryID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[CategoryID]"
-                      name="CategoryID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[SupplierID]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_SupplierID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[SupplierID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[SupplierID]"
-                      name="SupplierID"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_SupplierID]"
+                      name="OUT_SupplierID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[EmployeeID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]"
-                      name="EmployeeID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[CustomerID]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_CompanyName]"
                       dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[CustomerID]"
-                      length="5"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[CustomerID]"
-                      name="CustomerID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipperID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipperID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipperID]"
-                      name="ShipperID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OrderDateKey]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[OrderDateKey]"
-                      length="8"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OrderDateKey]"
-                      name="OrderDateKey"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[RequiredDateKey]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[RequiredDateKey]"
-                      length="8"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[RequiredDateKey]"
-                      name="RequiredDateKey"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShippedDateKey]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShippedDateKey]"
-                      length="8"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShippedDateKey]"
-                      name="ShippedDateKey"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipNameKey]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipNameKey]"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[CompanyName]"
                       length="40"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipNameKey]"
-                      name="ShipNameKey"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_CompanyName]"
+                      name="OUT_CompanyName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipCountryKey]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_ContactName]"
                       dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipCountryKey]"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ContactName]"
+                      length="30"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_ContactName]"
+                      name="OUT_ContactName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_ContactTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ContactTitle]"
+                      length="30"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_ContactTitle]"
+                      name="OUT_ContactTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Address]"
+                      length="60"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Address]"
+                      name="OUT_Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[City]"
                       length="15"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipCountryKey]"
-                      name="ShipCountryKey"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_City]"
+                      name="OUT_City"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipCityKey]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Region]"
                       dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipCityKey]"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Region]"
                       length="15"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipCityKey]"
-                      name="ShipCityKey"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Region]"
+                      name="OUT_Region"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipRegionKey]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_PostalCode]"
                       dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipRegionKey]"
-                      length="15"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipRegionKey]"
-                      name="ShipRegionKey"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipPostalCode]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipPostalCode]"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[PostalCode]"
                       length="10"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipPostalCode]"
-                      name="ShipPostalCode"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_PostalCode]"
+                      name="OUT_PostalCode"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Freight]"
-                      dataType="cy"
-                      errorOrTruncationOperation="Conversión"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Freight]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Freight]"
-                      name="Freight"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Country]"
+                      name="OUT_Country"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[UnitPrice]"
-                      dataType="cy"
-                      errorOrTruncationOperation="Conversión"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[UnitPrice]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[UnitPrice]"
-                      name="UnitPrice"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Phone]"
+                      length="24"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Phone]"
+                      name="OUT_Phone"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Quantity]"
-                      dataType="i2"
-                      errorOrTruncationOperation="Conversión"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Fax]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Quantity]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Quantity]"
-                      name="Quantity"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Fax]"
+                      length="24"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Fax]"
+                      name="OUT_Fax"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Discount]"
-                      dataType="r4"
-                      errorOrTruncationOperation="Conversión"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_HomePage]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Discount]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Discount]"
-                      name="Discount"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[HomePage]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_HomePage]"
+                      name="OUT_HomePage"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_rowversion]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[rowversion]"
+                      length="8"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_rowversion]"
+                      name="OUT_rowversion"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[OrderID]"
-                      dataType="i4"
-                      name="OrderID" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductID]"
-                      dataType="i4"
-                      name="ProductID" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoryID]"
-                      dataType="i4"
-                      name="CategoryID" />
-                    <externalMetadataColumn
                       refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[SupplierID]"
                       dataType="i4"
                       name="SupplierID" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[EmployeeID]"
-                      dataType="i4"
-                      name="EmployeeID" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[CustomerID]"
-                      dataType="wstr"
-                      length="5"
-                      name="CustomerID" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipperID]"
-                      dataType="i4"
-                      name="ShipperID" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[OrderDateKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      name="OrderDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[RequiredDateKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      name="RequiredDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShippedDateKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      name="ShippedDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipNameKey]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[CompanyName]"
                       dataType="wstr"
                       length="40"
-                      name="ShipNameKey" />
+                      name="CompanyName" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipCountryKey]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[City]"
                       dataType="wstr"
                       length="15"
-                      name="ShipCountryKey" />
+                      name="City" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipCityKey]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Region]"
                       dataType="wstr"
                       length="15"
-                      name="ShipCityKey" />
+                      name="Region" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipRegionKey]"
-                      dataType="wstr"
-                      length="15"
-                      name="ShipRegionKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[ShipPostalCode]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[PostalCode]"
                       dataType="wstr"
                       length="10"
-                      name="ShipPostalCode" />
+                      name="PostalCode" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Freight]"
-                      dataType="cy"
-                      name="Freight" />
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[UnitPrice]"
-                      dataType="cy"
-                      name="UnitPrice" />
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Quantity]"
-                      dataType="i2"
-                      name="Quantity" />
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[Discount]"
-                      dataType="r4"
-                      name="Discount" />
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[HomePage]"
+                      dataType="nText"
+                      name="HomePage" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].ExternalColumns[rowversion]"
+                      dataType="bytes"
+                      length="8"
+                      name="rowversion" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -718,112 +621,81 @@
                   name="Salida de error de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[OrderID]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[OrderID]"
-                      name="OrderID" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ProductID]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ProductID]"
-                      name="ProductID" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[CategoryID]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[CategoryID]"
-                      name="CategoryID" />
-                    <outputColumn
                       refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[SupplierID]"
                       dataType="i4"
                       lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[SupplierID]"
                       name="SupplierID" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[EmployeeID]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[EmployeeID]"
-                      name="EmployeeID" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[CustomerID]"
-                      dataType="wstr"
-                      length="5"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[CustomerID]"
-                      name="CustomerID" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipperID]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipperID]"
-                      name="ShipperID" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[OrderDateKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[OrderDateKey]"
-                      name="OrderDateKey" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[RequiredDateKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[RequiredDateKey]"
-                      name="RequiredDateKey" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShippedDateKey]"
-                      codePage="1252"
-                      dataType="str"
-                      length="8"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShippedDateKey]"
-                      name="ShippedDateKey" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipNameKey]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[CompanyName]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipNameKey]"
-                      name="ShipNameKey" />
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[CompanyName]"
+                      name="CompanyName" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipCountryKey]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ContactName]"
+                      name="ContactName" />
+                    <outputColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ContactTitle]"
+                      name="ContactTitle" />
+                    <outputColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[City]"
                       dataType="wstr"
                       length="15"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipCountryKey]"
-                      name="ShipCountryKey" />
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[City]"
+                      name="City" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipCityKey]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Region]"
                       dataType="wstr"
                       length="15"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipCityKey]"
-                      name="ShipCityKey" />
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Region]"
+                      name="Region" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipRegionKey]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipRegionKey]"
-                      name="ShipRegionKey" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipPostalCode]"
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[PostalCode]"
                       dataType="wstr"
                       length="10"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ShipPostalCode]"
-                      name="ShipPostalCode" />
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[PostalCode]"
+                      name="PostalCode" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Freight]"
-                      dataType="cy"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Freight]"
-                      name="Freight" />
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Country]"
+                      name="Country" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[UnitPrice]"
-                      dataType="cy"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[UnitPrice]"
-                      name="UnitPrice" />
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Phone]"
+                      name="Phone" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Quantity]"
-                      dataType="i2"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Quantity]"
-                      name="Quantity" />
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Fax]"
+                      name="Fax" />
                     <outputColumn
-                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Discount]"
-                      dataType="r4"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[Discount]"
-                      name="Discount" />
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[HomePage]"
+                      dataType="nText"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[HomePage]"
+                      name="HomePage" />
+                    <outputColumn
+                      refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[rowversion]"
+                      dataType="bytes"
+                      length="8"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[rowversion]"
+                      name="rowversion" />
                     <outputColumn
                       refId="Package\New Suppliers\Get Suppliers.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -857,7 +729,7 @@
                 <property
                   dataType="System.String"
                   description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
-                  name="OpenRowset">[dbo].[FactOrders]</property>
+                  name="OpenRowset">[staging].[Suppliers]</property>
                 <property
                   dataType="System.String"
                   description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
@@ -914,169 +786,158 @@
                   name="Entrada de destino de OLE DB">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OrderID]"
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_SupplierID]"
                       cachedDataType="i4"
-                      cachedName="OrderID"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OrderID]" />
+                      cachedName="OUT_SupplierID"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierID]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_SupplierID]" />
                     <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[ProductID]"
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_CompanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="OUT_CompanyName"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CompanyName]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_CompanyName]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ContactName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="OUT_ContactName"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ContactName]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_ContactName]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ContactTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="OUT_ContactTitle"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ContactTitle]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_ContactTitle]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_Address]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="OUT_Address"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Address]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Address]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="OUT_City"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[City]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_City]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="OUT_Region"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Region]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="OUT_PostalCode"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[PostalCode]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_PostalCode]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="OUT_Country"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Country]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="OUT_Phone"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Phone]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Phone]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="OUT_Fax"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Fax]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_Fax]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_HomePage]"
+                      cachedDataType="nText"
+                      cachedName="OUT_HomePage"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[HomePage]"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_HomePage]" />
+                    <inputColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_SupplierSK]"
                       cachedDataType="i4"
-                      cachedName="ProductID"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ProductID]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[ShipperID]"
-                      cachedDataType="i4"
-                      cachedName="ShipperID"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperID]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipperID]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OrderDateKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8"
-                      cachedName="OrderDateKey"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderDateKey]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OrderDateKey]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[RequiredDateKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8"
-                      cachedName="RequiredDateKey"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RequiredDateKey]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[RequiredDateKey]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[ShippedDateKey]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="8"
-                      cachedName="ShippedDateKey"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippedDateKey]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShippedDateKey]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[Freight]"
-                      cachedDataType="cy"
-                      cachedName="Freight"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Freight]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Freight]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[UnitPrice]"
-                      cachedDataType="cy"
-                      cachedName="UnitPrice"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[UnitPrice]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[UnitPrice]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[Quantity]"
-                      cachedDataType="i2"
-                      cachedName="Quantity"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Quantity]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[Discount]"
-                      cachedDataType="r4"
-                      cachedName="Discount"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Discount]"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[Discount]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[CustomerSK]"
-                      cachedDataType="i4"
-                      cachedName="CustomerSK"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerSK]"
-                      lineageId="Package\New Suppliers\Lookup Customer.Outputs[Salida de entradas coincidentes de búsqueda].Columns[CustomerSK]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[EmployeeSK]"
-                      cachedDataType="i4"
-                      cachedName="EmployeeSK"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeSK]"
-                      lineageId="Package\New Suppliers\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeSK]" />
-                    <inputColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[ProductSK]"
-                      cachedDataType="i4"
-                      cachedName="ProductSK"
-                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductSK]"
-                      lineageId="Package\New Suppliers\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ProductSK]" />
+                      cachedName="OUT_SupplierSK"
+                      externalMetadataColumnId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierSK]"
+                      lineageId="Package\New Suppliers\Lookup Suppliers.Outputs[Salida de entradas coincidentes de búsqueda].Columns[OUT_SupplierSK]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderID]"
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierSK]"
                       dataType="i4"
-                      name="OrderID" />
+                      name="SupplierSK" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductID]"
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierID]"
                       dataType="i4"
-                      name="ProductID" />
+                      name="SupplierID" />
                     <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductSK]"
-                      dataType="i4"
-                      name="ProductSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerSK]"
-                      dataType="i4"
-                      name="CustomerSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeSK]"
-                      dataType="i4"
-                      name="EmployeeSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderDateKey]"
-                      dataType="i4"
-                      name="OrderDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RequiredDateKey]"
-                      dataType="i4"
-                      name="RequiredDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippedDateKey]"
-                      dataType="i4"
-                      name="ShippedDateKey" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipVia]"
-                      dataType="i4"
-                      name="ShipVia" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Freight]"
-                      dataType="cy"
-                      name="Freight" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipNameSK]"
-                      dataType="i4"
-                      name="ShipNameSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCountrySK]"
-                      dataType="i4"
-                      name="ShipCountrySK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCitySK]"
-                      dataType="i4"
-                      name="ShipCitySK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipRegionSK]"
-                      dataType="i4"
-                      name="ShipRegionSK" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[UnitPrice]"
-                      dataType="cy"
-                      name="UnitPrice" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity]"
-                      dataType="i2"
-                      name="Quantity" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Discount]"
-                      dataType="r4"
-                      name="Discount" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperID]"
-                      dataType="i4"
-                      name="ShipperID" />
-                    <externalMetadataColumn
-                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippersCompanyName]"
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CompanyName]"
                       dataType="wstr"
                       length="40"
-                      name="ShippersCompanyName" />
+                      name="CompanyName" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
+                    <externalMetadataColumn
+                      refId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[HomePage]"
+                      dataType="nText"
+                      name="HomePage" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1106,480 +967,6 @@
               </outputs>
             </component>
             <component
-              refId="Package\New Suppliers\Lookup Customer"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
-              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
-              name="Lookup Customer"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimCustomers]</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimCustomers]) [refTable]
-where [refTable].[CustomerID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de caché de la tabla de búsqueda."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">1</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerID" dataType="DT_WSTR" length="5" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ContactName" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ContactTitle" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Address" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="City" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Region" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PostalCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Country" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Phone" dataType="DT_WSTR" length="24" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Fax" dataType="DT_WSTR" length="24" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerTypeID" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerDemographicsDesc" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[CustomerID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\New Suppliers\Lookup Customer.Connections[OleDbConnection]"
-                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
-                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\New Suppliers\Lookup Customer.Inputs[Entrada de búsqueda]"
-                  name="Entrada de búsqueda">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\New Suppliers\Lookup Customer.Inputs[Entrada de búsqueda].Columns[CustomerID]"
-                      cachedDataType="wstr"
-                      cachedLength="5"
-                      cachedName="CustomerID"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[CustomerID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">CustomerID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\New Suppliers\Lookup Customer.Outputs[Salida de entradas coincidentes de búsqueda]"
-                  errorOrTruncationOperation="Búsqueda"
-                  exclusionGroup="1"
-                  name="Salida de entradas coincidentes de búsqueda"
-                  synchronousInputId="Package\New Suppliers\Lookup Customer.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\New Suppliers\Lookup Customer.Outputs[Salida de entradas coincidentes de búsqueda].Columns[CustomerSK]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\New Suppliers\Lookup Customer.Outputs[Salida de entradas coincidentes de búsqueda].Columns[CustomerSK]"
-                      name="CustomerSK"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">CustomerSK</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\New Suppliers\Lookup Customer.Outputs[Salida de entradas no coincidentes de búsqueda]"
-                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
-                  exclusionGroup="1"
-                  name="Salida de entradas no coincidentes de búsqueda"
-                  synchronousInputId="Package\New Suppliers\Lookup Customer.Inputs[Entrada de búsqueda]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\New Suppliers\Lookup Customer.Outputs[Salida de error de búsqueda]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de búsqueda"
-                  synchronousInputId="Package\New Suppliers\Lookup Customer.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\New Suppliers\Lookup Customer.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Lookup Customer.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Lookup Customer.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Lookup Customer.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\New Suppliers\Lookup Employee"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
-              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
-              name="Lookup Employee"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimEmployees]</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimEmployees]) [refTable]
-where [refTable].[EmployeeID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de caché de la tabla de búsqueda."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmployeeSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Title" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TitleOfCourtesy" dataType="DT_WSTR" length="25" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BirthDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HireDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Address" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="City" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Region" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PostalCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Country" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HomePhone" dataType="DT_WSTR" length="24" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Extension" dataType="DT_WSTR" length="4" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Photo" dataType="DT_IMAGE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Notes" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReportsTo" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PhotoPath" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TerritoryID" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TerritoryDescription" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RegionID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RegionDescription" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\New Suppliers\Lookup Employee.Connections[OleDbConnection]"
-                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
-                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\New Suppliers\Lookup Employee.Inputs[Entrada de búsqueda]"
-                  name="Entrada de búsqueda">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\New Suppliers\Lookup Employee.Inputs[Entrada de búsqueda].Columns[EmployeeID]"
-                      cachedDataType="i4"
-                      cachedName="EmployeeID"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">EmployeeID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\New Suppliers\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda]"
-                  errorOrTruncationOperation="Búsqueda"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Salida de entradas coincidentes de búsqueda"
-                  synchronousInputId="Package\New Suppliers\Lookup Employee.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\New Suppliers\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeSK]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\New Suppliers\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeSK]"
-                      name="EmployeeSK"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">EmployeeSK</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\New Suppliers\Lookup Employee.Outputs[Salida de entradas no coincidentes de búsqueda]"
-                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
-                  exclusionGroup="1"
-                  name="Salida de entradas no coincidentes de búsqueda"
-                  synchronousInputId="Package\New Suppliers\Lookup Employee.Inputs[Entrada de búsqueda]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\New Suppliers\Lookup Employee.Outputs[Salida de error de búsqueda]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de búsqueda"
-                  synchronousInputId="Package\New Suppliers\Lookup Employee.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\New Suppliers\Lookup Employee.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Lookup Employee.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Lookup Employee.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Lookup Employee.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\New Suppliers\Lookup Product"
-              componentClassID="Microsoft.Lookup"
-              contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
-              description="Combina columnas adicionales con el flujo de datos mediante la búsqueda de valores en una tabla. Por ejemplo, se combina la columna 'id. de empleado' con la tabla de empleados para obtener la 'fecha de contratación' y 'el nombre de empleado'. Se recomienda esta transformación cuando hay suficiente espacio en memoria para la tabla de búsqueda."
-              name="Lookup Product"
-              usesDispositions="true"
-              version="6">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Especifica la instrucción SQL que genera la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimProducts]</property>
-                <property
-                  dataType="System.String"
-                  description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
-                  expressionType="Notify"
-                  name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimProducts]) [refTable]
-where [refTable].[ProductID] = ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
-                  name="ConnectionType"
-                  typeConverter="LookupConnectionType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el tipo de caché de la tabla de búsqueda."
-                  name="CacheType"
-                  typeConverter="CacheType">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica cómo la transformación de búsquedas trata las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchBehavior"
-                  typeConverter="LookupNoMatchBehavior">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica el porcentaje de la caché asignado a las filas sin entradas coincidentes en el conjunto de datos de referencia."
-                  name="NoMatchCachePercentage">0</property>
-                <property
-                  dataType="System.Int32"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 32 bits."
-                  name="MaxMemoryUsage">25</property>
-                <property
-                  dataType="System.Int64"
-                  description="Uso de memoria máximo para la caché de referencia en una plataforma de 64 bits."
-                  name="MaxMemoryUsage64">25</property>
-                <property
-                  dataType="System.String"
-                  description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="QuantityPerUnit" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitPrice" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitsInStock" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitsOnOrder" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReorderLevel" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Discontinued" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierCompanyName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierContactName" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierContactTitle" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierAddress" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierCity" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierRegion" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierPostalCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierCountry" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierPhone" dataType="DT_WSTR" length="24" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierFax" dataType="DT_WSTR" length="24" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierHomePage" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CategoryID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CategoryName" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
-                <property
-                  containsID="true"
-                  dataType="System.String"
-                  description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ProductID]};</property>
-                <property
-                  dataType="System.Int32"
-                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Determina si las claves duplicadas de los datos de referencia se deben tratar como errores cuando se usa el modo de caché."
-                  name="TreatDuplicateKeysAsError">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\New Suppliers\Lookup Product.Connections[OleDbConnection]"
-                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
-                  description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\New Suppliers\Lookup Product.Inputs[Entrada de búsqueda]"
-                  name="Entrada de búsqueda">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\New Suppliers\Lookup Product.Inputs[Entrada de búsqueda].Columns[ProductID]"
-                      cachedDataType="i4"
-                      cachedName="ProductID"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ProductID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">ProductID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\New Suppliers\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda]"
-                  errorOrTruncationOperation="Búsqueda"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Salida de entradas coincidentes de búsqueda"
-                  synchronousInputId="Package\New Suppliers\Lookup Product.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\New Suppliers\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ProductSK]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copiar columna"
-                      lineageId="Package\New Suppliers\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ProductSK]"
-                      name="ProductSK"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn">ProductSK</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\New Suppliers\Lookup Product.Outputs[Salida de entradas no coincidentes de búsqueda]"
-                  description="Salida de búsqueda que trata las filas sin entradas coincidentes en el conjunto de datos de referencia. Utilice esta salida cuando la propiedad NoMatchBehavior esté establecida en 'Enviar las filas sin entradas coincidentes a la salida de entradas no coincidentes'."
-                  exclusionGroup="1"
-                  name="Salida de entradas no coincidentes de búsqueda"
-                  synchronousInputId="Package\New Suppliers\Lookup Product.Inputs[Entrada de búsqueda]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\New Suppliers\Lookup Product.Outputs[Salida de error de búsqueda]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Salida de error de búsqueda"
-                  synchronousInputId="Package\New Suppliers\Lookup Product.Inputs[Entrada de búsqueda]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\New Suppliers\Lookup Product.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Lookup Product.Outputs[Salida de error de búsqueda].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\New Suppliers\Lookup Product.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\New Suppliers\Lookup Product.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\New Suppliers\Lookup Suppliers"
               componentClassID="Microsoft.Lookup"
               contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
@@ -1593,14 +980,14 @@ where [refTable].[ProductID] = ?</property>
                   description="Especifica la instrucción SQL que genera la tabla de búsqueda."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[FactOrders]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimSuppliers]</property>
                 <property
                   dataType="System.String"
                   description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[FactOrders]) [refTable]
-where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimSuppliers]) [refTable]
+where [refTable].[SupplierID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
@@ -1631,12 +1018,12 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="OrderID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmployeeSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OrderDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RequiredDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShippedDateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShipVia" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Freight" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShipNameSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShipCountrySK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShipCitySK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShipRegionSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitPrice" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quantity" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Discount" dataType="DT_R4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShipperID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShippersCompanyName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SupplierSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CompanyName" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ContactName" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ContactTitle" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Address" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="City" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Region" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PostalCode" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Country" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Phone" dataType="DT_WSTR" length="24" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Fax" dataType="DT_WSTR" length="24" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HomePage" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[SupplierID]};#{Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipperID]};</property>
+                  name="ParameterMap">#{Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_SupplierID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -1660,34 +1047,18 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
                   name="Entrada de búsqueda">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\New Suppliers\Lookup Suppliers.Inputs[Entrada de búsqueda].Columns[ShipperID]"
+                      refId="Package\New Suppliers\Lookup Suppliers.Inputs[Entrada de búsqueda].Columns[OUT_SupplierID]"
                       cachedDataType="i4"
-                      cachedName="ShipperID"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[ShipperID]">
+                      cachedName="OUT_SupplierID"
+                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[OUT_SupplierID]">
                       <properties>
                         <property
                           dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">ProductSK</property>
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SupplierID</property>
                         <property
                           dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
-                          name="CopyFromReferenceColumn" />
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\New Suppliers\Lookup Suppliers.Inputs[Entrada de búsqueda].Columns[SupplierID]"
-                      cachedDataType="i4"
-                      cachedName="SupplierID"
-                      lineageId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB].Columns[SupplierID]">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
-                          name="JoinToReferenceColumn">OrderID</property>
-                        <property
-                          dataType="System.Null"
-                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          description="Specifies the column in the reference table from which a column is copied."
                           name="CopyFromReferenceColumn" />
                       </properties>
                     </inputColumn>
@@ -1702,6 +1073,22 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
                   exclusionGroup="1"
                   name="Salida de entradas coincidentes de búsqueda"
                   synchronousInputId="Package\New Suppliers\Lookup Suppliers.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New Suppliers\Lookup Suppliers.Outputs[Salida de entradas coincidentes de búsqueda].Columns[OUT_SupplierSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\New Suppliers\Lookup Suppliers.Outputs[Salida de entradas coincidentes de búsqueda].Columns[OUT_SupplierSK]"
+                      name="OUT_SupplierSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SupplierSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -1740,21 +1127,6 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
           <paths>
             <path
               refId="Package\New Suppliers.Paths[Salida de entradas coincidentes de búsqueda]"
-              endId="Package\New Suppliers\Lookup Employee.Inputs[Entrada de búsqueda]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\New Suppliers\Lookup Customer.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
-              refId="Package\New Suppliers.Paths[Salida de entradas coincidentes de búsqueda1]"
-              endId="Package\New Suppliers\Lookup Product.Inputs[Entrada de búsqueda]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\New Suppliers\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
-              refId="Package\New Suppliers.Paths[Salida de entradas coincidentes de búsqueda2]"
-              endId="Package\New Suppliers\Lookup Suppliers.Inputs[Entrada de búsqueda]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\New Suppliers\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
-              refId="Package\New Suppliers.Paths[Salida de entradas coincidentes de búsqueda3]"
               endId="Package\New Suppliers\Load Staging.Inputs[Entrada de destino de OLE DB]"
               name="Salida de entradas coincidentes de búsqueda"
               startId="Package\New Suppliers\Lookup Suppliers.Outputs[Salida de entradas coincidentes de búsqueda]" />
@@ -1765,7 +1137,7 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
               startId="Package\New Suppliers\Lookup Suppliers.Outputs[Salida de entradas no coincidentes de búsqueda]" />
             <path
               refId="Package\New Suppliers.Paths[Salida de origen de OLE DB]"
-              endId="Package\New Suppliers\Lookup Customer.Inputs[Entrada de búsqueda]"
+              endId="Package\New Suppliers\Lookup Suppliers.Inputs[Entrada de búsqueda]"
               name="Salida de origen de OLE DB"
               startId="Package\New Suppliers\Get Suppliers.Outputs[Salida de origen de OLE DB]" />
           </paths>
@@ -1773,20 +1145,20 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Sync Orders"
+      DTS:refId="Package\Sync Stagings"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Tarea Ejecutar SQL"
       DTS:DTSID="{4515985C-1E7B-4AD7-A5BE-99D5CA2304D1}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Sync Orders"
+      DTS:ObjectName="Sync Stagings"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
-          SQLTask:SqlStatementSource="EXECUTE DW_MergeFactOrders" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="EXECUTE dbo.DW_MergeDimSuppliers" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1803,7 +1175,7 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
-          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'orders' ,@lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'Suppliers' ,@lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::dbts"
@@ -1846,12 +1218,12 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
       DTS:From="Package\New Suppliers"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 3"
-      DTS:To="Package\Sync Orders" />
+      DTS:To="Package\Sync Stagings" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
       DTS:CreationName=""
       DTS:DTSID="{8386F1EE-62DF-433B-A12F-2E637DEB4C95}"
-      DTS:From="Package\Sync Orders"
+      DTS:From="Package\Sync Stagings"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 4"
       DTS:To="Package\Update Config" />
@@ -1886,7 +1258,7 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
           TopLeft="188.571431782781,293.705884508608" />
         <NodeLayout
           Size="135,42"
-          Id="Package\Sync Orders"
+          Id="Package\Sync Stagings"
           TopLeft="307.142862373469,372.694119867074" />
         <NodeLayout
           Size="145,42"
@@ -2045,37 +1417,109 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
     design-time-name="Package\New Suppliers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="152,41.6"
-          Id="Package\New Suppliers\Lookup Product"
-          TopLeft="282.142861947721,281.905883961648" />
+          Size="158,42"
+          Id="Package\New Suppliers\Lookup Suppliers"
+          TopLeft="187.214290494822,164.488237546307" />
         <NodeLayout
-          Size="160.8,41.6"
-          Id="Package\New Suppliers\Lookup Customer"
-          TopLeft="192.857146141481,131.647060389337" />
+          Size="140,42"
+          Id="Package\New Suppliers\Load Staging"
+          TopLeft="94.0714300797911,408.852942345464" />
         <NodeLayout
-          Size="140.8,41.6"
+          Size="168,42"
+          Id="Package\New Suppliers\Destino de OLE DB"
+          TopLeft="481.928579542102,408.439597400914" />
+        <NodeLayout
+          Size="141,42"
           Id="Package\New Suppliers\Get Suppliers"
           TopLeft="201.42857485888,55.8235301946686" />
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\New Suppliers\Lookup Employee"
-          TopLeft="282.857147674171,203.788236817027" />
         <EdgeLayout
-          Id="Package\New Suppliers.Paths[Salida de origen de OLE DB]"
-          TopLeft="272.542860500181,97.4235301946686">
+          Id="Package\New Suppliers.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="291.214290494822,206.488237546307">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.2235301946684"
+              EndConnector="274.71428904728,201.951359854607"
               Start="0,0"
-              End="0,26.7235301946684">
+              End="274.71428904728,194.451359854607">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.7235301946684" />
+                    End="0,77.9952889635246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77.9952889635246"
+                    Point2="0,81.9952889635246"
+                    Point3="4,81.9952889635246" />
+                  <mssgle:LineSegment
+                    End="270.71428904728,81.9952889635246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="270.71428904728,81.9952889635246"
+                    Point2="274.71428904728,81.9952889635246"
+                    Point3="274.71428904728,85.9952889635246" />
+                  <mssgle:LineSegment
+                    End="274.71428904728,194.451359854607" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="30.46812108614,86.9952889635246,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\New Suppliers.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="241.214290494822,206.488237546307">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-77.1428604150309,202.364704799157"
+              Start="0,0"
+              End="-77.1428604150309,194.864704799157">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.1631132267254" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,78.1631132267254"
+                    Point2="0,82.1631132267254"
+                    Point3="-4,82.1631132267254" />
+                  <mssgle:LineSegment
+                    End="-73.1428604150309,82.1631132267254" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-73.1428604150309,82.1631132267254"
+                    Point2="-77.1428604150309,82.1631132267254"
+                    Point3="-77.1428604150309,86.1631132267254" />
+                  <mssgle:LineSegment
+                    End="-77.1428604150309,194.864704799157" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-138.390453645015,87.1631132267254,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\New Suppliers.Paths[Salida de origen de OLE DB]"
+          TopLeft="269.071432676851,97.8235301946686">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.6647073516384"
+              Start="0,0"
+              End="0,59.1647073516384">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.1647073516384" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2084,240 +1528,26 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\New Suppliers.Paths[Salida de entradas coincidentes de búsqueda1]"
-          TopLeft="360.900004810946,245.388236817027">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36.5176471446212"
-              Start="0,0"
-              End="0,29.0176471446212">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.0176471446212" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,8.41116732231059,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\New Suppliers.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="273.257146141481,173.247060389337">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="90.4000015326909,30.5411764276894"
-              Start="0,0"
-              End="90.4000015326909,23.0411764276894">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.2705882138447" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.2705882138447"
-                    Point2="0,15.2705882138447"
-                    Point3="4,15.2705882138447" />
-                  <mssgle:LineSegment
-                    End="86.4000015326909,15.2705882138447" />
-                  <mssgle:CubicBezierSegment
-                    Point1="86.4000015326909,15.2705882138447"
-                    Point2="90.4000015326909,15.2705882138447"
-                    Point3="90.4000015326909,19.2705882138447" />
-                  <mssgle:LineSegment
-                    End="90.4000015326909,23.0411764276894" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-54.6190226711546,20.2705882138447,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="158.4,41.6"
-          Id="Package\New Suppliers\Lookup Suppliers"
-          TopLeft="286.214290494822,356.488237546307" />
-        <EdgeLayout
-          Id="Package\New Suppliers.Paths[Salida de entradas coincidentes de búsqueda2]"
-          TopLeft="361.778576221271,323.505883961648">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32.9823535846589"
-              Start="0,0"
-              End="0,25.4823535846589">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.4823535846589" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,6.64352054232944,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="140,41.6"
-          Id="Package\New Suppliers\Load Staging"
-          TopLeft="94.0714300797911,408.852942345464" />
-        <EdgeLayout
-          Id="Package\New Suppliers.Paths[Salida de entradas coincidentes de búsqueda3]"
-          TopLeft="286.214290494822,377.288237546307">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-52.1428604150306,52.3647047991572"
-              Start="0,0"
-              End="-44.6428604150306,52.3647047991572">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-22.0714302075153,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-22.0714302075153,0"
-                    Point2="-26.0714302075153,0"
-                    Point3="-26.0714302075153,4" />
-                  <mssgle:LineSegment
-                    End="-26.0714302075153,48.3647047991572" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-26.0714302075153,48.3647047991572"
-                    Point2="-26.0714302075153,52.3647047991572"
-                    Point3="-30.0714302075153,52.3647047991572" />
-                  <mssgle:LineSegment
-                    End="-44.6428604150306,52.3647047991572" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-125.890453645015,-18.1953125,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="168,41.6"
-          Id="Package\New Suppliers\Destino de OLE DB"
-          TopLeft="481.928579542102,408.439597400914" />
-        <EdgeLayout
-          Id="Package\New Suppliers.Paths[Salida de entradas no coincidentes de búsqueda]"
-          TopLeft="444.614290494822,377.288237546307">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="37.3142890472802,51.9513598546067"
-              Start="0,0"
-              End="29.8142890472802,51.9513598546067">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="14.6571445236401,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14.6571445236401,0"
-                    Point2="18.6571445236401,0"
-                    Point3="18.6571445236401,4" />
-                  <mssgle:LineSegment
-                    End="18.6571445236401,47.9513598546067" />
-                  <mssgle:CubicBezierSegment
-                    Point1="18.6571445236401,47.9513598546067"
-                    Point2="18.6571445236401,51.9513598546067"
-                    Point3="22.6571445236401,51.9513598546067" />
-                  <mssgle:LineSegment
-                    End="29.8142890472802,51.9513598546067" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-88.2318789138599,-18.1953125,213.778046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\New Suppliers\Lookup Customer">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimCustomers]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\New Suppliers\Lookup Employee">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimEmployees]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\New Suppliers\Lookup Suppliers">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[FactOrders]</Value>
+          type="q3:string">[dbo].[DimSuppliers]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2347,29 +1577,6 @@ where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\New Suppliers\Lookup Product">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimProducts]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

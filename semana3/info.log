@@ -1,17 +1,17 @@
 Cristhian:
-- DimProducts.dtsx   SUCCESS
-- DimCategories      PENDING
-- DimSuppliers       PENDING
-- DimShippers        PENDING
+- DimProducts        SUCCESS
+- DimCategories      SUCCESS
+- DimSuppliers       SUCCESS
 - DimShipName        SUCCESS
 - DimShipCountry     SUCCESS
+- FacOrders          PENDING
 
 Nicolas:
-- DimCustomers.dtsx  SUCCESS
-- DimEmployees.dtsx  SUCCESS
+- DimCustomers       SUCCESS
+- DimEmployees       SUCCESS
 - DimShipCity        SUCCESS
-- DimShipRegion      PENDING
-- FacOrders          PENDING
+- DimShipRegion      NOT_EXIST
 
 Rimbert:
 - DimDate  SCRIPT    SUCCESS
+- DimShippers        NOT_EXIST
