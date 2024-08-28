@@ -3,3 +3,6 @@
 **/.vs/
 **/bin/
 **/obj/
+node_modules
+semana3/etl-pubs/run.js
+yarn.lock
