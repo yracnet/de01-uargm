@@ -11,16 +11,16 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{0FDA55D1-1469-49C0-B549-ED6DFB8FED24}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{DCD3D11B-DC29-441C-BFA3-B2293CAE3E28}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Source.pubs]"
+      DTS:refId="Package.ConnectionManagers[SOURCE]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{F8311D75-44CB-4E8F-88AF-E85F0E5D7B43}"
-      DTS:ObjectName="Source.pubs">
+      DTS:ObjectName="SOURCE">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
@@ -29,15 +29,15 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADMP1iFmJ8j4DkcQhMksJnjsZwTl0KESGRzsbDO64XCEQAAAAAOgAAAAAIAACAAAADmN+cT+EvcGOx770hqTw1mg6tkYmDqaxj05mjTxSsd3SAAAAAPh9xNYSg+dgM1WwM6FUqjR048u0CXK0ipU8lKjOuqOUAAAAAQeDc+1HKfOcqAdKy6YrYydbHxS4RDfhdvsqOtWZCxD90IrPPzkHTRRWvCOc7uiN8I9UE8bXfcQgcsw0YGanU6</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAKZnrOwek/cEs4RnLvUnwRy1MSJlR4jrhu+pOyIz8YIQAAAAAOgAAAAAIAACAAAAC50+ol6hBL+PFqsHK40au9yK9LGt6vK7nYorHesKv6FCAAAAAuNbZ2bPsXZY1i7HRETDyKhJhT/EB6m8UN50i55+4HHkAAAAC6P7YTlwy51Phzzl2KJX/JOIon/LrToonYwiMmWQpX9ZH8yePeC/Jygy/q+2Md34xpNZ5D/o7+uILuQ/2OounE</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Target.pubsDW]"
+      DTS:refId="Package.ConnectionManagers[TARGET]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{89A5EB22-E4BA-4B42-961F-A00FF8BE73C6}"
-      DTS:ObjectName="Target.pubsDW">
+      DTS:ObjectName="TARGET">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADg+aUj0hGOsz+RsktPewLJkG+Lh/G6yBQFp2d6SOsIgwAAAAAOgAAAAAIAACAAAAArIB9Bu62MziPqjMn/dwEXlShF9uL8V7XLsFKlY1uFRyAAAAC00EP1H2XADWCrarn61g3PIJNL4xs1BA1zJhRj1q0TUEAAAAAMkeE/9zD9VjFLMgS5zgsKDGnqx2SGUGpXt8FwENl6cYpMelrirFaK3N8EMAnmPSTaYWyBI9hxTwmc/sYypjVE</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABIXozPkXbG72LQdphLxnJX6uoZjeD1vUtgXuWVa1hNMQAAAAAOgAAAAAIAACAAAADtP9wMpiVcfJsSsBtjPeY4ICOYYyZkCJCkBV9JxZoM3iAAAABFtvimw6s38ZS0eTKP6kZS8ufooeb45rltEUNtSQLKT0AAAAAQfTplUdoE4gfmxcxsrLGA8LeZ340saYP2EL5lMcjrZjIMetI9KvQDtSI+EcVGEZ2vGXb/KHqy/lif80OW8Elg</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -145,8 +145,8 @@
               <connections>
                 <connection
                   refId="Package\Add New Category\Add New Category.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Target.pubsDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[Target.pubsDW]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -377,8 +377,8 @@ where [refTable].[CategoryID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Category\Búsqueda.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Target.pubsDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[Target.pubsDW]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -515,8 +515,8 @@ where [refTable].[CategoryID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Category\Get Row Changes.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Source.pubs]"
-                  connectionManagerRefId="Package.ConnectionManagers[Source.pubs]"
+                  connectionManagerID="Package.ConnectionManagers[SOURCE]"
+                  connectionManagerRefId="Package.ConnectionManagers[SOURCE]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -707,8 +707,8 @@ where [refTable].[CategoryID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Category\Load Staging.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Target.pubsDW]"
-                  connectionManagerRefId="Package.ConnectionManagers[Target.pubsDW]"
+                  connectionManagerID="Package.ConnectionManagers[TARGET]"
+                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
