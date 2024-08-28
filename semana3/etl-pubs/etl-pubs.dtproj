@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">A15-WILL</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAACAAAAAAAQZgAAAAEAACAAAADfwGeNZmG57H0ZG0BIw8L8fglJT0KzxTMtn6GqbCE9mgAAAAAOgAAAAAIAACAAAABirG+64n3LpjLEIHae2h2hh1pKK4q64oTs0Ei6t16bkpAAAACUQNJaRO+k3HP9dUe80SQkhwa9P1hoYV8z9TQebIB/ExC6KKgonTQHMiJhhVNy2hn8H2YDalIGFlLBDpv41BfrIySF5hCVA8wRXAShFGjd3QjSAQxgg+3eFrxabbeLcgYksXSOYUkCB8PagNO7zyc3ZlrKqY59h8BGFSK1Qvq8BF4JIkqTdtdEz/HaQKovxypAAAAAgnps47TFNfsYUiC3uv7KQlX9BmJH26pTXb/0yJktt65GTbBJR1l8SJ8w4WIotjtKI380/6ivi+Y288XvOHnbKg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAbnEtHmwVK0u61YQTdFTs/gAAAAACAAAAAAAQZgAAAAEAACAAAABrd4o5yzVqHEUA5BF37GbjqJSmW3Xc9lC0L9lBW+0WrwAAAAAOgAAAAAIAACAAAAA29w2I38G4hEfvwJPXOaSLjqzeRt2CvF69rjGXcnDMfJAAAAA7lbpEe2Hqoy4koll6HpvQg1WonsalH4DNTz2eTdnI997x5Pg5H/fAXH6oFEXDKEZ4yStLclDpbMZPy+y1x5knvAcmeUb678GZlCiGik7VhOuzmKWeSRr81jGEadq9HPCjvZeoytDB3hUPRxsQvqXOnmBUDbkyKnUbOUPU0FX6OXJoNDVBxQVYlNA6IVjO1dRAAAAA+NI6n64v1KStfAQo7q51Z/nFbMxm8IgUkdVKAzCIlncGMVSEBZ5p41r3SFs2/NUGdB8SMC9ZqcgDUXd/9Ur12Q==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -40,6 +40,7 @@
           <SSIS:Package SSIS:Name="DimSuppliers.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="FactOrders.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DimShipCountry.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DimShipRegion.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="SOURCE_PUBS.conmgr" />
@@ -73,7 +74,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-etl-pubs-{6AF7675C-F1C1-4FD3-8B29-4EADD8D3EDB8}localhost.pubs.sa;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubs;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-etl-pubs-{6AF7675C-F1C1-4FD3-8B29-4EADD8D3EDB8}localhost.pubs.sa;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -177,7 +178,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">localhost</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">DESKTOP-SK5FLHC\SQLEXPRESS02</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -192,7 +193,6 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">sa</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -222,7 +222,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=localhost;User ID=sa;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-etl-pubs-{DCC815D0-3936-445D-88C8-6B696A806781}localhost.pubsDW.sa;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=DESKTOP-SK5FLHC\SQLEXPRESS02;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-etl-pubs-{DCC815D0-3936-445D-88C8-6B696A806781}localhost.pubsDW.sa;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -326,7 +326,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">localhost</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">DESKTOP-SK5FLHC\SQLEXPRESS02</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -341,7 +341,6 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">sa</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -510,6 +509,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{5E096C08-69C2-4982-BF27-4928ABE0B186}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DimShipRegion.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{35739E16-F6D8-413F-B5DF-B497301203AE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EBE0EF3F-7606-4428-AEE6-FC4DE056B3B4}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
