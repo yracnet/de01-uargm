@@ -145,8 +145,8 @@
               <connections>
                 <connection
                   refId="Package\Add New Customer\Add New Customer.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[TARGET]"
-                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -404,8 +404,8 @@ where [refTable].[CustomerID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Customer\Búsqueda.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[TARGET]"
-                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -543,8 +543,8 @@ where [refTable].[CustomerID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Customer\Get Row Changes.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[SOURCE]"
-                  connectionManagerRefId="Package.ConnectionManagers[SOURCE]"
+                  connectionManagerID="{6AF7675C-F1C1-4FD3-8B29-4EADD8D3EDB8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SOURCE_PUBS]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -891,8 +891,8 @@ where [refTable].[CustomerID] = ?</property>
               <connections>
                 <connection
                   refId="Package\Add New Customer\Load Staging.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[TARGET]"
-                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>

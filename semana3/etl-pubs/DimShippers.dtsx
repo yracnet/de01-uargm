@@ -198,8 +198,8 @@
               <connections>
                 <connection
                   refId="Package\New Shippers\Get Shippers.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[SOURCE]"
-                  connectionManagerRefId="Package.ConnectionManagers[SOURCE]"
+                  connectionManagerID="{6AF7675C-F1C1-4FD3-8B29-4EADD8D3EDB8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SOURCE_PUBS]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -672,8 +672,8 @@
               <connections>
                 <connection
                   refId="Package\New Shippers\Load Staging.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[TARGET]"
-                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
@@ -947,8 +947,8 @@ where [refTable].[CustomerID] = ?</property>
               <connections>
                 <connection
                   refId="Package\New Shippers\Lookup Customer.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[TARGET]"
-                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -1105,8 +1105,8 @@ where [refTable].[EmployeeID] = ?</property>
               <connections>
                 <connection
                   refId="Package\New Shippers\Lookup Employee.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[TARGET]"
-                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -1263,8 +1263,8 @@ where [refTable].[ProductID] = ?</property>
               <connections>
                 <connection
                   refId="Package\New Shippers\Lookup Product.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[TARGET]"
-                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -1421,8 +1421,8 @@ where [refTable].[OrderID] = ?</property>
               <connections>
                 <connection
                   refId="Package\New Shippers\Lookup Shippers.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[TARGET]"
-                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
                   description="Administrador de conexiones utilizado para obtener acceso a los datos de búsqueda."
                   name="OleDbConnection" />
               </connections>
@@ -1551,8 +1551,8 @@ where [refTable].[OrderID] = ?</property>
               <connections>
                 <connection
                   refId="Package\New Shippers\New Shippers.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[TARGET]"
-                  connectionManagerRefId="Package.ConnectionManagers[TARGET]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
                   description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
                   name="OleDbConnection" />
               </connections>
