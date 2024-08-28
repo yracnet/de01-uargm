@@ -15,8 +15,11 @@ GO
 			sysdatabases
 		where
 			name = 'pubsDW'
-	) begin raiserror('Dropping existing pubs database ....', 0, 1) DROP database pubsDW
-end
+	) 
+	begin 
+		-- raiserror('Dropping existing pubs database ....', 0, 1)
+		DROP database pubsDW;
+	end
 GO
 	CHECKPOINT
 go
@@ -40,7 +43,7 @@ GO
 	CREATE TABLE "PackageConfig"(
 		"PackageID" "int" IDENTITY(1, 1) NOT NULL,
 		"TableName" varchar (50) NOT NULL,
-		"LastRowVersion" "bigint" NOT NULL = 0,
+		"LastRowVersion" "bigint" NULL DEFAULT 0,
 		CONSTRAINT "PK_PackageConfig" PRIMARY KEY CLUSTERED ("PackageID" ASC)
 	)
 GO
@@ -189,8 +192,8 @@ GO
 		CONSTRAINT "PK_Orders" PRIMARY KEY CLUSTERED ("OrderID" ASC, "ProductID" ASC),
 		
 		CONSTRAINT "FK_Orders_DimProducts" FOREIGN KEY ("ProductSK") REFERENCES "dbo"."DimProducts" ("ProductSK"),
-		CONSTRAINT "FK_Orders_DimCategory" FOREIGN KEY ("CategorySK") REFERENCES "dbo"."DimCategory" ("CategorySK"),
-		CONSTRAINT "FK_Orders_DimSupplier" FOREIGN KEY ("SupplierSK") REFERENCES "dbo"."DimSuppliers" ("SupplierSK"),
+		CONSTRAINT "FK_Orders_DimCategories" FOREIGN KEY ("CategorySK") REFERENCES "dbo"."DimCategories" ("CategorySK"),
+		CONSTRAINT "FK_Orders_DimSuppliers" FOREIGN KEY ("SupplierSK") REFERENCES "dbo"."DimSuppliers" ("SupplierSK"),
 		CONSTRAINT "FK_Orders_DimEmployees" FOREIGN KEY ("EmployeeSK") REFERENCES "dbo"."DimEmployees" ("EmployeeSK"),
 		CONSTRAINT "FK_Orders_DimCustomers" FOREIGN KEY ("CustomerSK") REFERENCES "dbo"."DimCustomers" ("CustomerSK"),
 		CONSTRAINT "FK_Orders_DimShippers" FOREIGN KEY ("ShipperSK") REFERENCES "dbo"."DimShippers" ("ShipperSK"),
