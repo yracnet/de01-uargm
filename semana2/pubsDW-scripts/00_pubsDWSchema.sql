@@ -37,35 +37,32 @@ GO
 		127
 	) with log
 GO
-
-CREATE TABLE "DimCategories" (
-	"CategorySK" "int" IDENTITY (1, 1) NOT NULL ,
-	"CategoryID" "int" NULL ,
-	"CategoryName" nvarchar (15) NOT NULL ,
-	"Description" "ntext" NULL ,
-	"Picture" "image" NULL ,
-	CONSTRAINT "PK_DimCategories" PRIMARY KEY  CLUSTERED ("CategorySK" ASC)
-)
+	CREATE TABLE "DimCategories" (
+		"CategorySK" "int" IDENTITY (1, 1) NOT NULL,
+		"CategoryID" "int" NULL,
+		"CategoryName" nvarchar (15) NOT NULL,
+		"Description" "ntext" NULL,
+		"Picture" "image" NULL,
+		CONSTRAINT "PK_DimCategories" PRIMARY KEY CLUSTERED ("CategorySK" ASC)
+	)
 GO
-
-CREATE TABLE "DimSuppliers" (
-	"SupplierSK" "int" IDENTITY (1, 1) NOT NULL ,
-	"SupplierID" "int" NOT NULL ,
-	"CompanyName" nvarchar (40) NOT NULL ,
-	"ContactName" nvarchar (30) NULL ,
-	"ContactTitle" nvarchar (30) NULL ,
-	"Address" nvarchar (60) NULL ,
-	"City" nvarchar (15) NULL ,
-	"Region" nvarchar (15) NULL ,
-	"PostalCode" nvarchar (10) NULL ,
-	"Country" nvarchar (15) NULL ,
-	"Phone" nvarchar (24) NULL ,
-	"Fax" nvarchar (24) NULL ,
-	"HomePage" "ntext" NULL ,
-	CONSTRAINT "PK_DimSuppliers" PRIMARY KEY  CLUSTERED ("SupplierSK" ASC)
-)
+	CREATE TABLE "DimSuppliers" (
+		"SupplierSK" "int" IDENTITY (1, 1) NOT NULL,
+		"SupplierID" "int" NOT NULL,
+		"CompanyName" nvarchar (40) NOT NULL,
+		"ContactName" nvarchar (30) NULL,
+		"ContactTitle" nvarchar (30) NULL,
+		"Address" nvarchar (60) NULL,
+		"City" nvarchar (15) NULL,
+		"Region" nvarchar (15) NULL,
+		"PostalCode" nvarchar (10) NULL,
+		"Country" nvarchar (15) NULL,
+		"Phone" nvarchar (24) NULL,
+		"Fax" nvarchar (24) NULL,
+		"HomePage" "ntext" NULL,
+		CONSTRAINT "PK_DimSuppliers" PRIMARY KEY CLUSTERED ("SupplierSK" ASC)
+	)
 GO
-
 	CREATE TABLE "DimProducts" (
 		"ProductSK" "int" IDENTITY(1, 1) NOT NULL,
 		"ProductID" "int" NOT NULL,
@@ -78,13 +75,20 @@ GO
 		"Discontinued" "bit" NOT NULL CONSTRAINT "DF_Products_Discontinued" DEFAULT (0),
 		"CategorySK" "int" NULL,
 		"SupplierSK" "int" NULL,
-
 		CONSTRAINT "PK_DimProducts" PRIMARY KEY CLUSTERED ("ProductSK" ASC),
 		CONSTRAINT "FK_DimProducts_DimCategories" FOREIGN KEY ("CategorySK") REFERENCES "dbo"."DimCategories" ("CategorySK"),
 		CONSTRAINT "FK_DimProducts_DimSuppliers" FOREIGN KEY ("SupplierSK") REFERENCES "dbo"."DimSuppliers" ("SupplierSK"),
 	)
 GO
+	CREATE TABLE DimCategories (
+		CategorySK "int" IDENTITY(1, 1) NOT NULL,
+		CategoryID int NOT NULL,
+		CategoryName nvarchar(15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+		Description ntext COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+		Picture image NULL
+	);
 
+GO
 	CREATE TABLE "DimCustomers" (
 		"CustomerSK" "int" IDENTITY(1, 1) NOT NULL,
 		"CustomerID" nchar (5) NOT NULL,
@@ -103,7 +107,6 @@ GO
 		CONSTRAINT "PK_DimCustomers" PRIMARY KEY CLUSTERED ("CustomerSK" ASC)
 	)
 GO
-
 	CREATE TABLE "DimEmployees" (
 		"EmployeeSK" "int" IDENTITY(1, 1) NOT NULL,
 		"EmployeeID" "int" NOT NULL,
@@ -132,7 +135,6 @@ GO
 		CONSTRAINT "CK_Birthdate" CHECK (BirthDate < getdate())
 	)
 GO
-
 	CREATE TABLE "DimDate"(
 		"DateKey" int NOT NULL,
 		"FullDate" date NOT NULL,
@@ -149,35 +151,30 @@ GO
 		CONSTRAINT "PK_DimDate" PRIMARY KEY CLUSTERED ("DateKey")
 	)
 GO
-
 	CREATE TABLE "DimShipName"(
 		"ShipNameSK" "int" IDENTITY(1, 1) NOT NULL,
 		"ShipNameName" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipNameKey" PRIMARY KEY CLUSTERED ("ShipNameSK")
 	)
 GO
-
 	CREATE TABLE "DimShipCountry"(
 		"ShipCountrySK" "int" IDENTITY(1, 1) NOT NULL,
 		"ShipCountryName" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipCountryKey" PRIMARY KEY CLUSTERED ("ShipCountrySK")
 	)
 GO
-
 	CREATE TABLE "DimShipCity"(
 		"ShipCitySK" "int" IDENTITY(1, 1) NOT NULL,
 		"ShipCityName" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipCityKey" PRIMARY KEY CLUSTERED ("ShipCitySK")
 	)
 GO
-
 	CREATE TABLE "DimShipRegion"(
 		"ShipRegionSK" "int" IDENTITY(1, 1) NOT NULL,
 		"ShipRegionName" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipRegionKey" PRIMARY KEY CLUSTERED ("ShipRegionSK")
 	)
 GO
-
 	CREATE TABLE "FactOrders" (
 		"OrderID" "int" NOT NULL,
 		"ProductID" "int" NOT NULL,
@@ -187,7 +184,7 @@ GO
 		"OrderDateKey" "int" NOT NULL,
 		"RequiredDateKey" "int" NOT NULL,
 		"ShippedDateKey" "int" NOT NULL,
-		"ShipVia" "int" NULL,
+		"ShipViaSK" "int" NULL,
 		"Freight" "money" NULL CONSTRAINT "DF_Orders_Freight" DEFAULT (0),
 		"ShipNameSK" "int" NOT NULL,
 		"ShipCountrySK" "int" NOT NULL,
@@ -217,7 +214,6 @@ GO
 		CONSTRAINT "CK_UnitPrice" CHECK (UnitPrice >= 0)
 	)
 GO
-
 	CREATE TABLE "PackageConfig"(
 		"PackageID" "int" IDENTITY(1, 1) NOT NULL,
 		"TableName" varchar (50) NOT NULL,
