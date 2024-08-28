@@ -124,16 +124,6 @@ BEGIN
         BirthDate,
         HireDate,
         Address,
-        City,
-        Region,
-        PostalCode,
-        Country,
-        HomePhone,
-        Extension,
-        Photo,
-        Notes,
-        ReportsTo,
-        PhotoPath,
         rowversion
     FROM
         dbo.Employees
@@ -158,8 +148,6 @@ BEGIN
     SELECT
         ProductID,
         ProductName,
-        SupplierID,
-        CategoryID,
         QuantityPerUnit,
         UnitPrice,
         UnitsInStock,
@@ -236,6 +224,103 @@ WHERE
 END
 GO
 
+-- Procedure to load data from Orders
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetShipNameByRowVersion') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.GetShipNameByRowVersion
+GO
+
+CREATE PROCEDURE dbo.GetShipNameByRowVersion
+(
+    @startRow BIGINT,
+    @endRow BIGINT
+)
+AS
+BEGIN
+SELECT
+	ISNULL(o.ShipName, 'NN') AS ShipName
+FROM
+	Orders o
+WHERE
+    o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow)
+GROUP BY o.ShipName
+END
+GO
+
+
+
+-- Procedure to load data from Orders
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetShipCountryByRowVersion') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.GetShipCountryByRowVersion
+GO
+
+CREATE PROCEDURE dbo.GetShipCountryByRowVersion
+(
+    @startRow BIGINT,
+    @endRow BIGINT
+)
+AS
+BEGIN
+SELECT
+	ISNULL(o.ShipCountry, 'NN') AS CountryName
+FROM
+	Orders o
+WHERE
+    o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow)
+GROUP BY o.ShipCountry
+END
+GO
+
+
+-- Procedure to load data from Orders
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetShipCityByRowVersion') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.GetShipCityByRowVersion
+GO
+
+CREATE PROCEDURE dbo.GetShipCityByRowVersion
+(
+    @startRow BIGINT,
+    @endRow BIGINT
+)
+AS
+BEGIN
+SELECT
+	ISNULL(o.ShipCity, 'NN') AS CityName
+FROM
+	Orders o
+WHERE
+    o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow)
+GROUP BY o.ShipCity
+END
+GO
+
+
+
+
+-- Procedure to load data from Orders
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetShipRegionByRowVersion') AND type in (N'P', N'PC'))
+    DROP PROCEDURE dbo.GetShipRegionByRowVersion
+GO
+
+CREATE PROCEDURE dbo.GetShipRegionByRowVersion
+(
+    @startRow BIGINT,
+    @endRow BIGINT
+)
+AS
+BEGIN
+SELECT
+	ISNULL(o.ShipRegion, 'NN') AS RegionName
+FROM
+	Orders o
+WHERE
+    o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow)
+GROUP BY o.ShipRegion
+END
+GO
+
+
+
+
 
 
 
@@ -280,100 +365,5 @@ WHERE
     (o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow))
     OR
     (od.rowversion > CONVERT(BIGINT, @startRow) AND od.rowversion <= CONVERT(BIGINT, @endRow))
-END
-GO
-
-
--- Procedure to load data from Orders
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetShipNameByRowVersion') AND type in (N'P', N'PC'))
-    DROP PROCEDURE dbo.GetShipNameByRowVersion
-GO
-
-CREATE PROCEDURE dbo.GetShipNameByRowVersion
-(
-    @startRow BIGINT,
-    @endRow BIGINT
-)
-AS
-BEGIN
-SELECT
-	ISNULL(o.ShipName, 'NN') AS ShipNameKey
-FROM
-	Orders o
-WHERE
-    o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow)
-GROUP BY o.ShipName
-END
-GO
-
-
-
--- Procedure to load data from Orders
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetShipCountryByRowVersion') AND type in (N'P', N'PC'))
-    DROP PROCEDURE dbo.GetShipCountryByRowVersion
-GO
-
-CREATE PROCEDURE dbo.GetShipCountryByRowVersion
-(
-    @startRow BIGINT,
-    @endRow BIGINT
-)
-AS
-BEGIN
-SELECT
-	ISNULL(o.ShipCountry, 'NN') AS ShipCountryKey
-FROM
-	Orders o
-WHERE
-    o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow)
-GROUP BY o.ShipCountry
-END
-GO
-
-
--- Procedure to load data from Orders
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetShipCityByRowVersion') AND type in (N'P', N'PC'))
-    DROP PROCEDURE dbo.GetShipCityByRowVersion
-GO
-
-CREATE PROCEDURE dbo.GetShipCityByRowVersion
-(
-    @startRow BIGINT,
-    @endRow BIGINT
-)
-AS
-BEGIN
-SELECT
-	ISNULL(o.ShipCity, 'NN') AS ShipCityKey
-FROM
-	Orders o
-WHERE
-    o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow)
-GROUP BY o.ShipCity
-END
-GO
-
-
-
-
--- Procedure to load data from Orders
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetShipRegionByRowVersion') AND type in (N'P', N'PC'))
-    DROP PROCEDURE dbo.GetShipRegionByRowVersion
-GO
-
-CREATE PROCEDURE dbo.GetShipRegionByRowVersion
-(
-    @startRow BIGINT,
-    @endRow BIGINT
-)
-AS
-BEGIN
-SELECT
-	ISNULL(o.ShipRegion, 'NN') AS ShipRegionKey
-FROM
-	Orders o
-WHERE
-    o.rowversion > CONVERT(BIGINT, @startRow) AND o.rowversion <= CONVERT(BIGINT, @endRow)
-GROUP BY o.ShipRegion
 END
 GO
