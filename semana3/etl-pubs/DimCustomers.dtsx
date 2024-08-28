@@ -11,46 +11,10 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{6A9E1438-98C6-4111-B64A-52C3F9A83232}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{64320300-5D6B-4ED9-95A6-07C29AD9D6EC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SOURCE]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{DF1D2639-3CC4-4C33-85D8-3B3D991D4273}"
-      DTS:ObjectName="SOURCE">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{DF1D2639-3CC4-4C33-85D8-3B3D991D4273}SOURCE;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACd3fciJw/0R2pJ4wpnX+BtOvApiyGyvqe7Xv5O4UhtmAAAAAAOgAAAAAIAACAAAABom9lBDNVPpqEp5/BuvIOOZRVEYukOL4dVm81KfcZpySAAAADb8+ZntZRvgUpnnAJHkruUreMVbGtwrMhs5ukhS4jCWEAAAABxM9lm/LlHJeQGvpNegM9L78D3zpCONFKYKXJE4bNWHv0NMqp9qr65zT0TPtu2pObMJYQpU3o3L8l94O3+ey8d</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[TARGET]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
-      DTS:ObjectName="TARGET">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}TARGET;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADkVGimmCsT6tOhs5FODX85sXkN6IEb1X6aaBlrKLWX/AAAAAAOgAAAAAIAACAAAACkOHp52gNFkrSSj/rud7nr8AMFnknxsPb04yK+hHLWNyAAAACfn/V8R1P2aF3V6UqE8+N53uiPw2vBFT+hJFSsfh8kG0AAAAA6Gd9qfHayGJVjHnpx/0gsIzCHc78fogreq38cSJDXF57qx/AuU0zZOE13DEmLbOtFUyOpAzAaAmEOLTCe4cp2</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -1120,7 +1084,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'customers'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -1142,7 +1106,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{DF1D2639-3CC4-4C33-85D8-3B3D991D4273}"
+          SQLTask:Connection="{6AF7675C-F1C1-4FD3-8B29-4EADD8D3EDB8}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetDatabaseRowVersion]"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -1164,7 +1128,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [staging].[Customers];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1181,7 +1145,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[DW_MergeDimCustomers];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1198,7 +1162,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{66DD765F-A1DF-4DB1-AE23-74C4C3AA5ABB}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'customers', @lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -1414,6 +1378,14 @@ where [refTable].[CustomerID] = ?</property>
           Size="125,42"
           Id="Package\Add New Customer\Búsqueda"
           TopLeft="331,75" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Add New Customer\Load Staging"
+          TopLeft="256,169" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Add New Customer\Add New Customer"
+          TopLeft="412,196" />
         <EdgeLayout
           Id="Package\Add New Customer.Paths[Salida de origen de OLE DB]"
           TopLeft="392.25,47">
@@ -1433,53 +1405,11 @@ where [refTable].[CustomerID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="140,42"
-          Id="Package\Add New Customer\Load Staging"
-          TopLeft="256,169" />
-        <EdgeLayout
-          Id="Package\Add New Customer.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="374,117">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-48,52"
-              Start="0,0"
-              End="-48,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.1943127962085" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.1943127962085"
-                    Point2="0,21.1943127962085"
-                    Point3="-4,21.1943127962085" />
-                  <mssgle:LineSegment
-                    End="-44,21.1943127962085" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-44,21.1943127962085"
-                    Point2="-48,21.1943127962085"
-                    Point3="-48,25.1943127962085" />
-                  <mssgle:LineSegment
-                    End="-48,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-123.8190234375,26.1943127962085,199.638046875,12.1953125"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="169,42"
-          Id="Package\Add New Customer\Add New Customer"
-          TopLeft="412,196" />
         <EdgeLayout
           Id="Package\Add New Customer.Paths[Salida de entradas no coincidentes de búsqueda]"
           TopLeft="413,117">
@@ -1513,6 +1443,42 @@ where [refTable].[CustomerID] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-65.1390234375,37.1990521327014,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Add New Customer.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="374,117">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-48,52"
+              Start="0,0"
+              End="-48,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.1943127962085" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.1943127962085"
+                    Point2="0,21.1943127962085"
+                    Point3="-4,21.1943127962085" />
+                  <mssgle:LineSegment
+                    End="-44,21.1943127962085" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-44,21.1943127962085"
+                    Point2="-48,21.1943127962085"
+                    Point3="-48,25.1943127962085" />
+                  <mssgle:LineSegment
+                    End="-48,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.8190234375,26.1943127962085,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

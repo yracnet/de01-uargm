@@ -11,46 +11,10 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="DimShippers"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{C19E78B9-F19C-4242-A7EB-3E176545E48D}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{5E62D803-879A-4D7B-A015-8E382DF53AA9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SOURCE]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{FE1E7A71-19F7-4142-97B6-09257894B11C}"
-      DTS:ObjectName="SOURCE">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-DimShippers-{FE1E7A71-19F7-4142-97B6-09257894B11C}SOURCE;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACshBbh+kj74VvH8YhmP+mLn+G8YinrnpP+dgohDvrAYAAAAAAOgAAAAAIAACAAAABUxc0zr8DUOrzohPxzB39dKoYyfEfdFup/JVDBZUvv+SAAAADIEBqcwAiMH+ZCSvQmOSSzCkkx7Swu9yEKtRiROqAGj0AAAACewalLKuRYkCDU6YKpmNfQqA4ES9CzxC/u+8xPAPoij2CpRg1Axkr5G6co+XuKkDIU9uGpFcznsugFnRvs18iF</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[TARGET]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{FF02A341-5680-4B1E-B0AD-6530342923F2}"
-      DTS:ObjectName="TARGET">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-DimShippers-{FF02A341-5680-4B1E-B0AD-6530342923F2}TARGET;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABNwaBVp/5/BvHibKwJKkd3jlRW+1dT4A82GmS3DE7+qQAAAAAOgAAAAAIAACAAAAALqTnNv5ud7vN054dN964uaFW8Lrltb+SXodWBEaujIyAAAADucxFU9JY70ub9NXC8mEjdUu4K1jlMGxG8TU7oNBpdsUAAAAD0WIYJThg5gF715P8DX6m/2aawePtIyORHFh/VvWw9SYtlybFb1rplhb43SVNNKoza0uHqM2yhikfGHaeHAB32</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -85,7 +49,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FF02A341-5680-4B1E-B0AD-6530342923F2}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE staging.orders" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -102,7 +66,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FE1E7A71-19F7-4142-97B6-09257894B11C}"
+          SQLTask:Connection="{6AF7675C-F1C1-4FD3-8B29-4EADD8D3EDB8}"
           SQLTask:SqlStatementSource="EXECUTE dbo.GetDatabaseRowVersion"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -124,7 +88,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FF02A341-5680-4B1E-B0AD-6530342923F2}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'suppliers'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -1805,7 +1769,7 @@ where [refTable].[OrderID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FF02A341-5680-4B1E-B0AD-6530342923F2}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="EXECUTE DW_MergeFactOrders" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1822,7 +1786,7 @@ where [refTable].[OrderID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{FF02A341-5680-4B1E-B0AD-6530342923F2}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'orders' ,@lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -2067,43 +2031,33 @@ where [refTable].[OrderID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="152,41.6"
-          Id="Package\New Shippers\Lookup Product"
-          TopLeft="282.142861947721,281.905883961648" />
+          Size="161.6,41.6"
+          Id="Package\New Shippers\Lookup Employee"
+          TopLeft="282.857147674171,203.788236817027" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\New Shippers\Lookup Shippers"
+          TopLeft="309.071433230322,368.276471810852" />
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\New Shippers\Load Staging"
+          TopLeft="156.928574007385,437.676471993172" />
         <NodeLayout
           Size="160.8,41.6"
           Id="Package\New Shippers\Lookup Customer"
           TopLeft="192.857146141481,131.647060389337" />
         <NodeLayout
+          Size="152,41.6"
+          Id="Package\New Shippers\Lookup Product"
+          TopLeft="282.142861947721,281.905883961648" />
+        <NodeLayout
           Size="138.4,41.6"
           Id="Package\New Shippers\Get Shippers"
           TopLeft="201.42857485888,55.8235301946686" />
         <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\New Shippers\Lookup Employee"
-          TopLeft="282.857147674171,203.788236817027" />
-        <EdgeLayout
-          Id="Package\New Shippers.Paths[Salida de origen de OLE DB]"
-          TopLeft="271.942860500181,97.4235301946686">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34.2235301946684"
-              Start="0,0"
-              End="0,26.7235301946684">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.7235301946684" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="142.4,41.6"
+          Id="Package\New Shippers\New Shippers"
+          TopLeft="464.071436380854,441.215967341054" />
         <EdgeLayout
           Id="Package\New Shippers.Paths[Salida de entradas coincidentes de búsqueda1]"
           TopLeft="360.900004810946,245.388236817027">
@@ -2164,50 +2118,66 @@ where [refTable].[OrderID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\New Shippers\Lookup Shippers"
-          TopLeft="309.071433230322,368.276471810852" />
         <EdgeLayout
-          Id="Package\New Shippers.Paths[Salida de entradas coincidentes de búsqueda2]"
-          TopLeft="358.142861947721,323.505883961648">
+          Id="Package\New Shippers.Paths[Salida de origen de OLE DB]"
+          TopLeft="271.942860500181,97.4235301946686">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="28.9285712826012,44.7705878492043"
+              EndConnector="0,34.2235301946684"
               Start="0,0"
-              End="28.9285712826012,37.2705878492043">
+              End="0,26.7235301946684">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.3852939246022" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.3852939246022"
-                    Point2="0,22.3852939246022"
-                    Point3="4,22.3852939246022" />
-                  <mssgle:LineSegment
-                    End="24.9285712826012,22.3852939246022" />
-                  <mssgle:CubicBezierSegment
-                    Point1="24.9285712826012,22.3852939246022"
-                    Point2="28.9285712826012,22.3852939246022"
-                    Point3="28.9285712826012,26.3852939246022" />
-                  <mssgle:LineSegment
-                    End="28.9285712826012,37.2705878492043" />
+                    End="0,26.7235301946684" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-85.3547377961994,27.3852939246022,199.638046875,12.1953125"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="140,41.6"
-          Id="Package\New Shippers\Load Staging"
-          TopLeft="156.928574007385,437.676471993172" />
+        <EdgeLayout
+          Id="Package\New Shippers.Paths[Salida de entradas no coincidentes de búsqueda]"
+          TopLeft="411.738099896989,409.876471810852">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="123.533336483865,31.3394955302015"
+              Start="0,0"
+              End="123.533336483865,23.8394955302015">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.7266986924676" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.7266986924676"
+                    Point2="0,12.7266986924676"
+                    Point3="4,12.7266986924676" />
+                  <mssgle:LineSegment
+                    End="119.533336483865,12.7266986924676" />
+                  <mssgle:CubicBezierSegment
+                    Point1="119.533336483865,12.7266986924676"
+                    Point2="123.533336483865,12.7266986924676"
+                    Point3="123.533336483865,16.7266986924676" />
+                  <mssgle:LineSegment
+                    End="123.533336483865,23.8394955302015" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-45.1223551955676,17.7266986924676,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\New Shippers.Paths[Salida de entradas coincidentes de búsqueda3]"
           TopLeft="387.071433230322,409.876471810852">
@@ -2244,43 +2214,39 @@ where [refTable].[OrderID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="142.4,41.6"
-          Id="Package\New Shippers\New Shippers"
-          TopLeft="464.071436380854,441.215967341054" />
         <EdgeLayout
-          Id="Package\New Shippers.Paths[Salida de entradas no coincidentes de búsqueda]"
-          TopLeft="411.738099896989,409.876471810852">
+          Id="Package\New Shippers.Paths[Salida de entradas coincidentes de búsqueda2]"
+          TopLeft="358.142861947721,323.505883961648">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="123.533336483865,31.3394955302015"
+              EndConnector="28.9285712826012,44.7705878492043"
               Start="0,0"
-              End="123.533336483865,23.8394955302015">
+              End="28.9285712826012,37.2705878492043">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.7266986924676" />
+                    End="0,18.3852939246022" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,8.7266986924676"
-                    Point2="0,12.7266986924676"
-                    Point3="4,12.7266986924676" />
+                    Point1="0,18.3852939246022"
+                    Point2="0,22.3852939246022"
+                    Point3="4,22.3852939246022" />
                   <mssgle:LineSegment
-                    End="119.533336483865,12.7266986924676" />
+                    End="24.9285712826012,22.3852939246022" />
                   <mssgle:CubicBezierSegment
-                    Point1="119.533336483865,12.7266986924676"
-                    Point2="123.533336483865,12.7266986924676"
-                    Point3="123.533336483865,16.7266986924676" />
+                    Point1="24.9285712826012,22.3852939246022"
+                    Point2="28.9285712826012,22.3852939246022"
+                    Point3="28.9285712826012,26.3852939246022" />
                   <mssgle:LineSegment
-                    End="123.533336483865,23.8394955302015" />
+                    End="28.9285712826012,37.2705878492043" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-45.1223551955676,17.7266986924676,213.778046875,12.1953125"
+              BoundingBox="-85.3547377961994,27.3852939246022,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

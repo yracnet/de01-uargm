@@ -11,46 +11,10 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{2D591B75-64D3-419F-B853-B9A82D893ABD}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{5FA980E0-E1D5-4DCD-8F8A-C95D50F9FD38}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SOURCE]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{5F0EC4E0-D4AF-4CEF-B3CE-BD3BE79CE31E}"
-      DTS:ObjectName="SOURCE">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{5F0EC4E0-D4AF-4CEF-B3CE-BD3BE79CE31E}SOURCE;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAAyz7j7ehsceNB/zmEOltNdq/9fnEV7/v8svOLIej/CQAAAAAOgAAAAAIAACAAAABGFebdclZs604JWs8OqVRAGT5NkBS3kw0sWV1cFhYkcSAAAAAvYm3ozFlF/hRS3UB/dk8VFMBLcAgZ7KzU0Sg0mqN6gUAAAAD983le5S+NxCDpipE8mVhKTrwkQtbMdxE19ZlTbE5U/PlHxMYrKD57zneQTZlx72zwgrCPx0BydJmOMbuMHOhZ</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[TARGET]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{14D34B9B-2343-46A6-BD14-1299C18893B5}"
-      DTS:ObjectName="TARGET">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubsDW;Provider=SQLOLEDB.1;Application Name=SSIS-Package1-{14D34B9B-2343-46A6-BD14-1299C18893B5}TARGET;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC3x2On+g8OiPkE9jMiBasSVnAT39UDq2rXvRI4D6BIQgAAAAAOgAAAAAIAACAAAAB8dDNV1qT6nobzT5Zd+/p713zzLzcMoh6pFrTLe7TsUSAAAAAdKYEkV/onX7yVlRsW9qm4pv3266rra+0udmxWeZNb4kAAAACyo9mrNwEyDbMxNX5qEVkBG2mdntGQHoceDNhaecA66hFrLCZE6G6Jnj4BH7iAcivU50PFf8YgHUpK/aj/lbi7</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -1412,7 +1376,7 @@ where [refTable].[EmployeeID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{5F0EC4E0-D4AF-4CEF-B3CE-BD3BE79CE31E}"
+          SQLTask:Connection="{6AF7675C-F1C1-4FD3-8B29-4EADD8D3EDB8}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetDatabaseRowVersion]"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -1434,7 +1398,7 @@ where [refTable].[EmployeeID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{14D34B9B-2343-46A6-BD14-1299C18893B5}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[GetLastPackageRowVersion] @tableName = 'employees'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -1456,7 +1420,7 @@ where [refTable].[EmployeeID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{14D34B9B-2343-46A6-BD14-1299C18893B5}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [staging].[Employees];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1473,7 +1437,7 @@ where [refTable].[EmployeeID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{14D34B9B-2343-46A6-BD14-1299C18893B5}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[DW_MergeDimEmployees]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1490,7 +1454,7 @@ where [refTable].[EmployeeID] = ?</property>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{14D34B9B-2343-46A6-BD14-1299C18893B5}"
+          SQLTask:Connection="{DCC815D0-3936-445D-88C8-6B696A806781}"
           SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName = 'employees', @lastRowVersion = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
