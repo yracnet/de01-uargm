@@ -50,6 +50,7 @@ EXEC InsertIfNotExists 'Orders';
 
 EXEC InsertIfNotExists 'Categories';
 
-EXEC InsertIfNotExists 'suppliers';
+EXEC InsertIfNotExists 'Shippers';
+
 
 --EXEC InsertIfNotExists '';

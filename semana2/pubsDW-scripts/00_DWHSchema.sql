@@ -178,16 +178,16 @@ GO
 		"RequiredDateKey" "int" NOT NULL,
 		"ShippedDateKey" "int" NOT NULL,
 
-		"ShipNameSK" "int" NOT NULL,
-		"ShipCountrySK" "int" NOT NULL,
-		"ShipCitySK" "int" NOT NULL,
-		"ShipRegionSK" "int" NOT NULL,
+		"ShipNameSK" "int" NULL,
+		"ShipCountrySK" "int" NULL,
+		"ShipCitySK" "int" NULL,
+		"ShipRegionSK" "int" NULL,
 
 		"ShipPostalCode" nvarchar (10) NULL,
-		"Freight" "money" NULL CONSTRAINT "DF_Orders_Freight" DEFAULT (0),
-		"UnitPrice" "money" NOT NULL CONSTRAINT "DF_Order_Details_UnitPrice" DEFAULT (0),
-		"Quantity" "smallint" NOT NULL CONSTRAINT "DF_Order_Details_Quantity" DEFAULT (1),
-		"Discount" "real" NOT NULL CONSTRAINT "DF_Order_Details_Discount" DEFAULT (0),
+		"Freight" "money" DEFAULT (0),
+		"UnitPrice" "money" DEFAULT (0),
+		"Quantity" "smallint" DEFAULT (1),
+		"Discount" "real" DEFAULT (0),
 
 		CONSTRAINT "PK_Orders" PRIMARY KEY CLUSTERED ("OrderID" ASC, "ProductID" ASC),
 		
@@ -203,12 +203,9 @@ GO
 		CONSTRAINT "FK_DimDate_RequiredDate" FOREIGN KEY ("RequiredDateKey") REFERENCES "dbo"."DimDate" ("DateKey"),
 		CONSTRAINT "FK_DimDate_ShippedDate" FOREIGN KEY ("ShippedDateKey") REFERENCES "dbo"."DimDate" ("DateKey"),
 		
-		CONSTRAINT "FK_FactOrders_DimShipName" FOREIGN KEY ("ShipNameSK") REFERENCES "dbo"."DimShipName" ("ShipNameSK"),
-		CONSTRAINT "FK_FactOrders_DimShipCountry" FOREIGN KEY ("ShipCountrySK") REFERENCES "dbo"."DimShipCountry" ("ShipCountrySK"),
-		CONSTRAINT "FK_FactOrders_DimShipCity" FOREIGN KEY ("ShipCitySK") REFERENCES "dbo"."DimShipCity" ("ShipCitySK"),
-		CONSTRAINT "FK_FactOrders_DimShipRegion" FOREIGN KEY ("ShipRegionSK") REFERENCES "dbo"."DimShipRegion" ("ShipRegionSK")
-		-- CONSTRAINT "CK_Discount" CHECK ( Discount >= 0 and (Discount <= 1) ),
-		-- CONSTRAINT "CK_Quantity" CHECK (Quantity > 0),
-		-- CONSTRAINT "CK_UnitPrice" CHECK (UnitPrice >= 0)
+		--CONSTRAINT "FK_FactOrders_DimShipName" FOREIGN KEY ("ShipNameSK") REFERENCES "dbo"."DimShipName" ("ShipNameSK"),
+		--CONSTRAINT "FK_FactOrders_DimShipCountry" FOREIGN KEY ("ShipCountrySK") REFERENCES "dbo"."DimShipCountry" ("ShipCountrySK"),
+		--CONSTRAINT "FK_FactOrders_DimShipCity" FOREIGN KEY ("ShipCitySK") REFERENCES "dbo"."DimShipCity" ("ShipCitySK"),
+		--CONSTRAINT "FK_FactOrders_DimShipRegion" FOREIGN KEY ("ShipRegionSK") REFERENCES "dbo"."DimShipRegion" ("ShipRegionSK"),
 	)
 GO

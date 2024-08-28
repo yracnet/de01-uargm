@@ -347,7 +347,7 @@ SELECT
 	o.ShipVia ShipperID,
 	CONVERT(VARCHAR(8), o.OrderDate, 112) OrderDateKey,
 	CONVERT(VARCHAR(8), o.RequiredDate, 112) RequiredDateKey,
-	ISNULL(CONVERT(VARCHAR(8), o.ShippedDate, 112), '00000000') AS ShippedDateKey,
+	ISNULL(CONVERT(VARCHAR(8), o.ShippedDate, 112), '19900101') AS ShippedDateKey,
 	ISNULL(o.ShipName, 'NN') AS ShipNameKey,
 	ISNULL(o.ShipCountry, 'NN') AS ShipCountryKey,
 	ISNULL(o.ShipCity, 'NN') AS ShipCityKey,
