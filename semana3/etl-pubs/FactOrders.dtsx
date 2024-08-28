@@ -11,8 +11,8 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{58327123-9795-4D07-A733-082BEE0455AB}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{B3B292B0-B713-40DD-870C-1918638726FC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -734,34 +734,6 @@
                       externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductSK]"
                       lineageId="Package\New Orders\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda].Columns[OUT_ProductSK]" />
                     <inputColumn
-                      refId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipNameKey]"
-                      cachedDataType="wstr"
-                      cachedLength="40"
-                      cachedName="OUT_ShipNameKey"
-                      externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipNameSK]"
-                      lineageId="Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipNameKey]" />
-                    <inputColumn
-                      refId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipCountryKey]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="OUT_ShipCountryKey"
-                      externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCountrySK]"
-                      lineageId="Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipCountryKey]" />
-                    <inputColumn
-                      refId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipCityKey]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="OUT_ShipCityKey"
-                      externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCitySK]"
-                      lineageId="Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipCityKey]" />
-                    <inputColumn
-                      refId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipRegionKey]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="OUT_ShipRegionKey"
-                      externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipRegionSK]"
-                      lineageId="Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipRegionKey]" />
-                    <inputColumn
                       refId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_SupplierSK]"
                       cachedDataType="i4"
                       cachedName="OUT_SupplierSK"
@@ -779,6 +751,30 @@
                       cachedName="OUT_ShipperSK"
                       externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipperSK]"
                       lineageId="Package\New Orders\Lookup Shipper.Outputs[Salida de entradas coincidentes de búsqueda].Columns[OUT_ShipperSK]" />
+                    <inputColumn
+                      refId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipNameSK]"
+                      cachedDataType="i4"
+                      cachedName="OUT_ShipNameSK"
+                      externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipNameSK]"
+                      lineageId="Package\New Orders\Lookup ShipName.Outputs[Lookup Match Output].Columns[OUT_ShipNameSK]" />
+                    <inputColumn
+                      refId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipCountrySK]"
+                      cachedDataType="i4"
+                      cachedName="OUT_ShipCountrySK"
+                      externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCountrySK]"
+                      lineageId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Match Output].Columns[OUT_ShipCountrySK]" />
+                    <inputColumn
+                      refId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipCitySK]"
+                      cachedDataType="i4"
+                      cachedName="OUT_ShipCitySK"
+                      externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCitySK]"
+                      lineageId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Match Output].Columns[OUT_ShipCitySK]" />
+                    <inputColumn
+                      refId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipRegionSK]"
+                      cachedDataType="i4"
+                      cachedName="OUT_ShipRegionSK"
+                      externalMetadataColumnId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipRegionSK]"
+                      lineageId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Match Output].Columns[OUT_ShipRegionSK]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1717,6 +1713,483 @@ where [refTable].[ProductID] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\New Orders\Lookup ShipCity"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup ShipCity"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimShipCity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimShipCity]) [refTable]
+where [refTable].[CityName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipCitySK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipCityKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\New Orders\Lookup ShipCity.Connections[OleDbConnection]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\New Orders\Lookup ShipCity.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\New Orders\Lookup ShipCity.Inputs[Lookup Input].Columns[OUT_ShipCityKey]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="OUT_ShipCityKey"
+                      lineageId="Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipCityKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CityName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipCity.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Match Output].Columns[OUT_ShipCitySK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Match Output].Columns[OUT_ShipCitySK]"
+                      name="OUT_ShipCitySK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ShipCitySK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\New Orders\Lookup ShipCity.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipCity.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipCity.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\New Orders\Lookup ShipCountry"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup ShipCountry"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimShipCountry]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimShipCountry]) [refTable]
+where [refTable].[CountryName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipCountrySK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipCountryKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\New Orders\Lookup ShipCountry.Connections[OleDbConnection]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\New Orders\Lookup ShipCountry.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\New Orders\Lookup ShipCountry.Inputs[Lookup Input].Columns[OUT_ShipCountryKey]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="OUT_ShipCountryKey"
+                      lineageId="Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipCountryKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CountryName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipCountry.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Match Output].Columns[OUT_ShipCountrySK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Match Output].Columns[OUT_ShipCountrySK]"
+                      name="OUT_ShipCountrySK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ShipCountrySK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipCountry.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipCountry.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\New Orders\Lookup ShipName"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup ShipName"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimShipName]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimShipName]) [refTable]
+where [refTable].[ShipName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipNameSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ShipName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipNameKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\New Orders\Lookup ShipName.Connections[OleDbConnection]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\New Orders\Lookup ShipName.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\New Orders\Lookup ShipName.Inputs[Lookup Input].Columns[OUT_ShipNameKey]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="OUT_ShipNameKey"
+                      lineageId="Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipNameKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ShipName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\New Orders\Lookup ShipName.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipName.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipName.Outputs[Lookup Match Output].Columns[OUT_ShipNameSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\New Orders\Lookup ShipName.Outputs[Lookup Match Output].Columns[OUT_ShipNameSK]"
+                      name="OUT_ShipNameSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ShipNameSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\New Orders\Lookup ShipName.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipName.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\New Orders\Lookup ShipName.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipName.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipName.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\New Orders\Lookup ShipName.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipName.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\New Orders\Lookup ShipName.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\New Orders\Lookup Shipper"
               componentClassID="Microsoft.Lookup"
               contactInfo="Búsqueda;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;6"
@@ -1867,6 +2340,165 @@ where [refTable].[ShipperID] = ?</property>
                       refId="Package\New Orders\Lookup Shipper.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\New Orders\Lookup Shipper.Outputs[Salida de error de búsqueda].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\New Orders\Lookup ShipRegion"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup ShipRegion"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimShipRegion]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimShipRegion]) [refTable]
+where [refTable].[RegionName] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ShipRegionSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="RegionName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipRegionKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\New Orders\Lookup ShipRegion.Connections[OleDbConnection]"
+                  connectionManagerID="{DCC815D0-3936-445D-88C8-6B696A806781}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TARGET_PUBS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\New Orders\Lookup ShipRegion.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\New Orders\Lookup ShipRegion.Inputs[Lookup Input].Columns[OUT_ShipRegionKey]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="OUT_ShipRegionKey"
+                      lineageId="Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipRegionKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">RegionName</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipRegion.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Match Output].Columns[OUT_ShipRegionSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Match Output].Columns[OUT_ShipRegionSK]"
+                      name="OUT_ShipRegionSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ShipRegionSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipRegion.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\New Orders\Lookup ShipRegion.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2207,6 +2839,30 @@ where [refTable].[SupplierID] = ?</property>
                       cachedName="OUT_ShipPostalCode"
                       externalMetadataColumnId="Package\New Orders\New Orders.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipPostalCode]"
                       lineageId="Package\New Orders\Get Orders.Outputs[Salida de origen de OLE DB].Columns[OUT_ShipPostalCode]" />
+                    <inputColumn
+                      refId="Package\New Orders\New Orders.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipNameSK]"
+                      cachedDataType="i4"
+                      cachedName="OUT_ShipNameSK"
+                      externalMetadataColumnId="Package\New Orders\New Orders.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipNameSK]"
+                      lineageId="Package\New Orders\Lookup ShipName.Outputs[Lookup Match Output].Columns[OUT_ShipNameSK]" />
+                    <inputColumn
+                      refId="Package\New Orders\New Orders.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipCountrySK]"
+                      cachedDataType="i4"
+                      cachedName="OUT_ShipCountrySK"
+                      externalMetadataColumnId="Package\New Orders\New Orders.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCountrySK]"
+                      lineageId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Match Output].Columns[OUT_ShipCountrySK]" />
+                    <inputColumn
+                      refId="Package\New Orders\New Orders.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipCitySK]"
+                      cachedDataType="i4"
+                      cachedName="OUT_ShipCitySK"
+                      externalMetadataColumnId="Package\New Orders\New Orders.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipCitySK]"
+                      lineageId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Match Output].Columns[OUT_ShipCitySK]" />
+                    <inputColumn
+                      refId="Package\New Orders\New Orders.Inputs[Entrada de destino de OLE DB].Columns[OUT_ShipRegionSK]"
+                      cachedDataType="i4"
+                      cachedName="OUT_ShipRegionSK"
+                      externalMetadataColumnId="Package\New Orders\New Orders.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShipRegionSK]"
+                      lineageId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Match Output].Columns[OUT_ShipRegionSK]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2322,38 +2978,58 @@ where [refTable].[SupplierID] = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\New Orders.Paths[Lookup Match Output]"
+              endId="Package\New Orders\Lookup ShipCountry.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\New Orders\Lookup ShipCity.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\New Orders.Paths[Lookup Match Output1]"
+              endId="Package\New Orders\Lookup ShipName.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\New Orders\Lookup ShipCountry.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\New Orders.Paths[Lookup Match Output2]"
+              endId="Package\New Orders\Lookup Shipper.Inputs[Entrada de búsqueda]"
+              name="Lookup Match Output"
+              startId="Package\New Orders\Lookup ShipName.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\New Orders.Paths[Lookup Match Output3]"
+              endId="Package\New Orders\Lookup Orders.Inputs[Entrada de búsqueda]"
+              name="Lookup Match Output"
+              startId="Package\New Orders\Lookup ShipRegion.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\New Orders.Paths[OK]"
+              endId="Package\New Orders\Lookup Product.Inputs[Entrada de búsqueda]"
+              name="OK"
+              startId="Package\New Orders\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
               refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda]"
               endId="Package\New Orders\Load Staging.Inputs[Entrada de destino de OLE DB]"
               name="Salida de entradas coincidentes de búsqueda"
               startId="Package\New Orders\Lookup Orders.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
               refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda1]"
-              endId="Package\New Orders\Lookup Customer.Inputs[Entrada de búsqueda]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\New Orders\Lookup Category.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
-              refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda2]"
               endId="Package\New Orders\Lookup Employee.Inputs[Entrada de búsqueda]"
               name="Salida de entradas coincidentes de búsqueda"
               startId="Package\New Orders\Lookup Customer.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
-              refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda3]"
-              endId="Package\New Orders\Lookup Product.Inputs[Entrada de búsqueda]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\New Orders\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
-              refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda4]"
-              endId="Package\New Orders\Lookup Shipper.Inputs[Entrada de búsqueda]"
-              name="Salida de entradas coincidentes de búsqueda"
-              startId="Package\New Orders\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda]" />
-            <path
-              refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda5]"
+              refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda2]"
               endId="Package\New Orders\Lookup Supplier.Inputs[Entrada de búsqueda]"
               name="Salida de entradas coincidentes de búsqueda"
               startId="Package\New Orders\Lookup Shipper.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
-              refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda6]"
-              endId="Package\New Orders\Lookup Orders.Inputs[Entrada de búsqueda]"
+              refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda3]"
+              endId="Package\New Orders\Lookup ShipCity.Inputs[Lookup Input]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\New Orders\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda4]"
+              endId="Package\New Orders\Lookup Customer.Inputs[Entrada de búsqueda]"
+              name="Salida de entradas coincidentes de búsqueda"
+              startId="Package\New Orders\Lookup Category.Outputs[Salida de entradas coincidentes de búsqueda]" />
+            <path
+              refId="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda5]"
+              endId="Package\New Orders\Lookup ShipRegion.Inputs[Lookup Input]"
               name="Salida de entradas coincidentes de búsqueda"
               startId="Package\New Orders\Lookup Supplier.Outputs[Salida de entradas coincidentes de búsqueda]" />
             <path
@@ -2647,35 +3323,35 @@ where [refTable].[SupplierID] = ?</property>
         <NodeLayout
           Size="151,42"
           Id="Package\New Orders\Lookup Shipper"
-          TopLeft="475.299148279377,236.47328064599" />
+          TopLeft="484.299148279377,122.47328064599" />
         <NodeLayout
           Size="161,42"
           Id="Package\New Orders\Lookup Customer"
-          TopLeft="92.8571461414809,221.647060389337" />
+          TopLeft="99.8571461414809,270.647060389337" />
         <NodeLayout
           Size="147,42"
           Id="Package\New Orders\Lookup Orders"
-          TopLeft="819.880955458499,241.590199231497" />
+          TopLeft="823.880955458499,385.590199231497" />
         <NodeLayout
           Size="134,42"
           Id="Package\New Orders\New Orders"
-          TopLeft="1203.94842065381,240.124185183652" />
+          TopLeft="1220.94842065381,378.124185183652" />
         <NodeLayout
           Size="152,42"
           Id="Package\New Orders\Lookup Product"
-          TopLeft="93.3699681748274,433.056677612442" />
+          TopLeft="105.369968174827,505.056677612442" />
         <NodeLayout
           Size="140,42"
           Id="Package\New Orders\Load Staging"
-          TopLeft="830.23809632071,376.84739061863" />
+          TopLeft="823.23809632071,500.84739061863" />
         <NodeLayout
           Size="158,42"
           Id="Package\New Orders\Lookup Category"
-          TopLeft="100.674606008865,123.630580367511" />
+          TopLeft="101.674606008865,124.630580367511" />
         <NodeLayout
           Size="162,42"
           Id="Package\New Orders\Lookup Employee"
-          TopLeft="91.5277825948059,325.276332055122" />
+          TopLeft="95.5277825948059,392.276332055122" />
         <NodeLayout
           Size="130,42"
           Id="Package\New Orders\Get Orders"
@@ -2685,242 +3361,328 @@ where [refTable].[SupplierID] = ?</property>
           Id="Package\New Orders\Lookup Supplier"
           TopLeft="818.492066314161,114.926472722453" />
         <EdgeLayout
-          Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda4]"
-          TopLeft="193.369968174827,433.056677612442">
+          Id="Package\New Orders.Paths[OK]"
+          TopLeft="178.948875384817,434.276332055122">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="357.42918010455,-154.583396966452"
+              EndConnector="0,70.7803455573199"
               Start="0,0"
-              End="357.42918010455,-147.083396966452">
+              End="0,63.2803455573199">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-58.7995050176212" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-58.7995050176212"
-                    Point2="0,-62.7995050176212"
-                    Point3="4,-62.7995050176212" />
-                  <mssgle:LineSegment
-                    End="353.42918010455,-62.7995050176212" />
-                  <mssgle:CubicBezierSegment
-                    Point1="353.42918010455,-62.7995050176212"
-                    Point2="357.42918010455,-62.7995050176212"
-                    Point3="357.42918010455,-66.7995050176212" />
-                  <mssgle:LineSegment
-                    End="357.42918010455,-147.083396966452" />
+                    End="0,63.2803455573199" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="48.997187708525,-57.7995050176212,259.4348046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda3]"
-          TopLeft="170.948875384817,367.276332055122">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65.7803455573194"
-              Start="0,0"
-              End="0,58.2803455573194">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.2803455573194" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-129.71740234375,23.0425165286597,259.4348046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda2]"
-          TopLeft="172.942464368143,263.647060389337">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,61.6292716657854"
-              Start="0,0"
-              End="0,54.1292716657854">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.1292716657854" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-129.71740234375,20.9669795828927,259.4348046875,12.1953125"
+              BoundingBox="-99.8190234375,25.54251652866,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda1]"
-          TopLeft="176.515876075173,165.630580367511">
+          TopLeft="178.442464368143,312.647060389337">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56.0164800218259"
+              EndConnector="0,79.629271665785"
               Start="0,0"
-              End="0,48.5164800218259">
+              End="0,72.129271665785">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.5164800218259" />
+                    End="0,72.129271665785" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-129.71740234375,18.1605837609129,259.4348046875,12.1953125"
+              BoundingBox="-99.8190234375,29.9669795828925,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="896.809525889605,283.590199231497">
+          TopLeft="895.309525889605,427.590199231497">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,93.2571913871338"
+              EndConnector="0,73.257191387133"
               Start="0,0"
-              End="0,85.7571913871338">
+              End="0,65.757191387133">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,85.7571913871338" />
+                    End="0,65.757191387133" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,36.7809394435669,199.638046875,12.1953125"
+              BoundingBox="-99.8190234375,26.7809394435665,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\New Orders.Paths[Salida de origen de OLE DB]"
-          TopLeft="179.162701544983,56.7124190835575">
+          TopLeft="179.662701544983,56.7124190835575">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,66.9181612839536"
+              EndConnector="0,67.9181612839535"
               Start="0,0"
-              End="0,59.4181612839536">
+              End="0,60.4181612839535">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.4181612839536" />
+                    End="0,60.4181612839535" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-25.0951171875,24.0948228294768,50.190234375,11.228515625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\New Orders.Paths[Salida de entradas no coincidentes de búsqueda]"
-          TopLeft="966.880955458499,261.857192207574">
+          TopLeft="970.880955458499,402.857192207574">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="237.06746519531,0"
+              EndConnector="250.067465195311,0"
               Start="0,0"
-              End="229.56746519531,0">
+              End="242.567465195311,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="229.56746519531,0" />
+                    End="242.567465195311,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-22.003669746095,5,273.5748046875,12.1953125"
+              BoundingBox="14.3947091601555,5,213.778046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda6]"
-          TopLeft="894.43651088633,156.926472722453">
+          Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda2]"
+          TopLeft="635.299148279377,139.699876684222">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,84.6637265090437"
+              EndConnector="183.192918034784,0"
               Start="0,0"
-              End="0,77.1637265090437">
+              End="175.692918034784,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,77.1637265090437" />
+                    End="175.692918034784,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-129.71740234375,32.4842070045218,259.4348046875,12.1953125"
+              BoundingBox="-11.972564420108,5,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\New Orders\Lookup ShipCity"
+          TopLeft="481,502" />
+        <EdgeLayout
+          Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda3]"
+          TopLeft="257.369968174827,524.528338806221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="223.630031825173,0"
+              Start="0,0"
+              End="216.130031825173,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="216.130031825173,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="8.24599247508628,5,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\New Orders\Lookup ShipCountry"
+          TopLeft="474,391" />
+        <EdgeLayout
+          Id="Package\New Orders.Paths[Lookup Match Output]"
+          TopLeft="559.25,502">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-69"
+              Start="0,0"
+              End="0,-61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,-36.5546875,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164,42"
+          Id="Package\New Orders\Lookup ShipName"
+          TopLeft="477,271" />
+        <EdgeLayout
+          Id="Package\New Orders.Paths[Lookup Match Output1]"
+          TopLeft="559.75,391">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-78"
+              Start="0,0"
+              End="0,-70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,-41.0546875,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\New Orders.Paths[Lookup Match Output2]"
+          TopLeft="559.399574139689,271">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-106.52671935401"
+              Start="0,0"
+              End="0,-99.02671935401">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-99.02671935401" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,-55.318047177005,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda4]"
+          TopLeft="180.515876075173,166.630580367511">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,104.016480021826"
+              Start="0,0"
+              End="0,96.516480021826">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,96.516480021826" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,42.160583760913,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="169,42"
+          Id="Package\New Orders\Lookup ShipRegion"
+          TopLeft="807,269" />
         <EdgeLayout
           Id="Package\New Orders.Paths[Salida de entradas coincidentes de búsqueda5]"
-          TopLeft="550.799148279377,236.47328064599">
+          TopLeft="893.496033157081,156.926472722453">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="320.35958470145,-79.5468079235367"
+              EndConnector="0,112.073527277547"
               Start="0,0"
-              End="320.35958470145,-72.0468079235367">
+              End="0,104.573527277547">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-43.237307533" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-43.237307533"
-                    Point2="0,-47.237307533"
-                    Point3="4,-47.237307533" />
-                  <mssgle:LineSegment
-                    End="316.35958470145,-47.237307533" />
-                  <mssgle:CubicBezierSegment
-                    Point1="316.35958470145,-47.237307533"
-                    Point2="320.35958470145,-47.237307533"
-                    Point3="320.35958470145,-51.237307533" />
-                  <mssgle:LineSegment
-                    End="320.35958470145,-72.0468079235367" />
+                    End="0,104.573527277547" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="30.462390006975,-42.237307533,259.4348046875,12.1953125"
+              BoundingBox="-99.8190234375,46.1891073887735,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\New Orders.Paths[Lookup Match Output3]"
+          TopLeft="894.44047772925,311">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.590199231497"
+              Start="0,0"
+              End="0,67.090199231497">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.090199231497" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,27.7404121157485,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3116,6 +3878,98 @@ where [refTable].[SupplierID] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\New Orders\Lookup ShipCity">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimShipCity]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\New Orders\Lookup ShipCountry">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimShipCountry]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\New Orders\Lookup ShipName">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimShipName]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\New Orders\Lookup ShipRegion">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimShipRegion]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
