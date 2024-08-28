@@ -25,12 +25,15 @@ BEGIN
 END
 GO
 
-
+EXEC InsertIfNotExists 'Categories'
+EXEC InsertIfNotExists 'Suppliers'
 EXEC InsertIfNotExists 'Products'
 EXEC InsertIfNotExists 'Customers'
 EXEC InsertIfNotExists 'Employees'
+EXEC InsertIfNotExists 'ShipName'
+EXEC InsertIfNotExists 'ShipCountry'
+EXEC InsertIfNotExists 'ShipCity'
+EXEC InsertIfNotExists 'ShipRegion'
 EXEC InsertIfNotExists 'Orders'
-EXEC InsertIfNotExists 'Categories'
-EXEC InsertIfNotExists 'suppliers'
 --EXEC InsertIfNotExists ''
 
