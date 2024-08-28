@@ -152,28 +152,28 @@ GO
 
 	CREATE TABLE "DimShipName"(
 		"ShipNameSK" "int" IDENTITY(1, 1) NOT NULL,
-		"Name" nvarchar (100) NULL,
+		"ShipNameName" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipNameKey" PRIMARY KEY CLUSTERED ("ShipNameSK")
 	)
 GO
 
 	CREATE TABLE "DimShipCountry"(
 		"ShipCountrySK" "int" IDENTITY(1, 1) NOT NULL,
-		"Name" nvarchar (100) NULL,
+		"ShipCountryName" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipCountryKey" PRIMARY KEY CLUSTERED ("ShipCountrySK")
 	)
 GO
 
 	CREATE TABLE "DimShipCity"(
 		"ShipCitySK" "int" IDENTITY(1, 1) NOT NULL,
-		"Name" nvarchar (100) NULL,
+		"ShipCityName" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipCityKey" PRIMARY KEY CLUSTERED ("ShipCitySK")
 	)
 GO
 
 	CREATE TABLE "DimShipRegion"(
 		"ShipRegionSK" "int" IDENTITY(1, 1) NOT NULL,
-		"Name" nvarchar (100) NULL,
+		"ShipRegionName" nvarchar (100) NULL,
 		CONSTRAINT "PK_ShipRegionKey" PRIMARY KEY CLUSTERED ("ShipRegionSK")
 	)
 GO
