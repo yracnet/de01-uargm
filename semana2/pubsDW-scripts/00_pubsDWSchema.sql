@@ -193,8 +193,6 @@ GO
 		"UnitPrice" "money" NOT NULL CONSTRAINT "DF_Order_Details_UnitPrice" DEFAULT (0),
 		"Quantity" "smallint" NOT NULL CONSTRAINT "DF_Order_Details_Quantity" DEFAULT (1),
 		"Discount" "real" NOT NULL CONSTRAINT "DF_Order_Details_Discount" DEFAULT (0),
-		"ShipperID" "int" NOT NULL,
-		"ShippersCompanyName" nvarchar (40) NOT NULL,
 		CONSTRAINT "PK_Orders" PRIMARY KEY CLUSTERED ("OrderID" ASC, "ProductID" ASC),
 		CONSTRAINT "FK_Orders_Products" FOREIGN KEY ("ProductSK") REFERENCES "dbo"."DimProducts" ("ProductSK"),
 		CONSTRAINT "FK_Orders_DimCustomers" FOREIGN KEY ("CustomerSK") REFERENCES "dbo"."DimCustomers" ("CustomerSK"),
