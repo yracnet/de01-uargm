@@ -1,17 +1,17 @@
 Cristhian:
-- DimProducts.dtsx   ERROR
+- DimProducts.dtsx   SUCCESS
 - DimCategories      PENDING
 - DimSuppliers       PENDING
 - DimShippers        PENDING
-- DimShipName        PENDING
-- DimShipCountry     PENDING
+- DimShipName        SUCCESS
+- DimShipCountry     SUCCESS
 
 Nicolas:
 - DimCustomers.dtsx  SUCCESS
-- DimEmployees.dtsx  ERROR
-- DimShipCity        PENDING
+- DimEmployees.dtsx  SUCCESS
+- DimShipCity        SUCCESS
 - DimShipRegion      PENDING
 - FacOrders          PENDING
 
 Rimbert:
-- DimDate  SCRIPT    PENDING
+- DimDate  SCRIPT    SUCCESS

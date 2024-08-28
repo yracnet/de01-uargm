@@ -5,14 +5,11 @@ USE pubsDW
 GO
     -- Procedure to load data from GetLastPackageRowVersion
     IF EXISTS (
-        SELECT
-            *
-        FROM
-            sys.objects
-        WHERE
-            object_id = OBJECT_ID(N 'dbo.InsertIfNotExists')
-            AND type in (N'P', N'PC')
-    ) DROP PROCEDURE dbo.InsertIfNotExists
+        SELECT *
+        FROM sys.objects
+        WHERE object_id = OBJECT_ID(N'dbo.InsertIfNotExists') AND type in (N'P', N'PC')
+    ) 
+    DROP PROCEDURE dbo.InsertIfNotExists
 GO
     CREATE PROCEDURE InsertIfNotExists @TableName NVARCHAR(255) AS BEGIN IF NOT EXISTS(
         SELECT
@@ -29,7 +26,9 @@ VALUES
 END
 END
 GO
-    EXEC InsertIfNotExists 'Categories';
+;
+
+EXEC InsertIfNotExists 'Categories';
 
 EXEC InsertIfNotExists 'Suppliers';
 

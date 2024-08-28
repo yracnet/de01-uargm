@@ -11,8 +11,8 @@
   DTS:LocaleID="16394"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{2D34D8C6-C678-4B17-ADCB-5061622CABF2}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{8EDC2AA9-D7D7-4FA4-B609-11B240CEBC64}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -131,24 +131,6 @@
                       name="ProductName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[SupplierID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[SupplierID]"
-                      lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[SupplierID]"
-                      name="SupplierID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[CategoryID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoryID]"
-                      lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[CategoryID]"
-                      name="CategoryID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[QuantityPerUnit]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
@@ -226,14 +208,6 @@
                       length="40"
                       name="ProductName" />
                     <externalMetadataColumn
-                      refId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[SupplierID]"
-                      dataType="i4"
-                      name="SupplierID" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoryID]"
-                      dataType="i4"
-                      name="CategoryID" />
-                    <externalMetadataColumn
                       refId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[QuantityPerUnit]"
                       dataType="wstr"
                       length="20"
@@ -281,16 +255,6 @@
                       length="40"
                       lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[ProductName]"
                       name="ProductName" />
-                    <outputColumn
-                      refId="Package\Add New Products\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[SupplierID]"
-                      dataType="i4"
-                      lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[SupplierID]"
-                      name="SupplierID" />
-                    <outputColumn
-                      refId="Package\Add New Products\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[CategoryID]"
-                      dataType="i4"
-                      lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[CategoryID]"
-                      name="CategoryID" />
                     <outputColumn
                       refId="Package\Add New Products\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[QuantityPerUnit]"
                       dataType="wstr"
@@ -425,18 +389,6 @@
                       externalMetadataColumnId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductName]"
                       lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[ProductName]" />
                     <inputColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[SupplierID]"
-                      cachedDataType="i4"
-                      cachedName="SupplierID"
-                      externalMetadataColumnId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierID]"
-                      lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[SupplierID]" />
-                    <inputColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[CategoryID]"
-                      cachedDataType="i4"
-                      cachedName="CategoryID"
-                      externalMetadataColumnId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CategoryID]"
-                      lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[CategoryID]" />
-                    <inputColumn
                       refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].Columns[QuantityPerUnit]"
                       cachedDataType="wstr"
                       cachedLength="20"
@@ -517,72 +469,9 @@
                       dataType="bool"
                       name="Discontinued" />
                     <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierID]"
+                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductID]"
                       dataType="i4"
-                      name="SupplierID" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierCompanyName]"
-                      dataType="wstr"
-                      length="40"
-                      name="SupplierCompanyName" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierContactName]"
-                      dataType="wstr"
-                      length="30"
-                      name="SupplierContactName" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierContactTitle]"
-                      dataType="wstr"
-                      length="30"
-                      name="SupplierContactTitle" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierAddress]"
-                      dataType="wstr"
-                      length="60"
-                      name="SupplierAddress" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierCity]"
-                      dataType="wstr"
-                      length="15"
-                      name="SupplierCity" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierRegion]"
-                      dataType="wstr"
-                      length="15"
-                      name="SupplierRegion" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierPostalCode]"
-                      dataType="wstr"
-                      length="10"
-                      name="SupplierPostalCode" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierCountry]"
-                      dataType="wstr"
-                      length="15"
-                      name="SupplierCountry" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierPhone]"
-                      dataType="wstr"
-                      length="24"
-                      name="SupplierPhone" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierFax]"
-                      dataType="wstr"
-                      length="24"
-                      name="SupplierFax" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierHomePage]"
-                      dataType="nText"
-                      name="SupplierHomePage" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CategoryID]"
-                      dataType="i4"
-                      name="CategoryID" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CategoryName]"
-                      dataType="wstr"
-                      length="15"
-                      name="CategoryName" />
+                      name="ProductID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -854,18 +743,6 @@ where [refTable].[ProductID] = ?</property>
                       externalMetadataColumnId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductName]"
                       lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[ProductName]" />
                     <inputColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].Columns[SupplierID]"
-                      cachedDataType="i4"
-                      cachedName="SupplierID"
-                      externalMetadataColumnId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierID]"
-                      lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[SupplierID]" />
-                    <inputColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].Columns[CategoryID]"
-                      cachedDataType="i4"
-                      cachedName="CategoryID"
-                      externalMetadataColumnId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[CategoryID]"
-                      lineageId="Package\Add New Products\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[CategoryID]" />
-                    <inputColumn
                       refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].Columns[QuantityPerUnit]"
                       cachedDataType="wstr"
                       cachedLength="20"
@@ -943,73 +820,6 @@ where [refTable].[ProductID] = ?</property>
                       refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[Discontinued]"
                       dataType="bool"
                       name="Discontinued" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierID]"
-                      dataType="i4"
-                      name="SupplierID" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierCompanyName]"
-                      dataType="wstr"
-                      length="40"
-                      name="SupplierCompanyName" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierContactName]"
-                      dataType="wstr"
-                      length="30"
-                      name="SupplierContactName" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierContactTitle]"
-                      dataType="wstr"
-                      length="30"
-                      name="SupplierContactTitle" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierAddress]"
-                      dataType="wstr"
-                      length="60"
-                      name="SupplierAddress" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierCity]"
-                      dataType="wstr"
-                      length="15"
-                      name="SupplierCity" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierRegion]"
-                      dataType="wstr"
-                      length="15"
-                      name="SupplierRegion" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierPostalCode]"
-                      dataType="wstr"
-                      length="10"
-                      name="SupplierPostalCode" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierCountry]"
-                      dataType="wstr"
-                      length="15"
-                      name="SupplierCountry" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierPhone]"
-                      dataType="wstr"
-                      length="24"
-                      name="SupplierPhone" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierFax]"
-                      dataType="wstr"
-                      length="24"
-                      name="SupplierFax" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierHomePage]"
-                      dataType="nText"
-                      name="SupplierHomePage" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[CategoryID]"
-                      dataType="i4"
-                      name="CategoryID" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Products\New Products.Inputs[Entrada de destino de OLE DB].ExternalColumns[CategoryName]"
-                      dataType="wstr"
-                      length="15"
-                      name="CategoryName" />
                   </externalMetadataColumns>
                 </input>
               </inputs>

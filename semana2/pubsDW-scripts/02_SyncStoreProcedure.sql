@@ -11,7 +11,6 @@ GO
 GO
 SET
 	ANSI_NULLS ON
-GO
 SET
 	QUOTED_IDENTIFIER ON
 GO
@@ -62,7 +61,7 @@ WHERE
 
 END
 GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeDimCategories]    Script Date: 25/08/2024 9:23:54 PM ******/
+	-- ================================================================
 	IF EXISTS (
 		SELECT
 			*
@@ -77,16 +76,104 @@ GO
 UPDATE
 	"dp"
 SET
-	"CategoryID" = "sp"."CategoryID",
+	--"CategoryID" = "sp"."CategoryID",
 	"CategoryName" = "sp"."CategoryName",
 	"Description" = "sp"."Description",
 	"Picture" = "sp"."Picture"
 FROM
 	"dbo"."DimCategories" "dp"
 	INNER JOIN "staging"."Categories" "sp" ON ("dp"."CategorySK" = "sp"."CategorySK")
+END;
+
+--- =================================================================================
+IF EXISTS (
+	SELECT
+		*
+	FROM
+		sys.objects
+	WHERE
+		object_id = OBJECT_ID(N'dbo.DW_MergeDimCustomers')
+		AND type in (N'P', N'PC')
+) DROP PROCEDURE dbo.DW_MergeDimCustomers
+GO
+	CREATE PROCEDURE dbo.DW_MergeDimCustomers AS BEGIN
+UPDATE
+	"dc"
+SET
+	--"CustomerID" = "sc"."CustomerID",
+	"CompanyName" = "sc"."CompanyName",
+	"ContactName" = "sc"."ContactName",
+	"ContactTitle" = "sc"."ContactTitle",
+	"Address" = "sc"."Address",
+	"City" = "sc"."City",
+	"Region" = "sc"."Region",
+	"PostalCode" = "sc"."PostalCode",
+	"Country" = "sc"."Country",
+	"Phone" = "sc"."Phone",
+	"Fax" = "sc"."Fax"
+FROM
+	"dbo"."DimCustomers" "dc"
+	INNER JOIN "staging"."Customers" "sc" ON ("dc"."CustomerSK" = "sc"."CustomerSK")
+END;
+
+GO
+	--- =================================================================================
+	IF EXISTS (
+		SELECT
+			*
+		FROM
+			sys.objects
+		WHERE
+			object_id = OBJECT_ID(N'dbo.DW_MergeDimEmployees')
+			AND type in (N'P', N'PC')
+	) DROP PROCEDURE dbo.DW_MergeDimEmployees
+GO
+	CREATE PROCEDURE dbo.DW_MergeDimEmployees AS BEGIN
+UPDATE
+	"de"
+SET
+	--"EmployeeID" = "se"."EmployeeID",
+	"LastName" = "se"."LastName",
+	"FirstName" = "se"."FirstName",
+	"Title" = "se"."Title",
+	"TitleOfCourtesy" = "se"."TitleOfCourtesy",
+	"BirthDate" = "se"."BirthDate",
+	"HireDate" = "se"."HireDate",
+	"Address" = "se"."Address"
+FROM
+	"dbo"."DimEmployees" "de"
+	INNER JOIN "staging"."Employees" "se" ON ("de"."EmployeeSK" = "se"."EmployeeSK")
 END
 GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeDimSuppliers]    Script Date: 25/08/2024 9:23:54 PM ******/
+	--- =================================================================================
+	IF EXISTS (
+		SELECT
+			*
+		FROM
+			sys.objects
+		WHERE
+			object_id = OBJECT_ID(N'dbo.DW_MergeDimProducts')
+			AND type in (N'P', N'PC')
+	) DROP PROCEDURE dbo.DW_MergeDimProducts
+GO
+	CREATE PROCEDURE dbo.DW_MergeDimProducts AS BEGIN
+UPDATE
+	"dp"
+SET
+	--"ProductID" = "sp"."ProductID",
+	"ProductName" = "sp"."ProductName",
+	"QuantityPerUnit" = "sp"."QuantityPerUnit",
+	"UnitPrice" = "sp"."UnitPrice",
+	"UnitsInStock" = "sp"."UnitsInStock",
+	"UnitsOnOrder" = "sp"."UnitsOnOrder",
+	"ReorderLevel" = "sp"."ReorderLevel",
+	"Discontinued" = "sp"."Discontinued"
+FROM
+	"dbo"."DimProducts" "dp"
+	INNER JOIN "staging"."Products" "sp" ON ("dp"."ProductSK" = "sp"."ProductSK")
+END
+GO
+	--- =================================================================================
 	IF EXISTS (
 		SELECT
 			*
@@ -101,7 +188,7 @@ GO
 UPDATE
 	"dp"
 SET
-	"SupplierID" = "sp"."SupplierID",
+	--"SupplierID" = "sp"."SupplierID",
 	"CompanyName" = "sp"."CompanyName",
 	"ContactName" = "sp"."ContactName",
 	"ContactTitle" = "sp"."ContactTitle",
@@ -118,118 +205,37 @@ FROM
 	INNER JOIN "staging"."Suppliers" "sp" ON ("dp"."SupplierSK" = "sp"."SupplierSK")
 END
 GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeDimProducts]    Script Date: 25/08/2024 9:23:54 PM ******/
+	--- =================================================================================
 	IF EXISTS (
 		SELECT
 			*
 		FROM
 			sys.objects
 		WHERE
-			object_id = OBJECT_ID(N'dbo.DW_MergeDimProducts')
+			object_id = OBJECT_ID(N'dbo.DW_MergeDimShippers')
 			AND type in (N'P', N'PC')
-	) DROP PROCEDURE dbo.DW_MergeDimProducts
+	) DROP PROCEDURE dbo.DW_MergeDimShippers
 GO
-	CREATE PROCEDURE dbo.DW_MergeDimProducts AS BEGIN
+	CREATE PROCEDURE dbo.DW_MergeDimShippers AS BEGIN
 UPDATE
 	"dp"
 SET
-	"ProductName" = "sp"."ProductName",
-	"QuantityPerUnit" = "sp"."QuantityPerUnit",
-	"UnitPrice" = "sp"."UnitPrice",
-	"UnitsInStock" = "sp"."UnitsInStock",
-	"UnitsOnOrder" = "sp"."UnitsOnOrder",
-	"ReorderLevel" = "sp"."ReorderLevel",
-	"Discontinued" = "sp"."Discontinued",
-	"SupplierSK" = "sp"."SupplierSK",
-	"CategorySK" = "sp"."CategorySK"
+	--"ShipperID" = "sp"."ShipperID",
+	"CompanyName" = "sp"."CompanyName",
+	"Phone" = "sp"."Phone"
 FROM
-	"dbo"."DimProducts" "dp"
-	INNER JOIN "staging"."Products" "sp" ON ("dp"."ProductSK" = "sp"."ProductSK")
+	"dbo"."DimShippers" "dp"
+	INNER JOIN "staging"."Shippers" "sp" ON ("dp"."ShipperSK" = "sp"."ShipperSK")
 END
 GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeDimCustomers]    Script Date: 25/08/2024 9:35:18 PM ******/
+	--- =================================================================================
 	IF EXISTS (
 		SELECT
 			*
 		FROM
 			sys.objects
 		WHERE
-			object_id = OBJECT_ID(N'dbo.DW_MergeDimCustomers')
-			AND type in (N'P', N'PC')
-	) DROP PROCEDURE dbo.DW_MergeDimCustomers
-GO
-	CREATE PROCEDURE dbo.DW_MergeDimCustomers AS BEGIN
-UPDATE
-	"dc"
-SET
-	"CustomerID" = "sc"."CustomerID",
-	"CompanyName" = "sc"."CompanyName",
-	"ContactName" = "sc"."ContactName",
-	"ContactTitle" = "sc"."ContactTitle",
-	"Address" = "sc"."Address",
-	"City" = "sc"."City",
-	"Region" = "sc"."Region",
-	"PostalCode" = "sc"."PostalCode",
-	"Country" = "sc"."Country",
-	"Phone" = "sc"."Phone",
-	"Fax" = "sc"."Fax",
-	"CustomerTypeID" = "sc"."CustomerTypeID",
-	"CustomerDemographicsDesc" = "sc"."CustomerDemographicsDesc"
-FROM
-	"dbo"."DimCustomers" "dc"
-	INNER JOIN "staging"."Customers" "sc" ON ("dc"."CustomerSK" = "sc"."CustomerSK")
-END
-GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeDimEmployees]    Script Date: 25/08/2024 9:45:24 PM ******/
-	IF EXISTS (
-		SELECT
-			*
-		FROM
-			sys.objects
-		WHERE
-			object_id = OBJECT_ID(N'dbo.DW_MergeDimEmployees')
-			AND type in (N'P', N'PC')
-	) DROP PROCEDURE dbo.DW_MergeDimEmployees
-GO
-	CREATE PROCEDURE dbo.DW_MergeDimEmployees AS BEGIN
-UPDATE
-	"de"
-SET
-	"EmployeeID" = "se"."EmployeeID",
-	"LastName" = "se"."LastName",
-	"FirstName" = "se"."FirstName",
-	"Title" = "se"."Title",
-	"TitleOfCourtesy" = "se"."TitleOfCourtesy",
-	"BirthDate" = "se"."BirthDate",
-	"HireDate" = "se"."HireDate",
-	"Address" = "se"."Address",
-	"City" = "se"."City",
-	"Region" = "se"."Region",
-	"PostalCode" = "se"."PostalCode",
-	"Country" = "se"."Country",
-	"HomePhone" = "se"."HomePhone",
-	"Extension" = "se"."Extension",
-	"Photo" = "se"."Photo",
-	"Notes" = "se"."Notes",
-	"ReportsTo" = "se"."ReportsTo",
-	"PhotoPath" = "se"."PhotoPath",
-	"TerritoryID" = "se"."TerritoryID",
-	"TerritoryDescription" = "se"."TerritoryDescription",
-	"RegionID" = "se"."RegionID",
-	"RegionDescription" = "se"."RegionDescription"
-FROM
-	"dbo"."DimEmployees" "de"
-	INNER JOIN "staging"."Employees" "se" ON ("de"."EmployeeSK" = "se"."EmployeeSK")
-END
-GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeDimShipName]    Script Date: 25/08/2024 9:23:54 PM ******/
-	IF EXISTS (
-		SELECT
-			*
-		FROM
-			sys.objects
-		WHERE
-			object_id = OBJECT_ID(N 'dbo.DW_MergeDimShipName')
+			object_id = OBJECT_ID(N'dbo.DW_MergeDimShipName')
 			AND type in (N'P', N'PC')
 	) DROP PROCEDURE dbo.DW_MergeDimShipName
 GO
@@ -237,13 +243,13 @@ GO
 UPDATE
 	"dp"
 SET
-	"Name" = "sp"."Name"
+	"ShipName" = "sp"."ShipName"
 FROM
 	"dbo"."DimShipName" "dp"
 	INNER JOIN "staging"."ShipName" "sp" ON ("dp"."ShipNameSK" = "sp"."ShipNameSK")
 END
 GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeDimShipCountry]    Script Date: 25/08/2024 9:23:54 PM ******/
+	--- =================================================================================
 	IF EXISTS (
 		SELECT
 			*
@@ -258,13 +264,13 @@ GO
 UPDATE
 	"dp"
 SET
-	"Name" = "sp"."Name"
+	"CountryName" = "sp"."CountryName"
 FROM
 	"dbo"."DimShipCountry" "dp"
 	INNER JOIN "staging"."ShipCountry" "sp" ON ("dp"."ShipCountrySK" = "sp"."ShipCountrySK")
 END
 GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeDimShipCity]    Script Date: 25/08/2024 9:23:54 PM ******/
+	--- =================================================================================
 	IF EXISTS (
 		SELECT
 			*
@@ -279,13 +285,13 @@ GO
 UPDATE
 	"dp"
 SET
-	"Name" = "sp"."Name"
+	"CityName" = "sp"."CityName"
 FROM
 	"dbo"."DimShipCity" "dp"
 	INNER JOIN "staging"."ShipCity" "sp" ON ("dp"."ShipCitySK" = "sp"."ShipCitySK")
 END
 GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeDimShipRegion]    Script Date: 25/08/2024 9:23:54 PM ******/
+	--- =================================================================================
 	IF EXISTS (
 		SELECT
 			*
@@ -300,13 +306,13 @@ GO
 UPDATE
 	"dp"
 SET
-	"Name" = "sp"."Name"
+	"RegionName" = "sp"."RegionName"
 FROM
 	"dbo"."DimShipRegion" "dp"
 	INNER JOIN "staging"."ShipRegion" "sp" ON ("dp"."ShipRegionSK" = "sp"."ShipRegionSK")
 END
 GO
-	/****** Object:  StoredProcedure [dbo].[DW_MergeFactOrders]    Script Date: 25/08/2024 9:58:33 PM ******/
+	--- =================================================================================
 	IF EXISTS (
 		SELECT
 			*
@@ -322,22 +328,26 @@ UPDATE
 	"df"
 SET
 	"ProductSK" = "so"."ProductSK",
-	"CustomerSK" = "so"."CustomerSK",
+	"CategorySK" = "so"."CategorySK",
+	"SupplierSK" = "so"."SupplierSK",
 	"EmployeeSK" = "so"."EmployeeSK",
+	"CustomerSK" = "so"."CustomerSK",
+	"ShipperSK" = "so"."ShipperSK",
+
 	"OrderDateKey" = "so"."OrderDateKey",
 	"RequiredDateKey" = "so"."RequiredDateKey",
 	"ShippedDateKey" = "so"."ShippedDateKey",
-	"ShipVia" = "so"."ShipVia",
-	"Freight" = "so"."Freight",
+	
 	"ShipNameSK" = "so"."ShipNameSK",
 	"ShipCountrySK" = "so"."ShipCountrySK",
 	"ShipCitySK" = "so"."ShipCitySK",
 	"ShipRegionSK" = "so"."ShipRegionSK",
+	
+	"ShipPostalCode" = "so"."ShipPostalCode",
+	"Freight" = "so"."Freight",
 	"UnitPrice" = "so"."UnitPrice",
 	"Quantity" = "so"."Quantity",
-	"Discount" = "so"."Discount",
-	"ShipperID" = "so"."ShipperID",
-	"ShippersCompanyName" = "so"."ShippersCompanyName"
+	"Discount" = "so"."Discount"
 FROM
 	"dbo"."FactOrders" "df"
 	INNER JOIN "staging"."Orders" "so" ON (

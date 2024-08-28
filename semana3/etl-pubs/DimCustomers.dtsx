@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{64320300-5D6B-4ED9-95A6-07C29AD9D6EC}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{EF6C46FA-7149-4FD3-9ECC-F8A07A5AFF2D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -261,15 +261,6 @@
                       dataType="wstr"
                       length="24"
                       name="Fax" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Customer\Add New Customer.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerTypeID]"
-                      dataType="wstr"
-                      length="10"
-                      name="CustomerTypeID" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Customer\Add New Customer.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerDemographicsDesc]"
-                      dataType="nText"
-                      name="CustomerDemographicsDesc" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1013,15 +1004,6 @@ where [refTable].[CustomerID] = ?</property>
                       dataType="wstr"
                       length="24"
                       name="Fax" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Customer\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerTypeID]"
-                      dataType="wstr"
-                      length="10"
-                      name="CustomerTypeID" />
-                    <externalMetadataColumn
-                      refId="Package\Add New Customer\Load Staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerDemographicsDesc]"
-                      dataType="nText"
-                      name="CustomerDemographicsDesc" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1381,11 +1363,11 @@ where [refTable].[CustomerID] = ?</property>
         <NodeLayout
           Size="140,42"
           Id="Package\Add New Customer\Load Staging"
-          TopLeft="256,169" />
+          TopLeft="150,180" />
         <NodeLayout
           Size="169,42"
           Id="Package\Add New Customer\Add New Customer"
-          TopLeft="412,196" />
+          TopLeft="444,183" />
         <EdgeLayout
           Id="Package\Add New Customer.Paths[Salida de origen de OLE DB]"
           TopLeft="392.25,47">
@@ -1405,9 +1387,7 @@ where [refTable].[CustomerID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1416,33 +1396,33 @@ where [refTable].[CustomerID] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="83.5,79"
+              EndConnector="115.5,66"
               Start="0,0"
-              End="83.5,71.5">
+              End="115.5,58.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.1990521327014" />
+                    End="0,22.9004739336493" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.1990521327014"
-                    Point2="0,32.1990521327014"
-                    Point3="4,32.1990521327014" />
+                    Point1="0,22.9004739336493"
+                    Point2="0,26.9004739336493"
+                    Point3="4,26.9004739336493" />
                   <mssgle:LineSegment
-                    End="79.5,32.1990521327014" />
+                    End="111.5,26.9004739336493" />
                   <mssgle:CubicBezierSegment
-                    Point1="79.5,32.1990521327014"
-                    Point2="83.5,32.1990521327014"
-                    Point3="83.5,36.1990521327014" />
+                    Point1="111.5,26.9004739336493"
+                    Point2="115.5,26.9004739336493"
+                    Point3="115.5,30.9004739336493" />
                   <mssgle:LineSegment
-                    End="83.5,71.5" />
+                    End="115.5,58.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-65.1390234375,37.1990521327014,213.778046875,12.1953125"
+              BoundingBox="-49.1390234375,31.9004739336493,213.778046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1452,33 +1432,33 @@ where [refTable].[CustomerID] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-48,52"
+              EndConnector="-154,63"
               Start="0,0"
-              End="-48,44.5">
+              End="-154,55.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.1943127962085" />
+                    End="0,21.6777251184834" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.1943127962085"
-                    Point2="0,21.1943127962085"
-                    Point3="-4,21.1943127962085" />
+                    Point1="0,21.6777251184834"
+                    Point2="0,25.6777251184834"
+                    Point3="-4,25.6777251184834" />
                   <mssgle:LineSegment
-                    End="-44,21.1943127962085" />
+                    End="-150,25.6777251184834" />
                   <mssgle:CubicBezierSegment
-                    Point1="-44,21.1943127962085"
-                    Point2="-48,21.1943127962085"
-                    Point3="-48,25.1943127962085" />
+                    Point1="-150,25.6777251184834"
+                    Point2="-154,25.6777251184834"
+                    Point3="-154,29.6777251184834" />
                   <mssgle:LineSegment
-                    End="-48,44.5" />
+                    End="-154,55.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-123.8190234375,26.1943127962085,199.638046875,12.1953125"
+              BoundingBox="-176.8190234375,30.6777251184834,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
