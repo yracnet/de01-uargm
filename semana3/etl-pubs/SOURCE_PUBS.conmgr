@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SOURCE_PUBS"
+  DTS:DTSID="{6AF7675C-F1C1-4FD3-8B29-4EADD8D3EDB8}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=pubs;Provider=SQLOLEDB.1;Persist Security Info=True;Application Name=SSIS-etl-pubs-{6AF7675C-F1C1-4FD3-8B29-4EADD8D3EDB8}localhost.pubs.sa;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAjn8L4zaMu0Sq+YXiKCx//wAAAAACAAAAAAAQZgAAAAEAACAAAABW3iIvdWXca3puDIfzqXvAaKhXQ82YRYXNGyqinxzmQAAAAAAOgAAAAAIAACAAAAAEGy8NjWuyUEZxXxnsXpZOf7XYOncpjG3/yVUvmYHc+oAAAACOpeaSsR50LpWXjruopOXwhHdr2WRNnXsKlHnvJ5jy3lznH04FEQIaQoXMnhZmnqHXRPRPUfOSIWzZCxgdT5lI/Ru4XGozB+8Pw7IQ3l8P1h8zX7FYeIKuUQczBR7aMkV5XRg/5+G1f9lRU2VENdPr6xfsvRZsFw8D9uJUbdrQWEAAAAAjf5RxCqtOW/x/wKBEtJIVudnJKK5DjQotyg7QpTL6qe3C3MMPbOK55raSidwUrQ3Kmy7Ie9oOX3eirI2cDSHC</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
