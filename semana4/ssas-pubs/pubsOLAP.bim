@@ -7,7 +7,7 @@
       {
         "name": "TARGET_PUBS",
         "connectionString": "Provider=SQLOLEDB;Data Source=localhost;Initial Catalog=pubsDW;User ID=sa;Persist Security Info=true",
-        "impersonationMode": "impersonateServiceAccount",
+        "impersonationMode": "impersonateUnattendedAccount",
         "annotations": [
           {
             "name": "ConnectionEditUISource",
@@ -38,6 +38,24 @@
             }
           }
         ],
+        "measures": [
+          {
+            "name": "TotalQuantity",
+            "expression": "SUM(FactOrders[Quantity])"
+          },
+          {
+            "name": "TotalFreight",
+            "expression": "SUM(FactOrders[Freight])"
+          },
+          {
+            "name": "TotalUnitPrice",
+            "expression": "SUM(FactOrders[UnitPrice])"
+          },
+          {
+            "name": "TotalPrice",
+            "expression": " SUMX(FactOrders, FactOrders[Quantity] *  FactOrders[UnitPrice]]))"
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -59,12 +77,14 @@
           {
             "name": "CategorySK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CategorySK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "CategoryID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CategoryID",
             "sourceProviderType": "Integer"
           },
@@ -113,12 +133,14 @@
           {
             "name": "CustomerSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CustomerSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "CustomerID",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "CustomerID",
             "sourceProviderType": "WChar"
           },
@@ -149,24 +171,28 @@
           {
             "name": "City",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "City",
             "sourceProviderType": "WChar"
           },
           {
             "name": "Region",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Region",
             "sourceProviderType": "WChar"
           },
           {
             "name": "PostalCode",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "PostalCode",
             "sourceProviderType": "WChar"
           },
           {
             "name": "Country",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Country",
             "sourceProviderType": "WChar"
           },
@@ -215,6 +241,7 @@
           {
             "name": "DateKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "DateKey",
             "sourceProviderType": "Integer"
           },
@@ -317,12 +344,14 @@
           {
             "name": "EmployeeSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "EmployeeSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "EmployeeID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "EmployeeID",
             "sourceProviderType": "Integer"
           },
@@ -341,18 +370,21 @@
           {
             "name": "Title",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Title",
             "sourceProviderType": "WChar"
           },
           {
             "name": "TitleOfCourtesy",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "TitleOfCourtesy",
             "sourceProviderType": "WChar"
           },
           {
             "name": "BirthDate",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "BirthDate",
             "formatString": "General Date",
             "sourceProviderType": "DBTimeStamp"
@@ -360,6 +392,7 @@
           {
             "name": "HireDate",
             "dataType": "dateTime",
+            "isHidden": true,
             "sourceColumn": "HireDate",
             "formatString": "General Date",
             "sourceProviderType": "DBTimeStamp"
@@ -367,6 +400,7 @@
           {
             "name": "Address",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Address",
             "sourceProviderType": "WChar"
           }
@@ -403,12 +437,14 @@
           {
             "name": "ProductSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ProductSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ProductID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ProductID",
             "sourceProviderType": "Integer"
           },
@@ -440,24 +476,28 @@
           {
             "name": "UnitsInStock",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "UnitsInStock",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "UnitsOnOrder",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "UnitsOnOrder",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "ReorderLevel",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ReorderLevel",
             "sourceProviderType": "SmallInt"
           },
           {
             "name": "Discontinued",
             "dataType": "boolean",
+            "isHidden": true,
             "sourceColumn": "Discontinued",
             "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
             "sourceProviderType": "Boolean"
@@ -495,6 +535,7 @@
           {
             "name": "ShipCitySK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipCitySK",
             "sourceProviderType": "Integer"
           },
@@ -537,6 +578,7 @@
           {
             "name": "ShipCountrySK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipCountrySK",
             "sourceProviderType": "Integer"
           },
@@ -579,6 +621,7 @@
           {
             "name": "ShipNameSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipNameSK",
             "sourceProviderType": "Integer"
           },
@@ -621,12 +664,14 @@
           {
             "name": "ShipperSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipperSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShipperID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipperID",
             "sourceProviderType": "Integer"
           },
@@ -675,6 +720,7 @@
           {
             "name": "ShipRegionSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipRegionSK",
             "sourceProviderType": "Integer"
           },
@@ -741,36 +787,42 @@
           {
             "name": "ContactTitle",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "ContactTitle",
             "sourceProviderType": "WChar"
           },
           {
             "name": "Address",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Address",
             "sourceProviderType": "WChar"
           },
           {
             "name": "City",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "City",
             "sourceProviderType": "WChar"
           },
           {
             "name": "Region",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Region",
             "sourceProviderType": "WChar"
           },
           {
             "name": "PostalCode",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "PostalCode",
             "sourceProviderType": "WChar"
           },
           {
             "name": "Country",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Country",
             "sourceProviderType": "WChar"
           },
@@ -783,12 +835,14 @@
           {
             "name": "Fax",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "Fax",
             "sourceProviderType": "WChar"
           },
           {
             "name": "HomePage",
             "dataType": "string",
+            "isHidden": true,
             "sourceColumn": "HomePage",
             "sourceProviderType": "WChar"
           }
@@ -825,90 +879,105 @@
           {
             "name": "OrderID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "OrderID",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ProductID",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ProductID",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ProductSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ProductSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "CategorySK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CategorySK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "SupplierSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "SupplierSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "EmployeeSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "EmployeeSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "CustomerSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "CustomerSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShipperSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipperSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "OrderDateKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "OrderDateKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "RequiredDateKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "RequiredDateKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShippedDateKey",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShippedDateKey",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShipNameSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipNameSK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShipCountrySK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipCountrySK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShipCitySK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipCitySK",
             "sourceProviderType": "Integer"
           },
           {
             "name": "ShipRegionSK",
             "dataType": "int64",
+            "isHidden": true,
             "sourceColumn": "ShipRegionSK",
             "sourceProviderType": "Integer"
           },
