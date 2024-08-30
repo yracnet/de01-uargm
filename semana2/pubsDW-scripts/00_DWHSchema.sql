@@ -47,6 +47,11 @@ GO
 		CONSTRAINT "PK_PackageConfig" PRIMARY KEY CLUSTERED ("PackageID" ASC)
 	)
 GO
+	-- Tabla para crear valor Agrgegado, Calculos
+	CREATE TABLE Aggregation (
+		id int IDENTITY(0,1) NOT NULL
+	);
+GO
 	CREATE TABLE "DimDate"(
 		"DateKey" int NOT NULL,
 		"FullDate" date NOT NULL,

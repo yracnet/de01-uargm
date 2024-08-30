@@ -6,8 +6,8 @@
     "dataSources": [
       {
         "name": "TARGET_PUBS",
-        "connectionString": "Provider=SQLOLEDB;Data Source=localhost;Initial Catalog=pubsDW;User ID=sa;Persist Security Info=true",
-        "impersonationMode": "impersonateUnattendedAccount",
+        "connectionString": "Provider=SQLOLEDB;Data Source=localhost;User ID=sa;Persist Security Info=true;Initial Catalog=pubsDW",
+        "impersonationMode": "impersonateServiceAccount",
         "annotations": [
           {
             "name": "ConnectionEditUISource",
@@ -41,19 +41,15 @@
         "measures": [
           {
             "name": "TotalQuantity",
-            "expression": "SUM(FactOrders[Quantity])"
+            "expression": "SUM(Orders[Quantity])"
           },
           {
             "name": "TotalFreight",
-            "expression": "SUM(FactOrders[Freight])"
+            "expression": "SUM(Orders[Freight])"
           },
           {
             "name": "TotalUnitPrice",
-            "expression": "SUM(FactOrders[UnitPrice])"
-          },
-          {
-            "name": "TotalPrice",
-            "expression": " SUMX(FactOrders, FactOrders[Quantity] *  FactOrders[UnitPrice]]))"
+            "expression": "SUM(Orders[UnitPrice])"
           }
         ],
         "annotations": [
@@ -72,7 +68,7 @@
         ]
       },
       {
-        "name": "DimCategories",
+        "name": "Categories",
         "columns": [
           {
             "name": "CategorySK",
@@ -128,7 +124,7 @@
         ]
       },
       {
-        "name": "DimCustomers",
+        "name": "Customers",
         "columns": [
           {
             "name": "CustomerSK",
@@ -236,7 +232,7 @@
         ]
       },
       {
-        "name": "DimDate",
+        "name": "Date",
         "columns": [
           {
             "name": "DateKey",
@@ -339,7 +335,7 @@
         ]
       },
       {
-        "name": "DimEmployees",
+        "name": "Employees",
         "columns": [
           {
             "name": "EmployeeSK",
@@ -432,7 +428,7 @@
         ]
       },
       {
-        "name": "DimProducts",
+        "name": "Products",
         "columns": [
           {
             "name": "ProductSK",
@@ -530,7 +526,7 @@
         ]
       },
       {
-        "name": "DimShipCity",
+        "name": "ShipCity",
         "columns": [
           {
             "name": "ShipCitySK",
@@ -573,7 +569,7 @@
         ]
       },
       {
-        "name": "DimShipCountry",
+        "name": "ShipCountry",
         "columns": [
           {
             "name": "ShipCountrySK",
@@ -616,7 +612,7 @@
         ]
       },
       {
-        "name": "DimShipName",
+        "name": "ShipName",
         "columns": [
           {
             "name": "ShipNameSK",
@@ -659,7 +655,7 @@
         ]
       },
       {
-        "name": "DimShippers",
+        "name": "Shippers",
         "columns": [
           {
             "name": "ShipperSK",
@@ -715,7 +711,7 @@
         ]
       },
       {
-        "name": "DimShipRegion",
+        "name": "ShipRegion",
         "columns": [
           {
             "name": "ShipRegionSK",
@@ -758,7 +754,7 @@
         ]
       },
       {
-        "name": "DimSuppliers",
+        "name": "Suppliers",
         "columns": [
           {
             "name": "SupplierSK",
@@ -874,7 +870,7 @@
         ]
       },
       {
-        "name": "FactOrders",
+        "name": "Orders",
         "columns": [
           {
             "name": "OrderID",
@@ -1056,95 +1052,95 @@
     "relationships": [
       {
         "name": "9b7d0583-c912-4df6-99f4-e2b57462ef01",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "RequiredDateKey",
-        "toTable": "DimDate",
+        "toTable": "Date",
         "toColumn": "DateKey",
         "isActive": false
       },
       {
         "name": "a02f2066-81df-4a44-93c3-09195d9cbc88",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "ShippedDateKey",
-        "toTable": "DimDate",
+        "toTable": "Date",
         "toColumn": "DateKey",
         "isActive": false
       },
       {
         "name": "5ea549ce-661a-4d5c-a0ec-400120fec5b1",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "CategorySK",
-        "toTable": "DimCategories",
+        "toTable": "Categories",
         "toColumn": "CategorySK"
       },
       {
         "name": "c289dea7-3f67-47d7-accc-d0b8796fdfd8",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "CustomerSK",
-        "toTable": "DimCustomers",
+        "toTable": "Customers",
         "toColumn": "CustomerSK"
       },
       {
         "name": "839ccd7a-7605-4591-b932-bd67229e5a88",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "OrderDateKey",
-        "toTable": "DimDate",
+        "toTable": "Date",
         "toColumn": "DateKey"
       },
       {
         "name": "354a6d24-d728-4442-8e8c-d487286d1ad4",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "EmployeeSK",
-        "toTable": "DimEmployees",
+        "toTable": "Employees",
         "toColumn": "EmployeeSK"
       },
       {
         "name": "8e616096-2b6f-4d2a-ae66-77c2f1bfafbc",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "ProductSK",
-        "toTable": "DimProducts",
+        "toTable": "Products",
         "toColumn": "ProductSK"
       },
       {
         "name": "ba7c035e-202a-4103-b2e4-8ceebeb7d7db",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "ShipCitySK",
-        "toTable": "DimShipCity",
+        "toTable": "ShipCity",
         "toColumn": "ShipCitySK"
       },
       {
         "name": "d469c424-d676-4b9e-ba91-c8f7813fa5ab",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "ShipCountrySK",
-        "toTable": "DimShipCountry",
+        "toTable": "ShipCountry",
         "toColumn": "ShipCountrySK"
       },
       {
         "name": "9bfe6469-4a5a-44f5-baaa-44cedb2fd45a",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "ShipNameSK",
-        "toTable": "DimShipName",
+        "toTable": "ShipName",
         "toColumn": "ShipNameSK"
       },
       {
         "name": "a42c559f-8943-46db-8164-cddaefb50836",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "ShipperSK",
-        "toTable": "DimShippers",
+        "toTable": "Shippers",
         "toColumn": "ShipperSK"
       },
       {
         "name": "a6f8de6c-c380-4b73-9060-f31a5642f12d",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "ShipRegionSK",
-        "toTable": "DimShipRegion",
+        "toTable": "ShipRegion",
         "toColumn": "ShipRegionSK"
       },
       {
         "name": "800e187b-1f6d-433a-a331-60da378c4fee",
-        "fromTable": "FactOrders",
+        "fromTable": "Orders",
         "fromColumn": "SupplierSK",
-        "toTable": "DimSuppliers",
+        "toTable": "Suppliers",
         "toColumn": "SupplierSK"
       }
     ],
