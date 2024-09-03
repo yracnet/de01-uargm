@@ -50,6 +50,14 @@
           {
             "name": "TotalUnitPrice",
             "expression": "SUM(Orders[UnitPrice])"
+          },
+          {
+            "name": "TotalGrossSales",
+            "expression": "SUM(Orders[GrossSales])"
+          },
+          {
+            "name": "TotalNetSales",
+            "expression": "SUM(Orders[NetSales])"
           }
         ],
         "annotations": [
@@ -399,6 +407,13 @@
             "isHidden": true,
             "sourceColumn": "Address",
             "sourceProviderType": "WChar"
+          },
+          {
+            "type": "calculated",
+            "name": "EmployeesName",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "CONCATENATE(CONCATENATE(Employees[FirstName],\" \"),Employees[LastName])"
           }
         ],
         "partitions": [
@@ -1020,6 +1035,34 @@
             "dataType": "double",
             "sourceColumn": "Discount",
             "sourceProviderType": "Single"
+          },
+          {
+            "type": "calculated",
+            "name": "GrossSales",
+            "dataType": "decimal",
+            "isDataTypeInferred": true,
+            "expression": "Orders[Quantity]*Orders[UnitPrice]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "NetSales",
+            "dataType": "decimal",
+            "isDataTypeInferred": true,
+            "expression": "Orders[GrossSales]-(Orders[GrossSales]*Orders[Discount])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
           }
         ],
         "partitions": [
