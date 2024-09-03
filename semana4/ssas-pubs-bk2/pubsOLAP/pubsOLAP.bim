@@ -1,0 +1,1008 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "es-BO",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "CBUPS-RVM01L\\SQLSERVER2022",
+            "database": "pubsDW"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "cbups-rvm01l\\sqlserver2022;pubsDW",
+          "Username": "sa",
+          "EncryptConnection": false
+        }
+      },
+      {
+        "type": "structured",
+        "name": "AnalysisServices/CBUPS-RVM01L\\SQLSERVER2022;pubsOLAP",
+        "connectionDetails": {
+          "protocol": "analysis-services",
+          "address": {
+            "server": "CBUPS-RVM01L\\SQLSERVER2022",
+            "database": "pubsOLAP"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {
+          "typedMeasureColumns": true,
+          "implementation": "2.0"
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "AnalysisServices",
+          "path": "cbups-rvm01l\\sqlserver2022;pubsOLAP",
+          "Username": "sa"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Aggregation",
+        "columns": [
+          {
+            "type": "calculated",
+            "name": "id",
+            "dataType": "int64",
+            "isDataTypeInferred": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_Aggregation = Source{[Schema=\"dbo\",Item=\"Aggregation\"]}[Data]",
+                "in",
+                "    dbo_Aggregation"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "TotalQuantity",
+            "expression": "SUM(Orders[Quantity])"
+          },
+          {
+            "name": "TotalFreight",
+            "expression": "SUM(Orders[Freight])"
+          },
+          {
+            "name": "TotalUnitPrice",
+            "expression": "SUM(Orders[UnitPrice])"
+          },
+          {
+            "name": "TotalGrossSales",
+            "expression": "SUM(Orders[GrossSales])"
+          },
+          {
+            "name": "TotalNetSales",
+            "expression": "SUM(Orders[NetSales])"
+          }
+        ]
+      },
+      {
+        "name": "Categories",
+        "columns": [
+          {
+            "name": "CategorySK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CategorySK"
+          },
+          {
+            "name": "CategoryID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CategoryID"
+          },
+          {
+            "name": "CategoryName",
+            "dataType": "string",
+            "sourceColumn": "CategoryName"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Description"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimCategories = Source{[Schema=\"dbo\",Item=\"DimCategories\"]}[Data]",
+                "in",
+                "    dbo_DimCategories"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Customers",
+        "columns": [
+          {
+            "name": "CustomerSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerSK"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "CompanyName",
+            "dataType": "string",
+            "sourceColumn": "CompanyName"
+          },
+          {
+            "name": "ContactName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ContactName"
+          },
+          {
+            "name": "ContactTitle",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ContactTitle"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Region"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Phone"
+          },
+          {
+            "name": "Fax",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Fax"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimCustomers = Source{[Schema=\"dbo\",Item=\"DimCustomers\"]}[Data]",
+                "in",
+                "    dbo_DimCustomers"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Date",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "FullDate",
+            "dataType": "dateTime",
+            "sourceColumn": "FullDate"
+          },
+          {
+            "name": "DayNumberOfWeek",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfWeek"
+          },
+          {
+            "name": "DayNameOfWeek",
+            "dataType": "string",
+            "sourceColumn": "DayNameOfWeek"
+          },
+          {
+            "name": "DayNumberOfMonth",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfMonth"
+          },
+          {
+            "name": "DayNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfYear"
+          },
+          {
+            "name": "WeekNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "WeekNumberOfYear"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sortByColumn": "MonthNumberOfYear"
+          },
+          {
+            "name": "MonthNumberOfYear",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumberOfYear"
+          },
+          {
+            "name": "CalendarQuarter",
+            "dataType": "int64",
+            "sourceColumn": "CalendarQuarter"
+          },
+          {
+            "name": "CalendarYear",
+            "dataType": "int64",
+            "sourceColumn": "CalendarYear"
+          },
+          {
+            "name": "CalendarSemester",
+            "dataType": "int64",
+            "sourceColumn": "CalendarSemester"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimDate = Source{[Schema=\"dbo\",Item=\"DimDate\"]}[Data]",
+                "in",
+                "    dbo_DimDate"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Employees",
+        "columns": [
+          {
+            "name": "EmployeeSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EmployeeSK"
+          },
+          {
+            "name": "EmployeeID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EmployeeID"
+          },
+          {
+            "name": "LastName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "LastName"
+          },
+          {
+            "name": "FirstName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "FirstName"
+          },
+          {
+            "name": "Title",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Title"
+          },
+          {
+            "name": "TitleOfCourtesy",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "TitleOfCourtesy"
+          },
+          {
+            "name": "BirthDate",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "BirthDate"
+          },
+          {
+            "name": "HireDate",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "HireDate"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Address"
+          },
+          {
+            "type": "calculated",
+            "name": "EmployeesName",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "CONCATENATE(CONCATENATE(Employees[FirstName],\" \"),Employees[LastName])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimEmployees = Source{[Schema=\"dbo\",Item=\"DimEmployees\"]}[Data]",
+                "in",
+                "    dbo_DimEmployees"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Products",
+        "columns": [
+          {
+            "name": "ProductSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductSK"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "ProductName",
+            "dataType": "string",
+            "sourceColumn": "ProductName"
+          },
+          {
+            "name": "QuantityPerUnit",
+            "dataType": "string",
+            "sourceColumn": "QuantityPerUnit"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "decimal",
+            "sourceColumn": "UnitPrice"
+          },
+          {
+            "name": "UnitsInStock",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "UnitsInStock"
+          },
+          {
+            "name": "UnitsOnOrder",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "UnitsOnOrder"
+          },
+          {
+            "name": "ReorderLevel",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ReorderLevel"
+          },
+          {
+            "name": "Discontinued",
+            "dataType": "boolean",
+            "isHidden": true,
+            "sourceColumn": "Discontinued"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimProducts = Source{[Schema=\"dbo\",Item=\"DimProducts\"]}[Data]",
+                "in",
+                "    dbo_DimProducts"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ShipCity",
+        "columns": [
+          {
+            "name": "ShipCitySK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipCitySK"
+          },
+          {
+            "name": "CityName",
+            "dataType": "string",
+            "sourceColumn": "CityName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimShipCity = Source{[Schema=\"dbo\",Item=\"DimShipCity\"]}[Data]",
+                "in",
+                "    dbo_DimShipCity"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ShipCountry",
+        "columns": [
+          {
+            "name": "ShipCountrySK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipCountrySK"
+          },
+          {
+            "name": "CountryName",
+            "dataType": "string",
+            "sourceColumn": "CountryName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimShipCountry = Source{[Schema=\"dbo\",Item=\"DimShipCountry\"]}[Data]",
+                "in",
+                "    dbo_DimShipCountry"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ShipName",
+        "columns": [
+          {
+            "name": "ShipNameSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipNameSK"
+          },
+          {
+            "name": "ShipName",
+            "dataType": "string",
+            "sourceColumn": "ShipName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimShipName = Source{[Schema=\"dbo\",Item=\"DimShipName\"]}[Data]",
+                "in",
+                "    dbo_DimShipName"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Shippers",
+        "columns": [
+          {
+            "name": "ShipperSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipperSK"
+          },
+          {
+            "name": "ShipperID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipperID"
+          },
+          {
+            "name": "CompanyName",
+            "dataType": "string",
+            "sourceColumn": "CompanyName"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Phone"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimShippers = Source{[Schema=\"dbo\",Item=\"DimShippers\"]}[Data]",
+                "in",
+                "    dbo_DimShippers"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ShipRegion",
+        "columns": [
+          {
+            "name": "ShipRegionSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipRegionSK"
+          },
+          {
+            "name": "RegionName",
+            "dataType": "string",
+            "sourceColumn": "RegionName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimShipRegion = Source{[Schema=\"dbo\",Item=\"DimShipRegion\"]}[Data]",
+                "in",
+                "    dbo_DimShipRegion"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Suppliers",
+        "columns": [
+          {
+            "name": "SupplierSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SupplierSK"
+          },
+          {
+            "name": "SupplierID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SupplierID"
+          },
+          {
+            "name": "CompanyName",
+            "dataType": "string",
+            "sourceColumn": "CompanyName"
+          },
+          {
+            "name": "ContactName",
+            "dataType": "string",
+            "sourceColumn": "ContactName"
+          },
+          {
+            "name": "ContactTitle",
+            "dataType": "string",
+            "sourceColumn": "ContactTitle"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "sourceColumn": "Region"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Phone"
+          },
+          {
+            "name": "Fax",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Fax"
+          },
+          {
+            "name": "HomePage",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "HomePage"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_DimSuppliers = Source{[Schema=\"dbo\",Item=\"DimSuppliers\"]}[Data]",
+                "in",
+                "    dbo_DimSuppliers"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Orders",
+        "columns": [
+          {
+            "name": "OrderID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "OrderID"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "ProductSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductSK"
+          },
+          {
+            "name": "CategorySK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CategorySK"
+          },
+          {
+            "name": "SupplierSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SupplierSK"
+          },
+          {
+            "name": "EmployeeSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EmployeeSK"
+          },
+          {
+            "name": "CustomerSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerSK"
+          },
+          {
+            "name": "ShipperSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipperSK"
+          },
+          {
+            "name": "OrderDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "OrderDateKey"
+          },
+          {
+            "name": "RequiredDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RequiredDateKey"
+          },
+          {
+            "name": "ShippedDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShippedDateKey"
+          },
+          {
+            "name": "ShipNameSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipNameSK"
+          },
+          {
+            "name": "ShipCountrySK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipCountrySK"
+          },
+          {
+            "name": "ShipCitySK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipCitySK"
+          },
+          {
+            "name": "ShipRegionSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShipRegionSK"
+          },
+          {
+            "name": "ShipPostalCode",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ShipPostalCode"
+          },
+          {
+            "name": "Freight",
+            "dataType": "decimal",
+            "sourceColumn": "Freight"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "decimal",
+            "sourceColumn": "UnitPrice"
+          },
+          {
+            "name": "Quantity",
+            "dataType": "int64",
+            "sourceColumn": "Quantity"
+          },
+          {
+            "name": "Discount",
+            "dataType": "double",
+            "sourceColumn": "Discount"
+          },
+          {
+            "type": "calculated",
+            "name": "GrossSales",
+            "dataType": "decimal",
+            "isDataTypeInferred": true,
+            "expression": "Orders[Quantity]*Orders[UnitPrice]",
+            "formatString": "\"Bs\"#,0.00;-\"Bs\"#,0.00;\"Bs\"#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"16394\" DisplayName=\"Bs Español (Bolivia)\" Symbol=\"Bs\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "NetSales",
+            "dataType": "decimal",
+            "isDataTypeInferred": true,
+            "expression": "Orders[GrossSales]-(Orders[GrossSales]*Orders[Discount])",
+            "formatString": "\"Bs\"#,0.00;-\"Bs\"#,0.00;\"Bs\"#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"16394\" DisplayName=\"Bs Español (Bolivia)\" Symbol=\"Bs\" PositivePattern=\"0\" NegativePattern=\"1\" /></Format>"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/CBUPS-RVM01L\\SQLSERVER2022;pubsDW\",",
+                "    dbo_FactOrders = Source{[Schema=\"dbo\",Item=\"FactOrders\"]}[Data]",
+                "in",
+                "    dbo_FactOrders"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "85141736-ecbf-4aa6-9b8f-58a5d973a791",
+        "fromTable": "Orders",
+        "fromColumn": "RequiredDateKey",
+        "toTable": "Date",
+        "toColumn": "DateKey",
+        "isActive": false
+      },
+      {
+        "name": "5d86c4b5-f2ca-4c9f-b78e-405694b08423",
+        "fromTable": "Orders",
+        "fromColumn": "ShippedDateKey",
+        "toTable": "Date",
+        "toColumn": "DateKey",
+        "isActive": false
+      },
+      {
+        "name": "9af90a7e-54e1-4f3c-94e1-5fda55841754",
+        "fromTable": "Orders",
+        "fromColumn": "CategorySK",
+        "toTable": "Categories",
+        "toColumn": "CategorySK"
+      },
+      {
+        "name": "84b58b8a-8164-4a64-85e3-768ec52ecba3",
+        "fromTable": "Orders",
+        "fromColumn": "CustomerSK",
+        "toTable": "Customers",
+        "toColumn": "CustomerSK"
+      },
+      {
+        "name": "b80955b1-e2c3-4ee6-884b-3e93fea90192",
+        "fromTable": "Orders",
+        "fromColumn": "OrderDateKey",
+        "toTable": "Date",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "46ed00a2-0125-43be-9e6b-3581fc6261e3",
+        "fromTable": "Orders",
+        "fromColumn": "EmployeeSK",
+        "toTable": "Employees",
+        "toColumn": "EmployeeSK"
+      },
+      {
+        "name": "280c9d33-5fa2-4833-9f97-7669fbdcbba3",
+        "fromTable": "Orders",
+        "fromColumn": "ProductSK",
+        "toTable": "Products",
+        "toColumn": "ProductSK"
+      },
+      {
+        "name": "938e8491-bb55-456a-b9f7-192c8316a903",
+        "fromTable": "Orders",
+        "fromColumn": "ShipCitySK",
+        "toTable": "ShipCity",
+        "toColumn": "ShipCitySK"
+      },
+      {
+        "name": "c20d0be5-14b8-4eff-8397-43e48564fc15",
+        "fromTable": "Orders",
+        "fromColumn": "ShipCountrySK",
+        "toTable": "ShipCountry",
+        "toColumn": "ShipCountrySK"
+      },
+      {
+        "name": "9e247251-e029-4797-b294-8c55a55e5123",
+        "fromTable": "Orders",
+        "fromColumn": "ShipNameSK",
+        "toTable": "ShipName",
+        "toColumn": "ShipNameSK"
+      },
+      {
+        "name": "bcf69714-8ca4-4a07-9795-ea5168ee6074",
+        "fromTable": "Orders",
+        "fromColumn": "ShipperSK",
+        "toTable": "Shippers",
+        "toColumn": "ShipperSK"
+      },
+      {
+        "name": "8f676a18-0aee-4f7e-a9dd-7b8c2b21256f",
+        "fromTable": "Orders",
+        "fromColumn": "ShipRegionSK",
+        "toTable": "ShipRegion",
+        "toColumn": "ShipRegionSK"
+      },
+      {
+        "name": "5fc9df55-051d-4410-8fe5-d32d454cbb0e",
+        "fromTable": "Orders",
+        "fromColumn": "SupplierSK",
+        "toTable": "Suppliers",
+        "toColumn": "SupplierSK"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
